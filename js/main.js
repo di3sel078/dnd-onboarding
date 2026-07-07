@@ -34,6 +34,7 @@
     const prevBtn = document.getElementById("btn-prev");
 
     const stepIcons = document.querySelectorAll(".step-icon");
+    const trackerEntries = document.querySelectorAll(".tracker-entry");
 
     function showStep(index) {
       // Show/Hide Steps
@@ -54,6 +55,9 @@
       // Change Button Text
       prevBtn.textContent = index === 0 ? "Home" : "Previous";
       nextBtn.textContent = index === steps.length - 1 ? "Finish" : "Next";
+
+      // Scroll back to the top of the page for the new step
+      window.scrollTo({ top: 0, behavior: "smooth" });
     }
 
     // Button Click Reactions
@@ -73,6 +77,14 @@
       } else {
         window.location.href = "index.html";
       }
+    });
+
+    // Jump directly to a step by clicking its tracker entry
+    trackerEntries.forEach((entry, i) => {
+      entry.addEventListener("click", () => {
+        currentStep = i;
+        showStep(currentStep);
+      });
     });
 
     showStep(0);

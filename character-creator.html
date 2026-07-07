@@ -1,5 +1,3 @@
-<!doctype html>
-
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -20,7 +18,11 @@
       <nav class="step-tracker-nav" aria-label="Progress">
         <menu class="step-tracker">
           <li class="tracker-entry">
-            <span class="step-icon active">1</span>
+            <span class="step-icon active">0</span>
+            <span class="step-label">Your Sheet</span>
+          </li>
+          <li class="tracker-entry">
+            <span class="step-icon">1</span>
             <span class="step-label">Ability Scores</span>
           </li>
           <li class="tracker-entry">
@@ -49,23 +51,63 @@
           </li>
           <li class="tracker-entry">
             <span class="step-icon">8</span>
-            <span class="step-label">Summary</span>
+            <span class="step-label">Level Up</span>
           </li>
         </menu>
       </nav>
 
       <!-- 8 Character Creation Steps -->
 
+      <!-- Step 0 - Your Sheet -->
+      <div class="step active" id="step-0">
+        <h3 class="step-count">Step 0 of 8</h3>
+        <h1>Get Your Character Sheet</h1>
+
+        <!-- step content -->
+        <div class="sheet-tip">
+          Grab a copy of the official character sheet before you start, you'll
+          be filling it out as you go through each step
+        </div>
+
+        <div class="section">
+          <h2>What Is a Character Sheet?</h2>
+          <p>
+            A character sheet is a single document that holds everything about
+            your character in one place: your ability scores, race, class,
+            skills, spells, equipment, and more. You'll fill it out as you make
+            choices during character creation, and reference it constantly
+            during play to look up your stats and abilities.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>Download the Official Sheet</h2>
+          <p>
+            Wizards of the Coast (the publisher of D&amp;D) provides a free,
+            blank 5e character sheet you can print or fill out digitally.
+          </p>
+          <br />
+          <a
+            class="btn btn-primary"
+            href="https://media.wizards.com/2022/dnd/downloads/DnD_5E_CharacterSheet_FormFillable.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Download Blank Character Sheet (PDF)
+          </a>
+        </div>
+      </div>
+
       <!-- Step 1 - Ability Scores -->
-      <div class="step active" id="step-1">
+      <div class="step" id="step-1">
         <h3 class="step-count">Step 1 of 8</h3>
         <h1>Determine Your Ability Scores</h1>
 
         <!-- step content -->
         <div class="sheet-tip">
-          Write these in the six boxes on the left of your character sheet. The
-          ability score can go in either the circle or the main box, and the
-          modifier goes in the other
+          Write the ability scores in the six labeled boxes on the left side of
+          your sheet, the main score going in the box and the modifier going in
+          the circle
         </div>
 
         <!-- 6 Scores overview -->
@@ -79,60 +121,57 @@
               you can exert raw bodily force. In combat, strength is used as a
               bonus to melee weaponry attacks
             </p>
-          </div>
+            <p>Important For: Barbarian, Fighter (STR based), Paladin</p>
+            <br />
 
-          <div class="section">
             <h3>Dexterity (DEX)</h3>
             <p>
               Measures physical agility, reflexes, balance, and hand-eye
               coordination. Dexterity determines how hard it is to hit you
               (called "Armor Class"), and is used as the modifier for ranged and
-              <span
-                title="Some weapons use either Dexterity or Strength for their bonuses"
-                style="color: var(--color-accent)"
-              >
-                finesse
-              </span>
-              weaponry during combat
+              finesse weaponry (uses STR or DEX for modifiers) during combat
             </p>
-          </div>
+            <p>Important For: Rogue, Ranger, Monk, Fighter (DEX based)</p>
+            <br />
 
-          <div class="section">
             <h3>Constitution (CON)</h3>
             <p>
               Measures internal fortitude, stamina, physical endurance.
-              Constitution is used to determine your Hit Points, your ability to
-              survive harsh environments, and your resilience against poisions
-              and diseases
+              Constitution is used to determine your Hit Points (your health),
+              your ability to survive harsh environments, and your resilience
+              against poisons and diseases
             </p>
-          </div>
+            <p>Important For: Hit Point Calculation</p>
+            <br />
 
-          <div class="section">
             <h3>Intelligence (INT)</h3>
             <p>
               Measures mental ability, information recall, and analytical skill.
               Intelligence governs your ability to reason, memorize facts, and
               understand unfamiliar languages or arcane theories
             </p>
-          </div>
-          <div class="section">
+            <p>Important For: Wizard, Artificer</p>
+            <br />
+
             <h3>Wisdom (WIS)</h3>
             <p>
               Measures your attunement to the world, perceptiveness, and
               intuition. Wisdom represents how well you read body language,
               notice hidden threats, and harness certain magical energies
             </p>
-          </div>
+            <p>Important For: Cleric, Druid, Ranger</p>
+            <br />
 
-          <div class="section">
             <h3>Charisma (CHA)</h3>
             <p>
               Measures your force of personality, eloquence, and leadership.
               Charisma determines how effectively you can persuade, deceive,
               intimidate, and charm others
             </p>
+            <p>Important For: Bard, Paladin, Sorcerer, Warlock</p>
           </div>
         </div>
+
         <!-- What to do with Ability Scores -->
         <h2>So What Do I Do With These Numbers?</h2>
         <div class="section">
@@ -144,19 +183,19 @@
             also added to saving throws (rolls you make to resist things like
             poison, fire, or a spell) depending on which ability score is being
             tested. To calculate your modifier, take your Ability Score,
-            subtract 10, and divide by 2 (rounding down if neccesary). (Ex: 16 -
-            10 = 6, 6 / 2 = 3, modifier = +3)
+            subtract 10, and divide by 2 (rounding down if neccessary). (Ex: 17
+            - 10 = 7, 7 / 2 = 3.5, modifier = +3, rounded down)
           </p>
           <p>
             Your ability scores will change depending on your character’s race
-            and level, so I usually wait till those are decided to calculate my
-            modifiers.
+            (step 2) and level, so I usually wait until those are decided to
+            calculate my modifiers.
           </p>
         </div>
         <!-- How to roll them -->
-        <div>
-          <h2>How to Determine Your Scores</h2>
-          <div class="section">
+        <h2>How to Determine Your Scores</h2>
+        <div class="section">
+          <div>
             <h3>Ability scores are determined three main ways</h3>
             <ol>
               <li>Rolling for them (The most fun way)</li>
@@ -166,11 +205,12 @@
                 uses)
               </li>
             </ol>
+            <br />
           </div>
-          <div class="section">
+          <div>
             <h3>Rolling for Stats</h3>
             <p>
-              To roll for your stats you're going to need 4d6 (four six sided
+              To roll for your stats you're going to need 4d6 (four six-sided
               die). Roll all four at once and add up the three highest rolls
               (ignore the lowest rolled die). Then repeat this for all six
               ability scores. Make sure to jot down your scores somewhere on
@@ -181,8 +221,9 @@
               No matter which method you use, ability scores cap at 20 for
               player characters, even after racial bonuses and level-ups.
             </p>
+            <br />
           </div>
-          <div class="section">
+          <div>
             <h3>Point Buy</h3>
             <p>
               Point Buy gives you 27 points to spend on your six ability scores,
@@ -193,8 +234,9 @@
               keeping characters balanced while giving you full control over
               your build.
             </p>
+            <br />
           </div>
-          <div class="section">
+          <div>
             <h3>Standard Array</h3>
             <p>
               Standard Array is the fastest way to set your ability scores: you
@@ -204,16 +246,19 @@
               without spending time on number-crunching.
             </p>
           </div>
-          <div class="section">
-            <h3>Personal House Rules</h3>
-            <p>
-              Some DM's (like myself) may have custom rules for character
-              creation. For example, I allow my players to re-roll a stat but
-              they must take the reroll even if it's less than the original. In
-              addition, if the sum of their scores is less than 72, they are
-              allowed to re-roll all 6 (even after the one re-roll).
-            </p>
-          </div>
+        </div>
+
+        <h2>Personal House Rules</h2>
+        <div class="section">
+          <p>
+            Some DMs (like myself) may have custom rules for character creation.
+            For example, I allow my players to re-roll a stat but they must take
+            the reroll even if it's less than the original. In addition, if the
+            sum of their scores is less than 72, they are allowed to re-roll all
+            6 (even after the one re-roll). These are not official rules
+            however. Always confirm with your DM what house rules they have (if
+            any)!
+          </p>
         </div>
       </div>
 
@@ -284,10 +329,10 @@
         </div>
       </div>
 
-      <!-- Step 8 - Summary -->
+      <!-- Step 8 - Beyond Level 1 -->
       <div class="step" id="step-8">
         <h3 class="step-count">Step 8 of 8</h3>
-        <h1>Summary</h1>
+        <h1>Level Up</h1>
 
         <!-- step content -->
         <div class="sheet-tip">
