@@ -1,0 +1,307 @@
+<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>D&D Character Creation</title>
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+
+  <body>
+    <!-- Navigation Header (updated in main.js) -->
+    <header></header>
+
+    <main>
+      <!-- Step Tracker -->
+      <nav class="step-tracker-nav" aria-label="Progress">
+        <menu class="step-tracker">
+          <li class="tracker-entry">
+            <span class="step-icon active">1</span>
+            <span class="step-label">Ability Scores</span>
+          </li>
+          <li class="tracker-entry">
+            <span class="step-icon">2</span>
+            <span class="step-label">Race</span>
+          </li>
+          <li class="tracker-entry">
+            <span class="step-icon">3</span>
+            <span class="step-label">Background</span>
+          </li>
+          <li class="tracker-entry">
+            <span class="step-icon">4</span>
+            <span class="step-label">Class</span>
+          </li>
+          <li class="tracker-entry">
+            <span class="step-icon">5</span>
+            <span class="step-label">Skills</span>
+          </li>
+          <li class="tracker-entry">
+            <span class="step-icon">6</span>
+            <span class="step-label">Spells</span>
+          </li>
+          <li class="tracker-entry">
+            <span class="step-icon">7</span>
+            <span class="step-label">Equipment</span>
+          </li>
+          <li class="tracker-entry">
+            <span class="step-icon">8</span>
+            <span class="step-label">Summary</span>
+          </li>
+        </menu>
+      </nav>
+
+      <!-- 8 Character Creation Steps -->
+
+      <!-- Step 1 - Ability Scores -->
+      <div class="step active" id="step-1">
+        <h3 class="step-count">Step 1 of 8</h3>
+        <h1>Determine Your Ability Scores</h1>
+
+        <!-- step content -->
+        <div class="sheet-tip">
+          Write these in the six boxes on the left of your character sheet. The
+          ability score can go in either the circle or the main box, and the
+          modifier goes in the other
+        </div>
+
+        <!-- 6 Scores overview -->
+        <div>
+          <h2>What Are the Six Ability Scores?</h2>
+
+          <div class="section">
+            <h3>Strength (STR)</h3>
+            <p>
+              Measures physical power, athletic training and the extent to which
+              you can exert raw bodily force. In combat, strength is used as a
+              bonus to melee weaponry attacks
+            </p>
+          </div>
+
+          <div class="section">
+            <h3>Dexterity (DEX)</h3>
+            <p>
+              Measures physical agility, reflexes, balance, and hand-eye
+              coordination. Dexterity determines how hard it is to hit you
+              (called "Armor Class"), and is used as the modifier for ranged and
+              <span
+                title="Some weapons use either Dexterity or Strength for their bonuses"
+                style="color: var(--color-accent)"
+              >
+                finesse
+              </span>
+              weaponry during combat
+            </p>
+          </div>
+
+          <div class="section">
+            <h3>Constitution (CON)</h3>
+            <p>
+              Measures internal fortitude, stamina, physical endurance.
+              Constitution is used to determine your Hit Points, your ability to
+              survive harsh environments, and your resilience against poisions
+              and diseases
+            </p>
+          </div>
+
+          <div class="section">
+            <h3>Intelligence (INT)</h3>
+            <p>
+              Measures mental ability, information recall, and analytical skill.
+              Intelligence governs your ability to reason, memorize facts, and
+              understand unfamiliar languages or arcane theories
+            </p>
+          </div>
+          <div class="section">
+            <h3>Wisdom (WIS)</h3>
+            <p>
+              Measures your attunement to the world, perceptiveness, and
+              intuition. Wisdom represents how well you read body language,
+              notice hidden threats, and harness certain magical energies
+            </p>
+          </div>
+
+          <div class="section">
+            <h3>Charisma (CHA)</h3>
+            <p>
+              Measures your force of personality, eloquence, and leadership.
+              Charisma determines how effectively you can persuade, deceive,
+              intimidate, and charm others
+            </p>
+          </div>
+        </div>
+        <!-- What to do with Ability Scores -->
+        <h2>So What Do I Do With These Numbers?</h2>
+        <div class="section">
+          <p>
+            Your Ability Scores are the basis of your character's technical
+            ability. They affect your health, how hard you hit, how well you
+            take a hit, and so much more. Each Ability Score corresponds to a
+            “modifier” which you use to affect your dice rolls. Your modifier is
+            also added to saving throws (rolls you make to resist things like
+            poison, fire, or a spell) depending on which ability score is being
+            tested. To calculate your modifier, take your Ability Score,
+            subtract 10, and divide by 2 (rounding down if neccesary). (Ex: 16 -
+            10 = 6, 6 / 2 = 3, modifier = +3)
+          </p>
+          <p>
+            Your ability scores will change depending on your character’s race
+            and level, so I usually wait till those are decided to calculate my
+            modifiers.
+          </p>
+        </div>
+        <!-- How to roll them -->
+        <div>
+          <h2>How to Determine Your Scores</h2>
+          <div class="section">
+            <h3>Ability scores are determined three main ways</h3>
+            <ol>
+              <li>Rolling for them (The most fun way)</li>
+              <li>Point Buy (Similar to video games)</li>
+              <li>
+                Standard Array (Standard set of stats everyone at the table
+                uses)
+              </li>
+            </ol>
+          </div>
+          <div class="section">
+            <h3>Rolling for Stats</h3>
+            <p>
+              To roll for your stats you're going to need 4d6 (four six sided
+              die). Roll all four at once and add up the three highest rolls
+              (ignore the lowest rolled die). Then repeat this for all six
+              ability scores. Make sure to jot down your scores somewhere on
+              your sheet, but know these scores aren't final. Things like your
+              race and level will affect your ability scores.
+            </p>
+            <p>
+              No matter which method you use, ability scores cap at 20 for
+              player characters, even after racial bonuses and level-ups.
+            </p>
+          </div>
+          <div class="section">
+            <h3>Point Buy</h3>
+            <p>
+              Point Buy gives you 27 points to spend on your six ability scores,
+              with each score starting at 8. You can raise a score by spending
+              points but keep in mind, lower scores are cheaper (scores 8-13
+              cost 1 point), while pushing a score to 14 or 15 costs more (2
+              points each). No score can go above 15 (before racial bonuses),
+              keeping characters balanced while giving you full control over
+              your build.
+            </p>
+          </div>
+          <div class="section">
+            <h3>Standard Array</h3>
+            <p>
+              Standard Array is the fastest way to set your ability scores: you
+              get six preset numbers (15, 14, 13, 12, 10, and 8) and assign them
+              to your six stats however you like. There's no math involved, just
+              placement. It's a great option if you want a balanced character
+              without spending time on number-crunching.
+            </p>
+          </div>
+          <div class="section">
+            <h3>Personal House Rules</h3>
+            <p>
+              Some DM's (like myself) may have custom rules for character
+              creation. For example, I allow my players to re-roll a stat but
+              they must take the reroll even if it's less than the original. In
+              addition, if the sum of their scores is less than 72, they are
+              allowed to re-roll all 6 (even after the one re-roll).
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Step 2 - Race -->
+      <div class="step" id="step-2">
+        <h3 class="step-count">Step 2 of 8</h3>
+        <h1>Choose your Race</h1>
+
+        <!-- step content -->
+        <div class="sheet-tip">
+          Write this in the "Race" box at the top of your character sheet
+        </div>
+      </div>
+
+      <!-- Step 3 - Background -->
+      <div class="step" id="step-3">
+        <h3 class="step-count">Step 3 of 8</h3>
+        <h1>Choose your Background</h1>
+
+        <!-- step content -->
+        <div class="sheet-tip">
+          Write this in the "Background" box at the top of your character sheet
+        </div>
+      </div>
+
+      <!-- Step 4 - Class -->
+      <div class="step" id="step-4">
+        <h3 class="step-count">Step 4 of 8</h3>
+        <h1>Choose your Class</h1>
+
+        <!-- step content -->
+        <div class="sheet-tip">
+          Write this in the "Class & Level" box at the top of your character
+          sheet
+        </div>
+      </div>
+
+      <!-- Step 5 - Skills -->
+      <div class="step" id="step-5">
+        <h3 class="step-count">Step 5 of 8</h3>
+        <h1>Choose your Skills</h1>
+
+        <!-- step content -->
+        <div class="sheet-tip">
+          Bubble these in under the "Skills" section on your character sheet
+        </div>
+      </div>
+
+      <!-- Step 6 - Spells -->
+      <div class="step" id="step-6">
+        <h3 class="step-count">Step 6 of 8</h3>
+        <h1>Choose your Spells</h1>
+
+        <!-- step content -->
+        <div class="sheet-tip">
+          Write these on the "Spells" sheet on your character sheet
+        </div>
+      </div>
+
+      <!-- Step 7 - Equipment -->
+      <div class="step" id="step-7">
+        <h3 class="step-count">Step 7 of 8</h3>
+        <h1>Choose your Equipment</h1>
+
+        <!-- step content -->
+        <div class="sheet-tip">
+          Write these in the "Equipment" section of your character sheet
+        </div>
+      </div>
+
+      <!-- Step 8 - Summary -->
+      <div class="step" id="step-8">
+        <h3 class="step-count">Step 8 of 8</h3>
+        <h1>Summary</h1>
+
+        <!-- step content -->
+        <div class="sheet-tip">
+          Here is a summary of your character. Make sure this matches what you
+          have on your sheet
+        </div>
+      </div>
+
+      <!-- step buttons -->
+      <div class="step-nav">
+        <button class="btn btn-primary" id="btn-prev">Previous</button>
+        <button class="btn btn-primary" id="btn-next">Next</button>
+      </div>
+    </main>
+    <script src="js/main.js"></script>
+  </body>
+</html>

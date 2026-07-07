@@ -1,0 +1,57 @@
+/* ============================================================
+   DESIGN TOKENS
+   All colors, fonts, sizes, and spacing live here.
+   Change a value once — it updates everywhere.
+   ============================================================ */
+
+:root {
+  /* --- Colors --- */
+  --color-bg: #111111; /* Page background */
+  --color-nav: #0c0c0c; /* Navigation bar — darker than surface */
+  --color-surface: #161616; /* Cards — slightly lifted from bg */
+  --color-text: #ebebeb; /* Body text */
+  --color-text-muted: #777777; /* Secondary text, nav links */
+  --color-text-subtle: #333333; /* Footer, very de-emphasized */
+  --color-accent: #c41e1e; /* Red */
+  --color-accent-dark: #a01818; /* Darker red for hover states */
+  --color-accent-light: #1e0a0a; /* Dark red tint for subtle backgrounds */
+  --color-accent-border: #c41e1e47; /* Subtle red for card borders */
+  --color-border: #1d1d1d; /* Lines, dividers */
+
+  /* --- Typography --- */
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+
+  --text-sm: 0.875rem; /* 14px — captions, labels */
+  --text-base: 1rem; /* 16px — body copy */
+  --text-lg: 1.125rem; /* 18px — slightly larger body */
+  --text-xl: 1.25rem; /* 20px */
+  --text-2xl: 1.5rem; /* 24px — section headings */
+  --text-3xl: 1.875rem; /* 30px */
+  --text-4xl: 2.25rem; /* 36px — page title */
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 800;
+
+  --leading-tight: 1.25; /* Headings */
+  --leading-normal: 1.6; /* Body paragraphs — comfortable reading */
+
+  /* --- Spacing --- */
+  /* Based on a 4px grid. --space-4 = 16px = 1 "unit" */
+  --space-1: 0.25rem; /*  4px */
+  --space-2: 0.5rem; /*  8px */
+  --space-3: 0.75rem; /* 12px */
+  --space-4: 1rem; /* 16px */
+  --space-6: 1.5rem; /* 24px */
+  --space-8: 2rem; /* 32px */
+  --space-10: 2.5rem; /* 40px */
+  --space-12: 3rem; /* 48px */
+  --space-16: 4rem; /* 64px */
+
+  /* --- Layout --- */
+  --max-width: 720px; /* Single-column reading width */
+  --nav-height: 60px;
+  --border-radius: 0.5rem; /* 8px — subtle rounding */
+  --border-radius-sm: 0.25rem;
+}

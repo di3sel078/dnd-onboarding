@@ -1,0 +1,381 @@
+/* 
+   STYLES
+   Uses tokens from variables.css.
+   Organized: Base → Layout → Nav → Typography → Components 
+*/
+
+/* BASE */
+/* Applies to the whole page */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box; /* Padding doesn't expand element width */
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--weight-normal);
+  line-height: var(--leading-normal);
+  -webkit-font-smoothing: antialiased; /* Crisper text on Mac/iOS */
+}
+
+/* Remove default margin from elements we'll space ourselves */
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+/* LAYOUT  */
+/* Centers content and controls max reading width */
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto; /* Centers the column */
+  padding: var(--space-12) var(--space-6); /* Top/bottom, then left/right */
+}
+
+/* NAVIGATION */
+
+header {
+  background-color: var(--color-nav);
+  border-bottom: 1px solid var(--color-border);
+  position: sticky; /* Nav stays visible when you scroll */
+  top: 0;
+  z-index: 100;
+}
+
+.main-nav {
+  margin: 0 var(--space-8);
+  padding: 0 var(--space-8);
+  height: var(--nav-height);
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.nav-logo {
+  font-weight: var(--weight-bold);
+  font-size: var(--text-lg);
+  color: var(--color-text);
+  cursor: default;
+  margin-right: auto; /* Pushes other links to the right */
+}
+
+.main-nav a {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  transition: color 0.15s ease;
+}
+
+.main-nav a:hover {
+  color: var(--color-text);
+}
+
+/* Highlight the active page link */
+.main-nav a.active {
+  color: var(--color-text);
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 2px;
+}
+
+/* TYPOGRAPHY */
+
+h1 {
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em; /* Slight tightening looks cleaner at large sizes */
+}
+
+h2 {
+  font-size: var(--text-xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+h3 {
+  margin: var(--space-3) 0;
+}
+
+p {
+  color: var(--color-text);
+  line-height: var(--leading-normal);
+  max-width: 65ch; /* ~65 characters per line — optimal for reading */
+}
+
+/* Muted helper text (add class="text-muted" to any element) */
+.text-muted {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+/* 5. CONTENT SECTIONS */
+
+#intro-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.section {
+  background: var(--color-surface);
+  border-left: var(--space-1) solid var(--color-accent);
+  padding: var(--space-8) var(--space-10);
+  margin-bottom: var(--space-6);
+}
+
+.section p {
+  margin-top: var(--space-3);
+  color: var(--color-text);
+}
+
+/* Style the <hr> as a subtle divider */
+hr {
+  border: none;
+  border-top: 1px solid var(--color-border);
+  margin: var(--space-8) 0;
+}
+
+/* HERO, BUTTONS & FOOTER */
+
+.hero {
+  text-align: center;
+  padding: var(--space-16) 0;
+}
+
+.hero-sub {
+  color: var(--color-text);
+  font-size: var(--text-lg);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.hero-actions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+}
+
+.btn {
+  display: inline-block;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--border-radius);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-base);
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
+}
+
+.btn-primary {
+  background-color: var(--color-accent);
+  color: var(--color-text);
+  border: 2px solid var(--color-accent);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+.page-cta {
+  text-align: center;
+  margin-top: var(--space-16);
+}
+
+.step-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Footer */
+
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  text-align: center;
+  padding: var(--space-8) var(--space-6);
+}
+
+.site-footer p {
+  margin: 0 auto;
+}
+
+/* -- Character Creation Page Content -- */
+
+.step {
+  display: none;
+}
+
+.step.active {
+  display: block;
+}
+
+.step-count {
+  color: var(--color-accent);
+}
+
+.sheet-tip /* Tips under each step of where to put things */ {
+  display: flex;
+  font-style: italic;
+  color: var(--color-text-muted);
+  padding-top: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+
+/* Character Creation Step Tracker */
+
+.step-tracker-nav {
+  position: relative;
+  padding-bottom: var(--space-6);
+  margin-bottom: var(--space-8);
+}
+
+.step-tracker-nav::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 1px;
+  background-color: var(--color-border);
+}
+
+.step-tracker {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
+.tracker-entry {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  flex: 1;
+}
+.tracker-entry:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 1.25rem;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-border);
+  z-index: -1;
+}
+
+.step-icon /* defeault */ {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  background-color: var(--color-surface);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-muted);
+}
+
+.step-icon.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent-border);
+  background-color: var(--color-accent);
+  font-size: var(--text-sm);
+  font-weight: var(--weight-bold);
+  color: var(--color-text);
+}
+
+.step-icon.complete {
+  border-color: var(--color-accent-border);
+  background-color: var(--color-accent);
+  color: transparent;
+  position: relative;
+}
+.step-icon.complete::after {
+  content: "\2713";
+  color: var(--color-text);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: var(--text-sm);
+}
+
+.step-label {
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.step-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--space-8);
+}
+
+/* RESPONSIVE */
+/* Mobile gets slightly smaller text and tighter padding */
+
+@media (max-width: 640px) {
+  h1 {
+    font-size: var(--text-3xl);
+  }
+
+  main {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  .main-nav {
+    gap: var(--space-4);
+  }
+
+  /* Hide less important nav links on very small screens */
+  .main-nav a:not(.nav-logo) {
+    font-size: 0.8rem;
+  }
+
+  .page-cta .btn {
+    display: block;
+    text-align: center;
+  }
+}
