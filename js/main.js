@@ -22,8 +22,44 @@
       <img src="assets/d20_transparent.png" alt="d20" class="nav-logo-icon" />
       D&amp;D Onboarding (5e)
     </a>
-    ${links}
+    <button
+      class="nav-toggle"
+      id="nav-toggle"
+      type="button"
+      aria-label="Toggle navigation menu"
+      aria-expanded="false"
+      aria-controls="nav-links"
+    >
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      ${links}
+    </div>
   </nav>`;
+
+    // Hamburger menu (mobile only — hidden via CSS above the mobile breakpoint)
+    const navToggle = document.getElementById("nav-toggle");
+    const navLinks = document.getElementById("nav-links");
+    if (navToggle && navLinks) {
+      const closeMenu = () => {
+        navLinks.classList.remove("open");
+        navToggle.classList.remove("open");
+        navToggle.setAttribute("aria-expanded", "false");
+      };
+
+      navToggle.addEventListener("click", () => {
+        const isOpen = navLinks.classList.toggle("open");
+        navToggle.classList.toggle("open", isOpen);
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+      });
+
+      // Tapping a link should close the menu behind it
+      navLinks
+        .querySelectorAll("a")
+        .forEach((link) => link.addEventListener("click", closeMenu));
+    }
   }
 
   // Page Modules
