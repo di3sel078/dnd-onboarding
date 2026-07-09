@@ -1,6 +1,5 @@
 (function () {
   const pages = [
-    { href: "index.html", label: "Home" },
     { href: "character-creator.html", label: "Character Creator" },
     { href: "turn-guide.html", label: "Turn Guide" },
     { href: "rules-guide.html", label: "Rules Guide" },
@@ -121,7 +120,11 @@
     const hashStep = stepFromHash();
     if (window.location.hash && hashStep === null) {
       // Invalid hash (e.g. "#step-99") — clean it up rather than leaving a broken URL
-      history.replaceState(null, "", window.location.pathname + window.location.search);
+      history.replaceState(
+        null,
+        "",
+        window.location.pathname + window.location.search,
+      );
     }
     showStep(hashStep ?? 0, { updateUrl: false });
   }

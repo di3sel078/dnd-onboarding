@@ -262,6 +262,35 @@ hr {
   margin-bottom: var(--space-6);
 }
 
+/* Ability Score Modifier Table */
+
+.modifier-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-text-subtle);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.modifier-table th,
+.modifier-table td {
+  padding: var(--space-3) var(--space-6);
+  border: 1px solid var(--color-text-subtle);
+  text-align: center;
+}
+
+.modifier-table th {
+  background-color: var(--color-accent-dark);
+  color: var(--color-text);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sm);
+}
+
+.modifier-table td {
+  color: var(--color-text);
+}
+
 /* Character Creation Step Tracker */
 
 .step-tracker-nav {

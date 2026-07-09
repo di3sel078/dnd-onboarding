@@ -90,7 +90,7 @@
           <h2>What Else Do You Need?</h2>
           <ul>
             <li>
-              A set of dice (at least a 20-sided dice, also known as a d20)
+              A set of dice (or at least a 20-sided dice, also known as a d20)
             </li>
             <li>
               A pencil (or something to edit your sheet with, but not
@@ -127,7 +127,7 @@
         <div class="sheet-tip">
           Write the ability scores in the six labeled boxes on the left side of
           your sheet, the main score going in the box and the modifier going in
-          the circle
+          the circle (or vice-versa, up to personal preference)
         </div>
 
         <!-- 6 Scores overview -->
@@ -203,14 +203,53 @@
             also added to saving throws (rolls you make to resist things like
             poison, fire, or a spell) depending on which ability score is being
             tested. To calculate your modifier, take your Ability Score,
-            subtract 10, and divide by 2 (rounding down if neccessary). (Ex: 17
-            - 10 = 7, 7 / 2 = 3.5, modifier = +3, rounded down)
+            subtract 10, and divide by 2 (rounding down if neccessary).
           </p>
+
+          <p>Ex: 17 - 10 = 7 -> 7 / 2 = 3.5 -> modifier = +3 -> rounded down</p>
+
           <p>
             Your ability scores will change depending on your character’s race
             (step 2) and level, so I usually wait until those are decided to
             calculate my modifiers.
           </p>
+          <br />
+
+          <!-- Ability Score Modifier Table-->
+          <table class="modifier-table">
+            <tr>
+              <th>Ability Score</th>
+              <th>Modifier</th>
+            </tr>
+            <tr>
+              <td>8-9</td>
+              <td>-1</td>
+            </tr>
+            <tr>
+              <td>10-11</td>
+              <td>+0</td>
+            </tr>
+            <tr>
+              <td>12-13</td>
+              <td>+1</td>
+            </tr>
+            <tr>
+              <td>14-15</td>
+              <td>+2</td>
+            </tr>
+            <tr>
+              <td>16-17</td>
+              <td>+3</td>
+            </tr>
+            <tr>
+              <td>18-19</td>
+              <td>+4</td>
+            </tr>
+            <tr>
+              <td>20</td>
+              <td>+5</td>
+            </tr>
+          </table>
         </div>
         <br />
 
@@ -370,6 +409,14 @@
         <button class="btn btn-primary" id="btn-next">Next</button>
       </div>
     </main>
+
+    <footer class="site-footer">
+      <p>
+        D&D 5e (2014) content provided under the Systems Reference Document 5.1,
+        licensed under Creative Commons Attribution 4.0 International.
+      </p>
+    </footer>
+
     <script src="js/main.js"></script>
   </body>
 </html>
