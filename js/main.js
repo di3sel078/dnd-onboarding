@@ -2,7 +2,7 @@
   const pages = [
     { href: "character-creator.html", label: "Character Creator" },
     { href: "turn-guide.html", label: "Turn Guide" },
-    { href: "rules-guide.html", label: "Rules Guide" },
+    { href: "rules-guide.html", label: "Extra Rules" },
   ];
 
   // Handles direct file open (pathname ends with '/') and server roots
@@ -34,6 +34,8 @@
     const steps = document.querySelectorAll(".step");
     const nextBtn = document.getElementById("btn-next");
     const prevBtn = document.getElementById("btn-prev");
+    const trackerNextBtn = document.getElementById("tracker-next");
+    const trackerPrevBtn = document.getElementById("tracker-prev");
 
     const stepIcons = document.querySelectorAll(".step-icon");
     const trackerEntries = document.querySelectorAll(".tracker-entry");
@@ -70,6 +72,11 @@
       prevBtn.textContent = index === 0 ? "Home" : "Previous";
       nextBtn.textContent = index === steps.length - 1 ? "Finish" : "Next";
 
+      // Mobile tracker arrows only move between steps, so they disable
+      // at the ends instead of falling through to Home/Finish
+      trackerPrevBtn.disabled = index === 0;
+      trackerNextBtn.disabled = index === steps.length - 1;
+
       // Push a history entry so refresh keeps the step and back steps
       // backward through the guide instead of leaving the page
       if (updateUrl) {
@@ -97,6 +104,19 @@
         showStep(currentStep - 1);
       } else {
         window.location.href = "index.html";
+      }
+    });
+
+    // Mobile prev/next arrows flanking the tracker's current pip
+    trackerNextBtn.addEventListener("click", () => {
+      if (currentStep < steps.length - 1) {
+        showStep(currentStep + 1);
+      }
+    });
+
+    trackerPrevBtn.addEventListener("click", () => {
+      if (currentStep > 0) {
+        showStep(currentStep - 1);
       }
     });
 

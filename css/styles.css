@@ -414,34 +414,65 @@ hr {
   margin-top: var(--space-8);
 }
 
+/* Mobile prev/next arrows flanking the current step's pip. Hidden on
+   desktop, where the full step-tracker row is shown instead. */
+.tracker-arrow {
+  display: none;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--color-border);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-size: var(--text-xl);
+  line-height: 1;
+  cursor: pointer;
+  transition:
+    border-color 0.15s ease,
+    color 0.15s ease;
+}
+
+.tracker-arrow:hover:not(:disabled) {
+  border-color: var(--color-accent-dark);
+}
+
+.tracker-arrow:disabled {
+  color: var(--color-text-subtle);
+  cursor: not-allowed;
+}
+
 /* RESPONSIVE */
 /* Mobile gets slightly smaller text and tighter padding */
 
-/* Below this width, 9 dots + labels can't fit on one line without
-   crowding or breaking mid-word — let the tracker scroll horizontally
-   instead so each label stays on one line and dots stay equally spaced. */
+/* Below this width, show only the current step's pip with prev/next
+   arrows on either side instead of the full scrolling row of 9 pips. */
 @media (max-width: 900px) {
   .step-tracker-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
     padding-left: var(--space-3);
     padding-right: var(--space-3);
   }
 
   .step-tracker {
-    justify-content: flex-start;
-    overflow-x: auto;
-    gap: var(--space-4);
-    padding-bottom: var(--space-2);
-    -webkit-overflow-scrolling: touch;
+    justify-content: center;
   }
 
   .tracker-entry {
-    flex: 0 0 auto;
-    width: 5.25rem;
+    display: none;
   }
 
-  .tracker-entry:not(:last-child)::after {
-    top: 1.25rem;
-    width: calc(100% + var(--space-4));
+  .tracker-entry:has(.step-icon.active) {
+    display: flex;
+  }
+
+  .tracker-arrow {
+    display: flex;
   }
 }
 
