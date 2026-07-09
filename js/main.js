@@ -19,9 +19,12 @@
   const header = document.querySelector("header");
   if (header) {
     header.innerHTML = `<nav class="main-nav">
-        <span class="nav-logo">D&amp;D Onboarding (5e)</span>
-        ${links}
-      </nav>`;
+    <a href="index.html" class="nav-logo">
+      <img src="assets/d20_transparent.png" alt="d20" class="nav-logo-icon" />
+      D&amp;D Onboarding (5e)
+    </a>
+    ${links}
+  </nav>`;
   }
 
   // Page Modules
@@ -36,7 +39,19 @@
     const stepIcons = document.querySelectorAll(".step-icon");
     const trackerEntries = document.querySelectorAll(".tracker-entry");
 
-    function showStep(index) {
+    // Reads "#step-3" from the URL and returns 3, or null if missing/invalid
+    function stepFromHash() {
+      const match = window.location.hash.match(/^#step-(\d+)$/);
+      if (!match) return null;
+      const index = Number(match[1]);
+      return index >= 0 && index < steps.length ? index : null;
+    }
+
+    // updateUrl is false when we're just reacting to a URL/history change
+    // that already happened (initial load, back/forward button)
+    function showStep(index, { updateUrl = true } = {}) {
+      currentStep = index;
+
       // Show/Hide Steps
       steps.forEach((step) => step.classList.remove("active"));
       steps[index].classList.add("active");
@@ -56,6 +71,15 @@
       prevBtn.textContent = index === 0 ? "Home" : "Previous";
       nextBtn.textContent = index === steps.length - 1 ? "Finish" : "Next";
 
+      // Push a history entry so refresh keeps the step and back steps
+      // backward through the guide instead of leaving the page
+      if (updateUrl) {
+        const hash = `#step-${index}`;
+        if (window.location.hash !== hash) {
+          history.pushState(null, "", hash);
+        }
+      }
+
       // Scroll back to the top of the page for the new step
       window.scrollTo({ top: 0, behavior: "smooth" });
     }
@@ -63,8 +87,7 @@
     // Button Click Reactions
     nextBtn.addEventListener("click", () => {
       if (currentStep < steps.length - 1) {
-        currentStep++;
-        showStep(currentStep);
+        showStep(currentStep + 1);
       } else {
         window.location.href = "turn-guide.html";
       }
@@ -72,8 +95,7 @@
 
     prevBtn.addEventListener("click", () => {
       if (currentStep > 0) {
-        currentStep--;
-        showStep(currentStep);
+        showStep(currentStep - 1);
       } else {
         window.location.href = "index.html";
       }
@@ -82,12 +104,26 @@
     // Jump directly to a step by clicking its tracker entry
     trackerEntries.forEach((entry, i) => {
       entry.addEventListener("click", () => {
-        currentStep = i;
-        showStep(currentStep);
+        showStep(i);
       });
     });
 
-    showStep(0);
+    // Back/forward buttons (and manual hash edits) fire hashchange —
+    // sync the visible step without pushing another history entry
+    window.addEventListener("hashchange", () => {
+      const index = stepFromHash();
+      if (index !== null) {
+        showStep(index, { updateUrl: false });
+      }
+    });
+
+    // Restore step from a deep link or refresh; otherwise start clean at step 0
+    const hashStep = stepFromHash();
+    if (window.location.hash && hashStep === null) {
+      // Invalid hash (e.g. "#step-99") — clean it up rather than leaving a broken URL
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+    showStep(hashStep ?? 0, { updateUrl: false });
   }
 
   function initRulesGuide() {
