@@ -60,10 +60,13 @@ header {
 }
 
 .nav-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
   font-weight: var(--weight-bold);
   font-size: var(--text-lg);
   color: var(--color-text);
-  cursor: default;
+  cursor: pointer;
   margin-right: auto; /* Pushes other links to the right */
 }
 
@@ -133,13 +136,6 @@ header {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-.nav-logo {
-  display: flex;
-  align-items: center;
-  gap: var(--space-2);
-  cursor: pointer;
-}
-
 .nav-logo-icon {
   height: 28px;
   width: auto;
@@ -199,6 +195,29 @@ p {
 .section p {
   margin-top: var(--space-3);
   color: var(--color-text);
+}
+
+.section p + h3 {
+  margin-top: var(--space-6);
+}
+
+.section > .btn {
+  margin-top: var(--space-4);
+}
+
+.section figure {
+  margin-bottom: var(--space-6);
+}
+
+.section figure img {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+
+.section > div + div {
+  margin-top: var(--space-6);
 }
 
 /* Style the <hr> as a subtle divider */
@@ -272,6 +291,7 @@ hr {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  margin-top: var(--space-8);
 }
 
 /* Footer */
@@ -295,10 +315,13 @@ hr {
 }
 
 .step.active {
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
 .step-count {
+  display: block;
+  margin: var(--space-3) 0;
   color: var(--color-accent);
 }
 
@@ -379,10 +402,19 @@ hr {
   gap: var(--space-2);
 }
 
-.tracker-entry-btn {
+.tracker-entry {
   position: relative;
   display: flex;
   flex: 1 1 0;
+  min-width: 0;
+}
+
+.tracker-entry-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
   min-width: 0;
   background: none;
   border: none;
@@ -391,22 +423,13 @@ hr {
   font: inherit;
   cursor: pointer;
 }
-
-.tracker-entry {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--space-2);
-  width: 100%;
-  min-width: 0;
-}
 .tracker-entry:hover .step-icon {
   border-color: var(--color-accent-dark);
 }
 .tracker-entry:hover .step-label {
   color: var(--color-text);
 }
-.tracker-entry-btn:not(:last-child)::after {
+.tracker-entry:not(:last-child)::after {
   content: "";
   position: absolute;
   top: 1.25rem;
@@ -432,16 +455,8 @@ hr {
 }
 
 .step-icon.active {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.5rem;
-  height: 2.5rem;
-  border-radius: 50%;
-  border: 2px solid var(--color-accent-border);
+  border-color: var(--color-accent-border);
   background-color: var(--color-accent);
-  font-size: var(--text-sm);
-  font-weight: var(--weight-bold);
   color: var(--color-text);
 }
 
@@ -469,12 +484,6 @@ hr {
   overflow-wrap: break-word;
   line-height: 1.2;
   max-width: 100%;
-}
-
-.step-nav {
-  display: flex;
-  justify-content: space-between;
-  margin-top: var(--space-8);
 }
 
 /* Prev/next arrows flanking the step tracker, letting you jump a step
@@ -528,11 +537,11 @@ hr {
     justify-content: center;
   }
 
-  .tracker-entry-btn {
+  .tracker-entry {
     display: none;
   }
 
-  .tracker-entry-btn:has(.step-icon.active) {
+  .tracker-entry:has(.step-icon.active) {
     display: flex;
   }
 
@@ -541,9 +550,9 @@ hr {
      The :not(:last-child)/:last-child selectors match the specificity
      of the base connector rule above so these fully override it
      instead of losing the cascade to it on shared properties. */
-  .tracker-entry-btn::before,
-  .tracker-entry-btn:not(:last-child)::after,
-  .tracker-entry-btn:last-child::after {
+  .tracker-entry::before,
+  .tracker-entry:not(:last-child)::after,
+  .tracker-entry:last-child::after {
     content: "";
     position: absolute;
     top: 1.75rem; /* vertical center of the 3.5rem mobile pip */
@@ -552,13 +561,13 @@ hr {
     z-index: -1;
   }
 
-  .tracker-entry-btn::before {
+  .tracker-entry::before {
     left: 0;
     width: calc(50% - 2.25rem); /* stop short of the pip (half pip + gap) */
   }
 
-  .tracker-entry-btn:not(:last-child)::after,
-  .tracker-entry-btn:last-child::after {
+  .tracker-entry:not(:last-child)::after,
+  .tracker-entry:last-child::after {
     left: auto;
     right: 0;
     width: calc(50% - 2.25rem);
@@ -653,9 +662,9 @@ hr {
     margin-top: calc((3rem - 2.5rem) / 2);
   }
 
-  .tracker-entry-btn::before,
-  .tracker-entry-btn:not(:last-child)::after,
-  .tracker-entry-btn:last-child::after {
+  .tracker-entry::before,
+  .tracker-entry:not(:last-child)::after,
+  .tracker-entry:last-child::after {
     top: 1.5rem;
     width: calc(50% - 2rem);
   }
