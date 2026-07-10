@@ -343,6 +343,10 @@ hr {
 
 .step-tracker-nav {
   position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--space-3);
   padding-bottom: var(--space-6);
   margin-bottom: var(--space-8);
   width: 100vw;
@@ -473,10 +477,10 @@ hr {
   margin-top: var(--space-8);
 }
 
-/* Mobile prev/next arrows flanking the current step's pip. Hidden on
-   desktop, where the full step-tracker row is shown instead. */
+/* Prev/next arrows flanking the step tracker, letting you jump a step
+   without picking a specific pip. */
 .tracker-arrow {
-  display: none;
+  display: flex;
   flex: 0 0 auto;
   align-items: center;
   justify-content: center;
@@ -632,7 +636,8 @@ hr {
     border-bottom: 1px solid var(--color-border);
     border-left: 3px solid var(--color-accent);
     padding-left: calc(var(--space-6) - 3px);
-    background-color: var(--color-accent-light);
+    padding-bottom: var(--space-4);
+    background-color: var(--color-accent-dark);
   }
 
   /* Slightly smaller than the 900px size, but still bigger than desktop */
