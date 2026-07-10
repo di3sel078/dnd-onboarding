@@ -74,7 +74,7 @@
     const trackerPrevBtn = document.getElementById("tracker-prev");
 
     const stepIcons = document.querySelectorAll(".step-icon");
-    const trackerEntries = document.querySelectorAll(".tracker-entry");
+    const trackerEntries = document.querySelectorAll(".tracker-entry-btn");
 
     // Reads "#step-3" from the URL and returns 3, or null if missing/invalid
     function stepFromHash() {

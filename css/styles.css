@@ -137,6 +137,7 @@ header {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  cursor: pointer;
 }
 
 .nav-logo-icon {
@@ -374,15 +375,26 @@ hr {
   gap: var(--space-2);
 }
 
-.tracker-entry {
+.tracker-entry-btn {
   position: relative;
+  display: flex;
+  flex: 1 1 0;
+  min-width: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
+.tracker-entry {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-2);
-  flex: 1 1 0;
+  width: 100%;
   min-width: 0;
-  cursor: pointer;
 }
 .tracker-entry:hover .step-icon {
   border-color: var(--color-accent-dark);
@@ -390,7 +402,7 @@ hr {
 .tracker-entry:hover .step-label {
   color: var(--color-text);
 }
-.tracker-entry:not(:last-child)::after {
+.tracker-entry-btn:not(:last-child)::after {
   content: "";
   position: absolute;
   top: 1.25rem;
@@ -499,7 +511,7 @@ hr {
 @media (max-width: 900px) {
   .step-tracker-nav {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     gap: var(--space-3);
     padding-left: var(--space-3);
@@ -512,13 +524,11 @@ hr {
     justify-content: center;
   }
 
-  .tracker-entry {
+  .tracker-entry-btn {
     display: none;
-    position: relative;
-    width: 100%;
   }
 
-  .tracker-entry:has(.step-icon.active) {
+  .tracker-entry-btn:has(.step-icon.active) {
     display: flex;
   }
 
@@ -527,9 +537,9 @@ hr {
      The :not(:last-child)/:last-child selectors match the specificity
      of the base connector rule above so these fully override it
      instead of losing the cascade to it on shared properties. */
-  .tracker-entry::before,
-  .tracker-entry:not(:last-child)::after,
-  .tracker-entry:last-child::after {
+  .tracker-entry-btn::before,
+  .tracker-entry-btn:not(:last-child)::after,
+  .tracker-entry-btn:last-child::after {
     content: "";
     position: absolute;
     top: 1.75rem; /* vertical center of the 3.5rem mobile pip */
@@ -538,13 +548,13 @@ hr {
     z-index: -1;
   }
 
-  .tracker-entry::before {
+  .tracker-entry-btn::before {
     left: 0;
     width: calc(50% - 2.25rem); /* stop short of the pip (half pip + gap) */
   }
 
-  .tracker-entry:not(:last-child)::after,
-  .tracker-entry:last-child::after {
+  .tracker-entry-btn:not(:last-child)::after,
+  .tracker-entry-btn:last-child::after {
     left: auto;
     right: 0;
     width: calc(50% - 2.25rem);
@@ -552,6 +562,10 @@ hr {
 
   .tracker-arrow {
     display: flex;
+    /* Nav row aligns to flex-start so arrows line up with the pip
+       regardless of label height below it; this nudges the arrow
+       down just enough to center it on the 3.5rem mobile pip. */
+    margin-top: calc((3.5rem - 2.5rem) / 2);
   }
 
   /* Bigger pip for easier tapping/reading on mobile */
@@ -630,9 +644,13 @@ hr {
     font-size: var(--text-base);
   }
 
-  .tracker-entry::before,
-  .tracker-entry:not(:last-child)::after,
-  .tracker-entry:last-child::after {
+  .tracker-arrow {
+    margin-top: calc((3rem - 2.5rem) / 2);
+  }
+
+  .tracker-entry-btn::before,
+  .tracker-entry-btn:not(:last-child)::after,
+  .tracker-entry-btn:last-child::after {
     top: 1.5rem;
     width: calc(50% - 2rem);
   }
