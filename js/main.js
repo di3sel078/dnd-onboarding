@@ -2,7 +2,7 @@
   const pages = [
     { href: "character-creator.html", label: "Character Creator" },
     { href: "turn-guide.html", label: "Turn Guide" },
-    { href: "rules-guide.html", label: "Extra Rules" },
+    { href: "glossary.html", label: "Glossary" },
     { href: "xumaria.html", label: "The World of Xumaria" },
   ];
 
