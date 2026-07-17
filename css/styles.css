@@ -165,6 +165,17 @@ h3 {
   margin: var(--space-3) 0;
 }
 
+/* Matches h3 styling since browsers don't bold/size <summary> by default */
+.house-rules-details {
+  display: list-item;
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--color-text);
+  margin: var(--space-3) 0;
+  cursor: pointer;
+}
+
 p {
   color: var(--color-text);
   line-height: var(--leading-normal);
@@ -335,11 +346,9 @@ hr {
 
 /* Ability Score Modifier Table */
 
-/* Firefox never clips a border-collapse table's rounded corners via
-   overflow:hidden on the table itself, so the rounding/clipping lives on
-   this wrapper instead and the table stays a plain rectangle inside it */
 .table-wrap {
-  border-radius: var(--border-radius);
+  border-top-left-radius: var(--border-radius);
+  border-top-right-radius: var(--border-radius);
   overflow: hidden;
 }
 
