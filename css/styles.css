@@ -335,13 +335,18 @@ hr {
 
 /* Ability Score Modifier Table */
 
+/* Firefox never clips a border-collapse table's rounded corners via
+   overflow:hidden on the table itself, so the rounding/clipping lives on
+   this wrapper instead and the table stays a plain rectangle inside it */
+.table-wrap {
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
 .modifier-table {
   width: 100%;
   border-collapse: collapse;
   background-color: var(--color-surface);
-  border: 1px solid var(--color-text-subtle);
-  border-radius: var(--border-radius);
-  overflow: hidden;
 }
 
 .modifier-table th,
@@ -462,7 +467,7 @@ hr {
 
 .step-icon.complete {
   border-color: var(--color-accent-border);
-  background-color: var(--color-accent);
+  background-color: var(--color-accent-dark);
   color: transparent;
   position: relative;
 }

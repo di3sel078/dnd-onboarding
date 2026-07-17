@@ -106,7 +106,7 @@
       <!-- 10 Character Creation Steps -->
 
       <!-- Step 1 - Your Sheet -->
-      <div class="step active" id="step-0">
+      <div class="step active" id="step-1">
         <span class="step-count">Step 1 of 10</span>
         <h1>Get Your Character Sheet</h1>
 
@@ -136,7 +136,11 @@
                 <li>
                   A dice set includes: 1d4, 1d6, 1d8, 1d10, 1d12, 1d100, 1d20
                 </li>
-                <li>Also if your friends have dice you can always share!</li>
+                <li>
+                  The number before the d is how many dice to roll, the number
+                  after is how many sides
+                </li>
+                <li>Also, if your friends have dice you can always share!</li>
               </ul>
             </li>
             <li>
@@ -165,7 +169,7 @@
       </div>
 
       <!-- Step 2 Character concept -->
-      <div class="step" id="step-1">
+      <div class="step" id="step-2">
         <span class="step-count">Step 2 of 10</span>
         <h1>Create Your Character Concept</h1>
 
@@ -206,11 +210,17 @@
 
           <h3>Barbarian</h3>
           <p>A fierce warrior who channels rage into devastating attacks.</p>
+          <p class="ability-score">
+            <strong>Relevant Ability Score:</strong> Strength
+          </p>
 
           <h3>Bard</h3>
           <p>
             A charismatic performer who inspires allies and weaves magic through
             music and words.
+          </p>
+          <p class="ability-score">
+            <strong>Relevant Ability Score:</strong> Charisma
           </p>
 
           <h3>Cleric</h3>
@@ -218,10 +228,16 @@
             A devoted servant of a deity, channeling divine power to heal and
             smite.
           </p>
+          <p class="ability-score">
+            <strong>Relevant Ability Score:</strong> Wisdom
+          </p>
 
           <h3>Druid</h3>
           <p>
             A guardian of nature who can shapeshift and command the elements.
+          </p>
+          <p class="ability-score">
+            <strong>Relevant Ability Score:</strong> Wisdom
           </p>
 
           <h3>Fighter</h3>
@@ -229,34 +245,55 @@
             A master of weapons and combat tactics, adaptable to almost any
             fighting style.
           </p>
+          <p class="ability-score">
+            <strong>Relevant Ability Score:</strong> Strength or Dexterity
+          </p>
 
           <h3>Monk</h3>
           <p>
             A disciplined martial artist who fights with fists, focus, and inner
             energy.
           </p>
+          <p class="ability-score">
+            <strong>Relevant Ability Score:</strong> Dexterity &amp; Wisdom
+          </p>
 
           <h3>Paladin</h3>
           <p>
             A holy warrior bound by a sacred oath to fight for their ideals.
           </p>
+          <p class="ability-score">
+            <strong>Relevant Ability Score:</strong> Strength &amp; Charisma
+          </p>
 
           <h3>Ranger</h3>
           <p>A skilled hunter and tracker at home in the wilderness.</p>
+          <p class="ability-score">
+            <strong>Relevant Ability Score:</strong> Dexterity &amp; Wisdom
+          </p>
 
           <h3>Rogue</h3>
           <p>
             A cunning trickster who relies on stealth, precision, and quick
             thinking.
           </p>
+          <p class="ability-score">
+            <strong>Relevant Ability Score:</strong> Dexterity
+          </p>
 
           <h3>Sorcerer</h3>
           <p>A spellcaster with magic woven into their very being.</p>
+          <p class="ability-score">
+            <strong>Relevant Ability Score:</strong> Charisma
+          </p>
 
           <h3>Warlock</h3>
           <p>
             A wielder of magic granted through a pact with a powerful
             otherworldly patron.
+          </p>
+          <p class="ability-score">
+            <strong>Relevant Ability Score:</strong> Charisma
           </p>
 
           <h3>Wizard</h3>
@@ -264,12 +301,18 @@
             A scholarly spellcaster who masters magic through study and
             preparation.
           </p>
+          <p class="ability-score">
+            <strong>Relevant Ability Score:</strong> Intelligence
+          </p>
 
           <h3>Artificer (Optional)</h3>
           <p>
             A brilliant tinkerer who channels their magic into creations.
             Artificers are not from the core rules, so make sure you ask your DM
             before choosing this class.
+          </p>
+          <p class="ability-score">
+            <strong>Relevant Ability Score:</strong> Intelligence
           </p>
         </div>
 
@@ -309,9 +352,9 @@
             />
             <p>
               Crimson is a cunning, swashbuckling, half-elf rogue, named for her
-              firey red hair that made her near impossible to miss on any deck
+              fiery red hair that made her near impossible to miss on any deck
               she walked. She didn’t start out as the Pirate Queen, she was just
-              another pair of hands on a creaking ship, quick fingered (and
+              another pair of hands on a creaking ship, quick-fingered (and
               quicker tongued), with a habit of acting before thinking, which
               got her into as much trouble as it got her out of.
             </p>
@@ -364,7 +407,7 @@
       </div>
 
       <!-- Step 3 - Ability Scores -->
-      <div class="step" id="step-2">
+      <div class="step" id="step-3">
         <span class="step-count">Step 3 of 10</span>
         <h1>Determine Your Ability Scores</h1>
 
@@ -382,8 +425,8 @@
             <h3>Strength (STR)</h3>
             <p>
               Measures physical power, athletic training and the extent to which
-              you can exert raw bodily force. In combat, strength is used as a
-              bonus to melee weaponry attacks.
+              you can exert raw bodily force. In combat, Strength is used as a
+              bonus to melee weapon attacks.
             </p>
             <p>Important For: Barbarian, Fighter (STR based), Paladin</p>
 
@@ -453,7 +496,7 @@
             <h3>Rolling for Stats</h3>
             <p>
               To roll for your stats you're going to need 4d6 (four six-sided
-              die). Roll all four at once and add up the three highest rolls
+              dice). Roll all four at once and add up the three highest rolls
               (ignore the lowest rolled die). Then repeat this for all six
               ability scores. Make sure to jot down your scores somewhere on
               your sheet, but know these scores aren't final. Things like your
@@ -498,63 +541,65 @@
           </p>
           <p>
             To calculate your modifier, take your Ability Score, subtract 10,
-            and divide by 2, rounding down if neccessary (see table below).
+            and divide by 2, rounding down if necessary (see table below).
           </p>
           <h3>Example (rolled a 17):</h3>
           <p>17 - 10 = 7 -> 7 / 2 = 3.5 -> rounded down -> modifier = +3</p>
 
           <!-- Ability Score Modifier Table-->
           <h3>Ability Score Modifier Table</h3>
-          <table class="modifier-table">
-            <tr>
-              <th>Ability Score</th>
-              <th>Modifier</th>
-            </tr>
-            <tr>
-              <td>0-1</td>
-              <td>-5</td>
-            </tr>
-            <tr>
-              <td>2-3</td>
-              <td>-4</td>
-            </tr>
-            <tr>
-              <td>4-5</td>
-              <td>-3</td>
-            </tr>
-            <tr>
-              <td>6-7</td>
-              <td>-2</td>
-            </tr>
-            <tr>
-              <td>8-9</td>
-              <td>-1</td>
-            </tr>
-            <tr>
-              <td>10-11</td>
-              <td>+0</td>
-            </tr>
-            <tr>
-              <td>12-13</td>
-              <td>+1</td>
-            </tr>
-            <tr>
-              <td>14-15</td>
-              <td>+2</td>
-            </tr>
-            <tr>
-              <td>16-17</td>
-              <td>+3</td>
-            </tr>
-            <tr>
-              <td>18-19</td>
-              <td>+4</td>
-            </tr>
-            <tr>
-              <td>20</td>
-              <td>+5</td>
-            </tr>
-          </table>
+          <div class="table-wrap">
+            <table class="modifier-table">
+              <tr>
+                <th>Ability Score</th>
+                <th>Modifier</th>
+              </tr>
+              <tr>
+                <td>0-1</td>
+                <td>-5</td>
+              </tr>
+              <tr>
+                <td>2-3</td>
+                <td>-4</td>
+              </tr>
+              <tr>
+                <td>4-5</td>
+                <td>-3</td>
+              </tr>
+              <tr>
+                <td>6-7</td>
+                <td>-2</td>
+              </tr>
+              <tr>
+                <td>8-9</td>
+                <td>-1</td>
+              </tr>
+              <tr>
+                <td>10-11</td>
+                <td>+0</td>
+              </tr>
+              <tr>
+                <td>12-13</td>
+                <td>+1</td>
+              </tr>
+              <tr>
+                <td>14-15</td>
+                <td>+2</td>
+              </tr>
+              <tr>
+                <td>16-17</td>
+                <td>+3</td>
+              </tr>
+              <tr>
+                <td>18-19</td>
+                <td>+4</td>
+              </tr>
+              <tr>
+                <td>20</td>
+                <td>+5</td>
+              </tr>
+            </table>
+          </div>
         </div>
 
         <!-- Personal house Rules-->
@@ -570,14 +615,14 @@
             <li>You may reroll 1 stat, but you must take the reroll</li>
             <li>
               If your 6 ability scores do not add up to 72 (after rerolling your
-              1 stat), you may reroll all 6 die
+              1 stat), you may reroll all 6 dice
             </li>
           </ul>
         </div>
       </div>
 
       <!-- Step 4 - Race -->
-      <div class="step" id="step-3">
+      <div class="step" id="step-4">
         <span class="step-count">Step 4 of 10</span>
         <h1>Choose your Race</h1>
 
@@ -589,15 +634,67 @@
         <div class="section">
           <h2>What Is a Race?</h2>
           <p>
-            Your race represents your character's ancestry, it shapes traits
-            like size, speed, and a handful of built-in bonuses that help define
-            how they move through the world.
+            Your race represents your character's ancestry, the people or
+            lineage they were born into. It's mostly a story choice: are you a
+            human, an elf, a dwarf, a halfling, or something more unusual? But
+            it also comes with a small bundle of built-in traits that shape how
+            your character moves through the world.
           </p>
+        </div>
+
+        <div class="section">
+          <h2>What Does Race Affect?</h2>
+          <p>
+            Every race grants a handful of traits automatically. You don't
+            choose these, they come as a package once you pick a race. The most
+            common things a race affects are:
+          </p>
+          <ul>
+            <li>
+              <strong>Ability Score Increases:</strong> Most races bump one or
+              more of your six ability scores. This is added on top of the
+              scores you set in Step 3 (for example, elves get +2 Dexterity).
+            </li>
+            <li>
+              <strong>Size:</strong> Usually Small or Medium, which affects
+              things like the space you take up and some of the gear you can
+              use.
+            </li>
+            <li>
+              <strong>Speed:</strong> How far you can move on your turn,
+              measured in feet (most races walk 30 feet, some are faster or
+              slower).
+            </li>
+            <li>
+              <strong>Special Traits:</strong> Extra perks unique to your race,
+              such as darkvision (seeing in the dark), resistance to certain
+              kinds of damage, or a free skill or language.
+            </li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>Where to See the Full List</h2>
+          <p>
+            There are a lot of races to choose from, and each one has its own
+            set of traits. Rather than listing them all here, browse the full
+            lineup and pick whichever fits the character concept you built back
+            in Step 2. When you've decided, write it in the "Race" box and apply
+            any ability score increases to your scores.
+          </p>
+          <a
+            class="btn btn-primary"
+            href="https://open5e.com/sections/races"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Browse the Full Race List (Open5e)
+          </a>
         </div>
       </div>
 
       <!-- Step 5 - Background -->
-      <div class="step" id="step-4">
+      <div class="step" id="step-5">
         <span class="step-count">Step 5 of 10</span>
         <h1>Choose your Background</h1>
 
@@ -609,15 +706,49 @@
         <div class="section">
           <h2>What Is a Background?</h2>
           <p>
-            Your background covers what your character did before they set out
-            to adventure, it grants extra skills, tools, and a bit more flavor
-            to round out your concept.
+            Your background is what your character did with their life before
+            they became an adventurer. Were they a soldier, a criminal, a
+            scholar, or a temple acolyte? It's a short answer to the question
+            "where did this person come from?" and it helps ground your concept
+            in the world.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>What Does a Background Grant?</h2>
+          <p>
+            Beyond flavor, your background hands you a few mechanical perks that
+            reflect that former life. In general, a background gives you:
+          </p>
+          <ul>
+            <li>
+              <strong>Skill proficiencies:</strong> A couple of skills you're
+              trained in, based on your former line of work (more on skills in
+              Step 7).
+            </li>
+            <li>
+              <strong>Tool proficiencies and/or languages:</strong> Things like
+              a set of artisan's tools, a gaming set, or an extra language.
+            </li>
+            <li>
+              <strong>A small feature:</strong> A minor roleplaying perk, such
+              as always being able to find a place to rest or being recognized
+              by members of a certain group.
+            </li>
+            <li>
+              <strong>Starting equipment:</strong> A little bit of themed gear
+              and some coin to get you going.
+            </li>
+          </ul>
+          <p>
+            Pick the background that best matches the concept you sketched out
+            in Step 2, then write it in the "Background" box.
           </p>
         </div>
       </div>
 
       <!-- Step 6 - Class -->
-      <div class="step" id="step-5">
+      <div class="step" id="step-6">
         <span class="step-count">Step 6 of 10</span>
         <h1>Choose your Class</h1>
 
@@ -630,15 +761,162 @@
         <div class="section">
           <h2>What Is a Class?</h2>
           <p>
-            Your class determines what your character is capable of, it shapes
-            your combat style, the skills you're best at, and any spells or
-            special abilities you get access to.
+            Your class is the biggest mechanical choice you'll make, it decides
+            what your character can actually do: how tough they are, what
+            they're good at in a fight, and whether they cast spells. Back in
+            Step 2 you saw a one-sentence flavor blurb for each class. Here
+            we'll focus on the numbers behind them.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>A Few Terms First</h2>
+          <p>
+            Each class summary below lists the same four things. Here's what
+            they mean:
+          </p>
+          <ul>
+            <li>
+              <strong>Hit Die:</strong> The die you roll for hit points (your
+              health). A bigger die means a sturdier character. Your class's hit
+              die also sets your starting hit points at level 1.
+            </li>
+            <li>
+              <strong>Primary Ability:</strong> The ability score that matters
+              most for this class. When you set your scores in Step 3, this is
+              where you'll usually want your highest number.
+            </li>
+            <li>
+              <strong>Saving Throw Proficiencies:</strong> The two saving throws
+              (a d20 roll that symbolizes a reaction to the environment) your
+              class is trained in, letting you add your proficiency bonus
+              (explained fully in Step 7) when resisting certain effects.
+            </li>
+            <li>
+              <strong>Spellcasting:</strong> Whether the class casts spells, and
+              if so, which ability score powers those spells. Not every class
+              casts (more on spells in Step 8).
+            </li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>The Classes at a Glance: Expanded</h2>
+
+          <h3>Barbarian</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d12</li>
+            <li><strong>Primary Ability:</strong> Strength</li>
+            <li><strong>Saving Throws:</strong> Strength &amp; Constitution</li>
+            <li><strong>Spellcasting:</strong> None</li>
+          </ul>
+
+          <h3>Bard</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d8</li>
+            <li><strong>Primary Ability:</strong> Charisma</li>
+            <li><strong>Saving Throws:</strong> Dexterity &amp; Charisma</li>
+            <li><strong>Spellcasting:</strong> Yes (Charisma)</li>
+          </ul>
+
+          <h3>Cleric</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d8</li>
+            <li><strong>Primary Ability:</strong> Wisdom</li>
+            <li><strong>Saving Throws:</strong> Wisdom &amp; Charisma</li>
+            <li><strong>Spellcasting:</strong> Yes (Wisdom)</li>
+          </ul>
+
+          <h3>Druid</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d8</li>
+            <li><strong>Primary Ability:</strong> Wisdom</li>
+            <li><strong>Saving Throws:</strong> Intelligence &amp; Wisdom</li>
+            <li><strong>Spellcasting:</strong> Yes (Wisdom)</li>
+          </ul>
+
+          <h3>Fighter</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d10</li>
+            <li><strong>Primary Ability:</strong> Strength or Dexterity</li>
+            <li><strong>Saving Throws:</strong> Strength &amp; Constitution</li>
+            <li><strong>Spellcasting:</strong> None</li>
+          </ul>
+
+          <h3>Monk</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d8</li>
+            <li><strong>Primary Ability:</strong> Dexterity &amp; Wisdom</li>
+            <li><strong>Saving Throws:</strong> Strength &amp; Dexterity</li>
+            <li><strong>Spellcasting:</strong> None</li>
+          </ul>
+
+          <h3>Paladin</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d10</li>
+            <li><strong>Primary Ability:</strong> Strength &amp; Charisma</li>
+            <li><strong>Saving Throws:</strong> Wisdom &amp; Charisma</li>
+            <li><strong>Spellcasting:</strong> Yes (Charisma)</li>
+          </ul>
+
+          <h3>Ranger</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d10</li>
+            <li><strong>Primary Ability:</strong> Dexterity &amp; Wisdom</li>
+            <li><strong>Saving Throws:</strong> Strength &amp; Dexterity</li>
+            <li><strong>Spellcasting:</strong> Yes (Wisdom)</li>
+          </ul>
+
+          <h3>Rogue</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d8</li>
+            <li><strong>Primary Ability:</strong> Dexterity</li>
+            <li>
+              <strong>Saving Throws:</strong> Dexterity &amp; Intelligence
+            </li>
+            <li><strong>Spellcasting:</strong> None</li>
+          </ul>
+
+          <h3>Sorcerer</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d6</li>
+            <li><strong>Primary Ability:</strong> Charisma</li>
+            <li><strong>Saving Throws:</strong> Constitution &amp; Charisma</li>
+            <li><strong>Spellcasting:</strong> Yes (Charisma)</li>
+          </ul>
+
+          <h3>Warlock</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d8</li>
+            <li><strong>Primary Ability:</strong> Charisma</li>
+            <li><strong>Saving Throws:</strong> Wisdom &amp; Charisma</li>
+            <li><strong>Spellcasting:</strong> Yes (Charisma)</li>
+          </ul>
+
+          <h3>Wizard</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d6</li>
+            <li><strong>Primary Ability:</strong> Intelligence</li>
+            <li><strong>Saving Throws:</strong> Intelligence &amp; Wisdom</li>
+            <li><strong>Spellcasting:</strong> Yes (Intelligence)</li>
+          </ul>
+
+          <!--
+            Artificer is not part of the core rules / SRD 5.1, so no hit-die,
+            saving-throw, or spellcasting details are listed here. Flavor and the
+            "ask your DM" caveat only, matching the Step 2 treatment.
+          -->
+          <h3>Artificer (Optional)</h3>
+          <p>
+            The Artificer is a brilliant tinkerer who channels magic into their
+            inventions. It isn't part of the core rules, so its mechanics aren't
+            covered here, make sure you ask your DM before choosing this class.
           </p>
         </div>
       </div>
 
       <!-- Step 7 - Skills -->
-      <div class="step" id="step-6">
+      <div class="step" id="step-7">
         <span class="step-count">Step 7 of 10</span>
         <h1>Choose your Skills</h1>
 
@@ -650,15 +928,130 @@
         <div class="section">
           <h2>What Are Skills?</h2>
           <p>
-            Skills represent what your character is trained to do well, like
-            sneaking, persuading, or noticing danger, and your class and
-            background determine which ones you're proficient in.
+            Skills represent the specific things your character is trained to do
+            well, like sneaking, persuading, climbing, or noticing danger. When
+            you're "proficient" in a skill, you add your proficiency bonus to
+            rolls that use it, making you noticeably better at that task than
+            someone untrained.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>Your Proficiency Bonus</h2>
+          <p>
+            Your proficiency bonus is a single number you add whenever you're
+            trained in what you're doing, whether that's a skill, a saving
+            throw, or an attack. It starts at +2 at level 1 and slowly grows as
+            you level up, so everything you're proficient in gets better over
+            time.
+          </p>
+          <div class="table-wrap">
+            <table class="modifier-table">
+              <tr>
+                <th>Character Level</th>
+                <th>Proficiency Bonus</th>
+              </tr>
+              <tr>
+                <td>1-4</td>
+                <td>+2</td>
+              </tr>
+              <tr>
+                <td>5-8</td>
+                <td>+3</td>
+              </tr>
+              <tr>
+                <td>9-12</td>
+                <td>+4</td>
+              </tr>
+              <tr>
+                <td>13-16</td>
+                <td>+5</td>
+              </tr>
+              <tr>
+                <td>17-20</td>
+                <td>+6</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>The Skills by Ability Score</h2>
+          <p>
+            Every skill is tied to one of your six ability scores. When you make
+            a skill check, you roll a d20 and add that ability's modifier, plus
+            your proficiency bonus if you're trained in the skill. Here are the
+            main skills grouped by the ability that governs them.
+          </p>
+
+          <h3>Strength</h3>
+          <ul>
+            <li>Athletics</li>
+          </ul>
+
+          <h3>Dexterity</h3>
+          <ul>
+            <li>Acrobatics</li>
+            <li>Sleight of Hand</li>
+            <li>Stealth</li>
+          </ul>
+
+          <h3>Intelligence</h3>
+          <ul>
+            <li>Arcana</li>
+            <li>History</li>
+            <li>Investigation</li>
+            <li>Nature</li>
+            <li>Religion</li>
+          </ul>
+
+          <h3>Wisdom</h3>
+          <ul>
+            <li>Animal Handling</li>
+            <li>Insight</li>
+            <li>Medicine</li>
+            <li>Perception</li>
+            <li>Survival</li>
+          </ul>
+
+          <h3>Charisma</h3>
+          <ul>
+            <li>Deception</li>
+            <li>Intimidation</li>
+            <li>Performance</li>
+            <li>Persuasion</li>
+          </ul>
+          <!-- Constitution governs no skills in the SRD, so it is intentionally omitted here. -->
+        </div>
+
+        <div class="section">
+          <h2>Passive Scores</h2>
+          <p>
+            Some checks happen without you rolling any dice, these use a
+            "passive" score. A passive score is just 10 plus the relevant
+            modifiers (your ability modifier, plus your proficiency bonus if
+            you're trained). The most common one is passive Perception, which
+            your DM uses to quietly decide whether you notice things like a
+            hidden trap or a sneaking enemy, without tipping you off by asking
+            for a roll.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>You Don't Pick Freely</h2>
+          <p>
+            You can't just grab any skills you like off the full list. Instead,
+            your class and your background each hand you a limited menu to
+            choose from. A class might say "choose two from Acrobatics,
+            Athletics, Stealth, and a few others," while your background simply
+            grants a fixed couple of skills. Bubble in the skills you end up
+            proficient in under the "Skills" section of your sheet.
           </p>
         </div>
       </div>
 
       <!-- Step 8 - Spells -->
-      <div class="step" id="step-7">
+      <div class="step" id="step-8">
         <span class="step-count">Step 8 of 10</span>
         <h1>Choose your Spells</h1>
 
@@ -670,15 +1063,91 @@
         <div class="section">
           <h2>What Are Spells?</h2>
           <p>
-            Spells are magical effects your character can cast, if their class
-            has any. Not every class casts spells, so this step may not apply to
-            you.
+            Spells are magical effects your character can cast, from hurling
+            fire to healing a wounded ally to unlocking a door from across the
+            room. Only some classes can cast spells, so if you picked a
+            non-caster this step may not apply to you. This is a high-level
+            overview, so you know how the system works before you dig into
+            specific spells.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>Spell Slots</h2>
+          <p>
+            Casting most spells uses up a "spell slot," think of slots as
+            charges of magical energy. You have a limited number of them, and
+            each is tied to a level (level 1, level 2, and so on). Casting a
+            spell spends one slot of the appropriate level; higher-level slots
+            fuel more powerful magic. Once you're out of slots you can't cast
+            those spells again until you rest and recharge them.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>Cantrips vs. Leveled Spells</h2>
+          <p>There are two kinds of spells:</p>
+          <ul>
+            <li>
+              <strong>Cantrips</strong> are simple spells you can cast as often
+              as you like. They don't use spell slots, so you'll never run out
+              of them.
+            </li>
+            <li>
+              <strong>Leveled spells</strong> are the stronger spells (level 1
+              and up) that cost a spell slot each time you cast them.
+            </li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>Prepared vs. Known Casters</h2>
+          <p>
+            Different classes decide which spells they have access to in one of
+            two ways:
+          </p>
+          <ul>
+            <li>
+              <strong>Known casters</strong> learn a fixed set of spells and can
+              only cast those. Their list changes slowly, they swap or add
+              spells as they level up.
+            </li>
+            <li>
+              <strong>Prepared casters</strong> have access to a wider list but
+              must choose which spells to "prepare" after each rest. They can
+              change their lineup day to day, but only get to ready a limited
+              number at a time.
+            </li>
+          </ul>
+          <p>
+            Which category your class falls into affects how flexible your magic
+            feels day to day, but both types still spend spell slots to cast.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>Which Classes Cast Spells?</h2>
+          <p>From the classes listed back in Step 2:</p>
+          <ul>
+            <li>
+              <strong>Spellcasters:</strong> Bard, Cleric, Druid, Paladin,
+              Ranger, Sorcerer, Warlock, and Wizard.
+            </li>
+            <li>
+              <strong>Non-casters:</strong> Barbarian, Fighter, Monk, and Rogue.
+              If you picked one of these, you can skip ahead, no spells to
+              choose.
+            </li>
+          </ul>
+          <p>
+            The Artificer is also a spellcaster, but since it isn't part of the
+            core rules, check with your DM before counting on it.
           </p>
         </div>
       </div>
 
       <!-- Step 9 - Equipment -->
-      <div class="step" id="step-8">
+      <div class="step" id="step-9">
         <span class="step-count">Step 9 of 10</span>
         <h1>Choose your Equipment</h1>
 
@@ -690,14 +1159,91 @@
         <div class="section">
           <h2>What Is Equipment?</h2>
           <p>
-            Equipment is the gear your character starts with, weapons, armor,
-            and adventuring supplies provided by your class and background.
+            Equipment is everything your character carries into the adventure:
+            weapons, armor, and the assorted supplies that keep an adventurer
+            alive. At level 1 you don't have to shop for any of it, your class
+            and background hand you a starting kit automatically.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>Starting Equipment</h2>
+          <p>Your gear comes from two places:</p>
+          <ul>
+            <li>
+              <strong>Your class</strong> provides the big-ticket adventuring
+              gear, usually a choice of weapons, any armor you're trained to
+              wear, and a themed pack of supplies (rope, rations, a bedroll, and
+              the like).
+            </li>
+            <li>
+              <strong>Your background</strong> adds a few personal items tied to
+              your character's history, along with a small amount of starting
+              coin.
+            </li>
+          </ul>
+          <p>Write it all down in the "Equipment" section of your sheet.</p>
+          <!--
+            This step intentionally covers only the automatic starting-equipment
+            method. The alternate "buy your gear with starting gold" option is out
+            of scope for this pass.
+          -->
+        </div>
+
+        <div class="section">
+          <h2>Armor Categories</h2>
+          <p>
+            Armor is grouped into categories, and your class decides which ones
+            you're trained to use. Wearing armor you're not trained in leaves
+            you clumsy and worse off, so stick to what your class allows.
+          </p>
+          <ul>
+            <li>
+              <strong>Light armor</strong> is easy to move in and rewards a high
+              Dexterity, favored by nimble characters.
+            </li>
+            <li>
+              <strong>Medium armor</strong> offers a balance of protection and
+              mobility.
+            </li>
+            <li>
+              <strong>Heavy armor</strong> gives the most protection but is
+              bulky and demands strength to wear well.
+            </li>
+            <li>
+              <strong>Shields</strong> are held in one hand and add a bit of
+              extra protection on top of whatever armor you're wearing.
+            </li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>Weapon Categories</h2>
+          <p>
+            Weapons are split into two broad groups based on how tricky they are
+            to wield, and again your class sets which you're trained with.
+          </p>
+          <ul>
+            <li>
+              <strong>Simple weapons</strong> are common and easy to use, things
+              like clubs, daggers, and spears. Most classes can use these.
+            </li>
+            <li>
+              <strong>Martial weapons</strong> are more specialized and hit
+              harder, such as longswords and greataxes, but require proper
+              training.
+            </li>
+          </ul>
+          <p>
+            Weapons are also either <strong>melee</strong> (used up close) or
+            <strong>ranged</strong> (like bows and crossbows, used from a
+            distance).
           </p>
         </div>
       </div>
 
       <!-- Step 10 - Beyond Level 1 -->
-      <div class="step" id="step-9">
+      <div class="step" id="step-10">
         <span class="step-count">Step 10 of 10</span>
         <h1>Level Up</h1>
 
@@ -709,10 +1255,63 @@
         <div class="section">
           <h2>What Happens When I Level Up?</h2>
           <p>
-            As you gain experience, your character levels up, granting more hit
-            points, new features, and occasionally improvements to your ability
-            scores.
+            As you adventure, your character earns experience and eventually
+            levels up. Each new level makes you stronger in a few ways at once.
+            You don't need to memorize the exact numbers, just know what to
+            expect when it happens:
           </p>
+          <ul>
+            <li>
+              <strong>More hit points:</strong> Your maximum health goes up
+              every single level (see the two methods below).
+            </li>
+            <li>
+              <strong>New class features:</strong> Your class grants fresh
+              abilities as you climb in level, and this is where a lot of your
+              character's growth comes from.
+            </li>
+            <li>
+              <strong>A rising proficiency bonus:</strong> At certain levels
+              your proficiency bonus increases (the table back in Step 7),
+              making everything you're trained in better at once.
+            </li>
+            <li>
+              <strong>Occasional Ability Score Improvements:</strong> At a few
+              milestone levels you get to raise your ability scores, sharpening
+              what your character is best at.
+            </li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>Gaining Hit Points</h2>
+          <p>
+            Every time you level up you add hit points, and there are two ways
+            to do it. Your DM may prefer one or let you choose, so check with
+            them first.
+          </p>
+          <p>
+            Whichever method you use, always add your Constitution modifier to
+            the hit points you gain each level.
+          </p>
+          <div>
+            <h3>Take the Fixed Average</h3>
+            <p>
+              The simplest option: each class has a set average number tied to
+              its hit die, and you just take that number every level. It's
+              steady and predictable, your health goes up by the same reliable
+              amount each time, with no dice involved.
+            </p>
+          </div>
+          <div>
+            <h3>Roll Your Hit Die</h3>
+            <p>
+              The riskier, more exciting option: roll your class's hit die (for
+              example, a d10 for a Fighter) and gain that many hit points. You
+              might roll high and leap ahead, or roll low and gain very little,
+              it's a gamble.
+            </p>
+          </div>
         </div>
       </div>
 

@@ -76,11 +76,13 @@
     const stepIcons = document.querySelectorAll(".step-icon");
     const trackerEntries = document.querySelectorAll(".tracker-entry-btn");
 
-    // Reads "#step-3" from the URL and returns 3, or null if missing/invalid
+    // Reads "#step-4" from the URL and returns index 3, or null if
+    // missing/invalid. Hashes are 1-based (step-1..step-10) but the
+    // internal step index stays 0-based.
     function stepFromHash() {
       const match = window.location.hash.match(/^#step-(\d+)$/);
       if (!match) return null;
-      const index = Number(match[1]);
+      const index = Number(match[1]) - 1;
       return index >= 0 && index < steps.length ? index : null;
     }
 
@@ -116,7 +118,7 @@
       // Push a history entry so refresh keeps the step and back steps
       // backward through the guide instead of leaving the page
       if (updateUrl) {
-        const hash = `#step-${index}`;
+        const hash = `#step-${index + 1}`;
         if (window.location.hash !== hash) {
           history.pushState(null, "", hash);
         }
