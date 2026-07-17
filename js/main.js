@@ -3,6 +3,7 @@
     { href: "character-creator.html", label: "Character Creator" },
     { href: "turn-guide.html", label: "Turn Guide" },
     { href: "rules-guide.html", label: "Extra Rules" },
+    { href: "xumaria.html", label: "The World of Xumaria" },
   ];
 
   // Handles direct file open (pathname ends with '/') and server roots

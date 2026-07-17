@@ -47,25 +47,25 @@
           <li class="tracker-entry">
             <button class="tracker-entry-btn" type="button">
               <span class="step-icon">3</span>
-              <span class="step-label">Scores</span>
+              <span class="step-label">Class</span>
             </button>
           </li>
           <li class="tracker-entry">
             <button class="tracker-entry-btn" type="button">
               <span class="step-icon">4</span>
-              <span class="step-label">Race</span>
+              <span class="step-label">Scores</span>
             </button>
           </li>
           <li class="tracker-entry">
             <button class="tracker-entry-btn" type="button">
               <span class="step-icon">5</span>
-              <span class="step-label">Background</span>
+              <span class="step-label">Race</span>
             </button>
           </li>
           <li class="tracker-entry">
             <button class="tracker-entry-btn" type="button">
               <span class="step-icon">6</span>
-              <span class="step-label">Class</span>
+              <span class="step-label">Background</span>
             </button>
           </li>
           <li class="tracker-entry">
@@ -210,17 +210,11 @@
 
           <h3>Barbarian</h3>
           <p>A fierce warrior who channels rage into devastating attacks.</p>
-          <p class="ability-score">
-            <strong>Relevant Ability Score:</strong> Strength
-          </p>
 
           <h3>Bard</h3>
           <p>
             A charismatic performer who inspires allies and weaves magic through
             music and words.
-          </p>
-          <p class="ability-score">
-            <strong>Relevant Ability Score:</strong> Charisma
           </p>
 
           <h3>Cleric</h3>
@@ -228,16 +222,10 @@
             A devoted servant of a deity, channeling divine power to heal and
             smite.
           </p>
-          <p class="ability-score">
-            <strong>Relevant Ability Score:</strong> Wisdom
-          </p>
 
           <h3>Druid</h3>
           <p>
             A guardian of nature who can shapeshift and command the elements.
-          </p>
-          <p class="ability-score">
-            <strong>Relevant Ability Score:</strong> Wisdom
           </p>
 
           <h3>Fighter</h3>
@@ -245,64 +233,40 @@
             A master of weapons and combat tactics, adaptable to almost any
             fighting style.
           </p>
-          <p class="ability-score">
-            <strong>Relevant Ability Score:</strong> Strength or Dexterity
-          </p>
 
           <h3>Monk</h3>
           <p>
             A disciplined martial artist who fights with fists, focus, and inner
             energy.
           </p>
-          <p class="ability-score">
-            <strong>Relevant Ability Score:</strong> Dexterity &amp; Wisdom
-          </p>
 
           <h3>Paladin</h3>
           <p>
             A holy warrior bound by a sacred oath to fight for their ideals.
           </p>
-          <p class="ability-score">
-            <strong>Relevant Ability Score:</strong> Strength &amp; Charisma
-          </p>
 
           <h3>Ranger</h3>
           <p>A skilled hunter and tracker at home in the wilderness.</p>
-          <p class="ability-score">
-            <strong>Relevant Ability Score:</strong> Dexterity &amp; Wisdom
-          </p>
 
           <h3>Rogue</h3>
           <p>
             A cunning trickster who relies on stealth, precision, and quick
             thinking.
           </p>
-          <p class="ability-score">
-            <strong>Relevant Ability Score:</strong> Dexterity
-          </p>
 
           <h3>Sorcerer</h3>
           <p>A spellcaster with magic woven into their very being.</p>
-          <p class="ability-score">
-            <strong>Relevant Ability Score:</strong> Charisma
-          </p>
 
           <h3>Warlock</h3>
           <p>
             A wielder of magic granted through a pact with a powerful
             otherworldly patron.
           </p>
-          <p class="ability-score">
-            <strong>Relevant Ability Score:</strong> Charisma
-          </p>
 
           <h3>Wizard</h3>
           <p>
             A scholarly spellcaster who masters magic through study and
             preparation.
-          </p>
-          <p class="ability-score">
-            <strong>Relevant Ability Score:</strong> Intelligence
           </p>
 
           <h3>Artificer (Optional)</h3>
@@ -311,16 +275,13 @@
             Artificers are not from the core rules, so make sure you ask your DM
             before choosing this class.
           </p>
-          <p class="ability-score">
-            <strong>Relevant Ability Score:</strong> Intelligence
-          </p>
         </div>
 
         <!-- Mechanical backgound mention -->
         <div class="section">
           <h2>A Quick Note on Backgrounds</h2>
           <p>
-            Later on, in Step 5, you'll choose a "background," which is the
+            Later on, in Step 6, you'll choose a "background," which is the
             mechanical side of your character's history in one word (Ex:
             acolyte, criminal, soldier, sage).
           </p>
@@ -406,9 +367,177 @@
         </div>
       </div>
 
-      <!-- Step 3 - Ability Scores -->
+      <!-- Step 3 - Class -->
       <div class="step" id="step-3">
         <span class="step-count">Step 3 of 10</span>
+        <h1>Choose your Class</h1>
+
+        <!-- step content -->
+        <div class="sheet-tip">
+          Write this in the "Class &amp; Level" box at the top of your character
+          sheet
+        </div>
+
+        <div class="section">
+          <h2>What Is a Class?</h2>
+          <p>
+            Your class is the biggest mechanical choice you'll make, it decides
+            what your character can actually do: how tough they are, what
+            they're good at in a fight, and whether they cast spells. Back in
+            Step 2 you saw a one-sentence flavor blurb for each class. Here
+            we'll focus on the numbers behind them.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>A Few Terms First</h2>
+          <p>
+            Each class summary below lists the same four things. Here's what
+            they mean:
+          </p>
+          <ul>
+            <li>
+              <strong>Hit Die:</strong> The die you roll for hit points (your
+              health). A bigger die means a sturdier character. Your class's hit
+              die also sets your starting hit points at level 1.
+            </li>
+            <li>
+              <strong>Primary Ability:</strong> The ability score that matters
+              most for this class. When you set your scores in Step 4, this is
+              where you'll usually want your highest number.
+            </li>
+            <li>
+              <strong>Saving Throw Proficiencies:</strong> The two saving throws
+              (a d20 roll that symbolizes a reaction to the environment) your
+              class is trained in, letting you add your proficiency bonus
+              (explained fully in Step 7) when resisting certain effects.
+            </li>
+            <li>
+              <strong>Spellcasting:</strong> Whether the class casts spells, and
+              if so, which ability score powers those spells. Not every class
+              casts (more on spells in Step 8).
+            </li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>The Classes at a Glance: Expanded</h2>
+
+          <h3>Barbarian</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d12</li>
+            <li><strong>Primary Ability:</strong> Strength</li>
+            <li><strong>Saving Throws:</strong> Strength &amp; Constitution</li>
+            <li><strong>Spellcasting:</strong> None</li>
+          </ul>
+
+          <h3>Bard</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d8</li>
+            <li><strong>Primary Ability:</strong> Charisma</li>
+            <li><strong>Saving Throws:</strong> Dexterity &amp; Charisma</li>
+            <li><strong>Spellcasting:</strong> Yes (Charisma)</li>
+          </ul>
+
+          <h3>Cleric</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d8</li>
+            <li><strong>Primary Ability:</strong> Wisdom</li>
+            <li><strong>Saving Throws:</strong> Wisdom &amp; Charisma</li>
+            <li><strong>Spellcasting:</strong> Yes (Wisdom)</li>
+          </ul>
+
+          <h3>Druid</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d8</li>
+            <li><strong>Primary Ability:</strong> Wisdom</li>
+            <li><strong>Saving Throws:</strong> Intelligence &amp; Wisdom</li>
+            <li><strong>Spellcasting:</strong> Yes (Wisdom)</li>
+          </ul>
+
+          <h3>Fighter</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d10</li>
+            <li><strong>Primary Ability:</strong> Strength or Dexterity</li>
+            <li><strong>Saving Throws:</strong> Strength &amp; Constitution</li>
+            <li><strong>Spellcasting:</strong> None</li>
+          </ul>
+
+          <h3>Monk</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d8</li>
+            <li><strong>Primary Ability:</strong> Dexterity &amp; Wisdom</li>
+            <li><strong>Saving Throws:</strong> Strength &amp; Dexterity</li>
+            <li><strong>Spellcasting:</strong> None</li>
+          </ul>
+
+          <h3>Paladin</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d10</li>
+            <li><strong>Primary Ability:</strong> Strength &amp; Charisma</li>
+            <li><strong>Saving Throws:</strong> Wisdom &amp; Charisma</li>
+            <li><strong>Spellcasting:</strong> Yes (Charisma)</li>
+          </ul>
+
+          <h3>Ranger</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d10</li>
+            <li><strong>Primary Ability:</strong> Dexterity &amp; Wisdom</li>
+            <li><strong>Saving Throws:</strong> Strength &amp; Dexterity</li>
+            <li><strong>Spellcasting:</strong> Yes (Wisdom)</li>
+          </ul>
+
+          <h3>Rogue</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d8</li>
+            <li><strong>Primary Ability:</strong> Dexterity</li>
+            <li>
+              <strong>Saving Throws:</strong> Dexterity &amp; Intelligence
+            </li>
+            <li><strong>Spellcasting:</strong> None</li>
+          </ul>
+
+          <h3>Sorcerer</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d6</li>
+            <li><strong>Primary Ability:</strong> Charisma</li>
+            <li><strong>Saving Throws:</strong> Constitution &amp; Charisma</li>
+            <li><strong>Spellcasting:</strong> Yes (Charisma)</li>
+          </ul>
+
+          <h3>Warlock</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d8</li>
+            <li><strong>Primary Ability:</strong> Charisma</li>
+            <li><strong>Saving Throws:</strong> Wisdom &amp; Charisma</li>
+            <li><strong>Spellcasting:</strong> Yes (Charisma)</li>
+          </ul>
+
+          <h3>Wizard</h3>
+          <ul>
+            <li><strong>Hit Die:</strong> d6</li>
+            <li><strong>Primary Ability:</strong> Intelligence</li>
+            <li><strong>Saving Throws:</strong> Intelligence &amp; Wisdom</li>
+            <li><strong>Spellcasting:</strong> Yes (Intelligence)</li>
+          </ul>
+
+          <!--
+            Artificer is not part of the core rules / SRD 5.1, so no hit-die,
+            saving-throw, or spellcasting details are listed here. Flavor and the
+            "ask your DM" caveat only, matching the Step 2 treatment.
+          -->
+          <h3>Artificer (Optional)</h3>
+          <p>
+            The Artificer is a brilliant tinkerer who channels magic into their
+            inventions. It isn't part of the core rules, so its mechanics aren't
+            covered here, make sure you ask your DM before choosing this class.
+          </p>
+        </div>
+      </div>
+
+      <!-- Step 4 - Ability Scores -->
+      <div class="step" id="step-4">
+        <span class="step-count">Step 4 of 10</span>
         <h1>Determine Your Ability Scores</h1>
 
         <!-- step content -->
@@ -484,7 +613,9 @@
           <div>
             <h3>Ability scores are determined three main ways</h3>
             <ol>
-              <li>Rolling for them (The most fun way)</li>
+              <li>
+                Rolling for them (The classic way, and my personal favorite)
+              </li>
               <li>Point Buy (Similar to video games)</li>
               <li>
                 Standard Array (Standard set of stats everyone at the table
@@ -621,9 +752,9 @@
         </div>
       </div>
 
-      <!-- Step 4 - Race -->
-      <div class="step" id="step-4">
-        <span class="step-count">Step 4 of 10</span>
+      <!-- Step 5 - Race -->
+      <div class="step" id="step-5">
+        <span class="step-count">Step 5 of 10</span>
         <h1>Choose your Race</h1>
 
         <!-- step content -->
@@ -653,7 +784,7 @@
             <li>
               <strong>Ability Score Increases:</strong> Most races bump one or
               more of your six ability scores. This is added on top of the
-              scores you set in Step 3 (for example, elves get +2 Dexterity).
+              scores you set in Step 4 (for example, elves get +2 Dexterity).
             </li>
             <li>
               <strong>Size:</strong> Usually Small or Medium, which affects
@@ -693,9 +824,9 @@
         </div>
       </div>
 
-      <!-- Step 5 - Background -->
-      <div class="step" id="step-5">
-        <span class="step-count">Step 5 of 10</span>
+      <!-- Step 6 - Background -->
+      <div class="step" id="step-6">
+        <span class="step-count">Step 6 of 10</span>
         <h1>Choose your Background</h1>
 
         <!-- step content -->
@@ -743,174 +874,6 @@
           <p>
             Pick the background that best matches the concept you sketched out
             in Step 2, then write it in the "Background" box.
-          </p>
-        </div>
-      </div>
-
-      <!-- Step 6 - Class -->
-      <div class="step" id="step-6">
-        <span class="step-count">Step 6 of 10</span>
-        <h1>Choose your Class</h1>
-
-        <!-- step content -->
-        <div class="sheet-tip">
-          Write this in the "Class & Level" box at the top of your character
-          sheet
-        </div>
-
-        <div class="section">
-          <h2>What Is a Class?</h2>
-          <p>
-            Your class is the biggest mechanical choice you'll make, it decides
-            what your character can actually do: how tough they are, what
-            they're good at in a fight, and whether they cast spells. Back in
-            Step 2 you saw a one-sentence flavor blurb for each class. Here
-            we'll focus on the numbers behind them.
-          </p>
-        </div>
-
-        <div class="section">
-          <h2>A Few Terms First</h2>
-          <p>
-            Each class summary below lists the same four things. Here's what
-            they mean:
-          </p>
-          <ul>
-            <li>
-              <strong>Hit Die:</strong> The die you roll for hit points (your
-              health). A bigger die means a sturdier character. Your class's hit
-              die also sets your starting hit points at level 1.
-            </li>
-            <li>
-              <strong>Primary Ability:</strong> The ability score that matters
-              most for this class. When you set your scores in Step 3, this is
-              where you'll usually want your highest number.
-            </li>
-            <li>
-              <strong>Saving Throw Proficiencies:</strong> The two saving throws
-              (a d20 roll that symbolizes a reaction to the environment) your
-              class is trained in, letting you add your proficiency bonus
-              (explained fully in Step 7) when resisting certain effects.
-            </li>
-            <li>
-              <strong>Spellcasting:</strong> Whether the class casts spells, and
-              if so, which ability score powers those spells. Not every class
-              casts (more on spells in Step 8).
-            </li>
-          </ul>
-        </div>
-
-        <div class="section">
-          <h2>The Classes at a Glance: Expanded</h2>
-
-          <h3>Barbarian</h3>
-          <ul>
-            <li><strong>Hit Die:</strong> d12</li>
-            <li><strong>Primary Ability:</strong> Strength</li>
-            <li><strong>Saving Throws:</strong> Strength &amp; Constitution</li>
-            <li><strong>Spellcasting:</strong> None</li>
-          </ul>
-
-          <h3>Bard</h3>
-          <ul>
-            <li><strong>Hit Die:</strong> d8</li>
-            <li><strong>Primary Ability:</strong> Charisma</li>
-            <li><strong>Saving Throws:</strong> Dexterity &amp; Charisma</li>
-            <li><strong>Spellcasting:</strong> Yes (Charisma)</li>
-          </ul>
-
-          <h3>Cleric</h3>
-          <ul>
-            <li><strong>Hit Die:</strong> d8</li>
-            <li><strong>Primary Ability:</strong> Wisdom</li>
-            <li><strong>Saving Throws:</strong> Wisdom &amp; Charisma</li>
-            <li><strong>Spellcasting:</strong> Yes (Wisdom)</li>
-          </ul>
-
-          <h3>Druid</h3>
-          <ul>
-            <li><strong>Hit Die:</strong> d8</li>
-            <li><strong>Primary Ability:</strong> Wisdom</li>
-            <li><strong>Saving Throws:</strong> Intelligence &amp; Wisdom</li>
-            <li><strong>Spellcasting:</strong> Yes (Wisdom)</li>
-          </ul>
-
-          <h3>Fighter</h3>
-          <ul>
-            <li><strong>Hit Die:</strong> d10</li>
-            <li><strong>Primary Ability:</strong> Strength or Dexterity</li>
-            <li><strong>Saving Throws:</strong> Strength &amp; Constitution</li>
-            <li><strong>Spellcasting:</strong> None</li>
-          </ul>
-
-          <h3>Monk</h3>
-          <ul>
-            <li><strong>Hit Die:</strong> d8</li>
-            <li><strong>Primary Ability:</strong> Dexterity &amp; Wisdom</li>
-            <li><strong>Saving Throws:</strong> Strength &amp; Dexterity</li>
-            <li><strong>Spellcasting:</strong> None</li>
-          </ul>
-
-          <h3>Paladin</h3>
-          <ul>
-            <li><strong>Hit Die:</strong> d10</li>
-            <li><strong>Primary Ability:</strong> Strength &amp; Charisma</li>
-            <li><strong>Saving Throws:</strong> Wisdom &amp; Charisma</li>
-            <li><strong>Spellcasting:</strong> Yes (Charisma)</li>
-          </ul>
-
-          <h3>Ranger</h3>
-          <ul>
-            <li><strong>Hit Die:</strong> d10</li>
-            <li><strong>Primary Ability:</strong> Dexterity &amp; Wisdom</li>
-            <li><strong>Saving Throws:</strong> Strength &amp; Dexterity</li>
-            <li><strong>Spellcasting:</strong> Yes (Wisdom)</li>
-          </ul>
-
-          <h3>Rogue</h3>
-          <ul>
-            <li><strong>Hit Die:</strong> d8</li>
-            <li><strong>Primary Ability:</strong> Dexterity</li>
-            <li>
-              <strong>Saving Throws:</strong> Dexterity &amp; Intelligence
-            </li>
-            <li><strong>Spellcasting:</strong> None</li>
-          </ul>
-
-          <h3>Sorcerer</h3>
-          <ul>
-            <li><strong>Hit Die:</strong> d6</li>
-            <li><strong>Primary Ability:</strong> Charisma</li>
-            <li><strong>Saving Throws:</strong> Constitution &amp; Charisma</li>
-            <li><strong>Spellcasting:</strong> Yes (Charisma)</li>
-          </ul>
-
-          <h3>Warlock</h3>
-          <ul>
-            <li><strong>Hit Die:</strong> d8</li>
-            <li><strong>Primary Ability:</strong> Charisma</li>
-            <li><strong>Saving Throws:</strong> Wisdom &amp; Charisma</li>
-            <li><strong>Spellcasting:</strong> Yes (Charisma)</li>
-          </ul>
-
-          <h3>Wizard</h3>
-          <ul>
-            <li><strong>Hit Die:</strong> d6</li>
-            <li><strong>Primary Ability:</strong> Intelligence</li>
-            <li><strong>Saving Throws:</strong> Intelligence &amp; Wisdom</li>
-            <li><strong>Spellcasting:</strong> Yes (Intelligence)</li>
-          </ul>
-
-          <!--
-            Artificer is not part of the core rules / SRD 5.1, so no hit-die,
-            saving-throw, or spellcasting details are listed here. Flavor and the
-            "ask your DM" caveat only, matching the Step 2 treatment.
-          -->
-          <h3>Artificer (Optional)</h3>
-          <p>
-            The Artificer is a brilliant tinkerer who channels magic into their
-            inventions. It isn't part of the core rules, so its mechanics aren't
-            covered here, make sure you ask your DM before choosing this class.
           </p>
         </div>
       </div>
