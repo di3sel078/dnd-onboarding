@@ -99,7 +99,7 @@
           <li class="tracker-entry">
             <button class="tracker-entry-btn" type="button">
               <span class="step-icon">7</span>
-              <span class="step-label">Skills</span>
+              <span class="step-label">Proficiencies</span>
             </button>
           </li>
           <li class="tracker-entry">
@@ -117,7 +117,7 @@
           <li class="tracker-entry">
             <button class="tracker-entry-btn" type="button">
               <span class="step-icon">10</span>
-              <span class="step-label">Level Up</span>
+              <span class="step-label">Combat</span>
             </button>
           </li>
         </menu>
@@ -1024,10 +1024,10 @@
         </div>
       </div>
 
-      <!-- Step 7 - Skills -->
+      <!-- Step 7 - Proficiencies -->
       <div class="step" id="step-7">
         <span class="step-count">Step 7 of 10</span>
-        <h1>Choose your Skills</h1>
+        <h1>Choose your Proficiencies</h1>
 
         <!-- step content -->
         <div class="sheet-tip">
@@ -1292,11 +1292,6 @@
             </li>
           </ul>
           <p>Write it all down in the "Equipment" section of your sheet.</p>
-          <!--
-            This step intentionally covers only the automatic starting-equipment
-            method. The alternate "buy your gear with starting gold" option is out
-            of scope for this pass.
-          -->
         </div>
 
         <div class="section">
@@ -1351,14 +1346,60 @@
         </div>
       </div>
 
-      <!-- Step 10 - Beyond Level 1 -->
+      <!-- Step 10 - Important Combat Stats -->
       <div class="step" id="step-10">
         <span class="step-count">Step 10 of 10</span>
-        <h1>Level Up</h1>
+        <h1>Important Combat Stats</h1>
 
         <!-- step content -->
         <div class="sheet-tip">
-          Your character is done! Here's what happens when you gain a level.
+          These are all the stats left over, that are important for combat.
+        </div>
+
+        <div class="section">
+          <h2>Hit Points at First Level</h2>
+          <p>
+            <strong>Hit points</strong>, or HP, are determined at first level by
+            taking the maximum on your characters hit die (determined by your
+            class) and add your Constitution modifier. That will be your maximum
+            HP, and your starting current HP.
+          </p>
+
+          <h3>Hit Dice</h3>
+          <p>
+            <strong>Hit Dice</strong> are special dice determined by your class
+            (for example, a wizard has a d6 for their hit die) that are used to
+            regain health, or determine how much health you gain at a level up
+            (more on that later). When you take a <strong>short rest</strong>
+            (a period of 1 hour, where you do low-effort tasks such as sitting
+            by a fire or reading a book), you may roll a number of hit die equal
+            to your level, and add your consitution modifier, to regain that
+            much HP.
+          </p>
+          <p>
+            When you take a <strong>long rest</strong> (an 8-hour resting
+            period, spent somewhere comfortable), you regain half of your
+            expended hit dice, as well as restore full HP.
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>Armor Class (AC)</h2>
+          <p>
+            <strong>Armor Class</strong> is determined by what armor you are
+            wearing (if any).
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>Initiative</h2>
+          <p>
+            Your <strong>Initiative</strong> bonus is going to be the exact same
+            as your <strong>Dexterity</strong> bonus. So if Dex. is +2,
+            Initiative is +2. When combat begins, everyone rolls a d20 and adds
+            their Initiative bonus (including the enemies!) That then determines
+            the turn order of the combat encounter.
+          </p>
         </div>
 
         <div class="section">
@@ -1393,7 +1434,7 @@
         </div>
 
         <div class="section">
-          <h2>Gaining Hit Points</h2>
+          <h2>Gaining Hit Points at a Level Up</h2>
           <p>
             Every time you level up you add hit points, and there are two ways
             to do it. Your DM may prefer one or let you choose, so check with
