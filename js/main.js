@@ -1,66 +1,37 @@
 (function () {
-  const pages = [
-    { href: "character-creator.html", label: "Character Creator" },
-    { href: "turn-guide.html", label: "Turn Guide" },
-    { href: "glossary.html", label: "Glossary" },
-    { href: "xumaria.html", label: "The World of Xumaria" },
-  ];
-
   // Handles direct file open (pathname ends with '/') and server roots
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
-  const links = pages
-    .map(({ href, label }) => {
-      const isActive = href === currentPage;
-      return `<a href="${href}"${isActive ? ' class="active"' : ""}>${label}</a>`;
-    })
-    .join("");
+  // Nav markup is static HTML in each page; mark the current page's link active
+  const navLinks = document.getElementById("nav-links");
+  if (navLinks) {
+    navLinks.querySelectorAll("a").forEach((link) => {
+      link.classList.toggle(
+        "active",
+        link.getAttribute("href") === currentPage,
+      );
+    });
+  }
 
-  const header = document.querySelector("header");
-  if (header) {
-    header.innerHTML = `<nav class="main-nav">
-    <a href="index.html" class="nav-logo">
-      <img src="assets/d20_transparent.png" alt="d20" class="nav-logo-icon" />
-      D&amp;D Onboarding (5e)
-    </a>
-    <button
-      class="nav-toggle"
-      id="nav-toggle"
-      type="button"
-      aria-label="Toggle navigation menu"
-      aria-expanded="false"
-      aria-controls="nav-links"
-    >
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-    </button>
-    <div class="nav-links" id="nav-links">
-      ${links}
-    </div>
-  </nav>`;
+  // Hamburger menu (mobile only — hidden via CSS above the mobile breakpoint)
+  const navToggle = document.getElementById("nav-toggle");
+  if (navToggle && navLinks) {
+    const closeMenu = () => {
+      navLinks.classList.remove("open");
+      navToggle.classList.remove("open");
+      navToggle.setAttribute("aria-expanded", "false");
+    };
 
-    // Hamburger menu (mobile only — hidden via CSS above the mobile breakpoint)
-    const navToggle = document.getElementById("nav-toggle");
-    const navLinks = document.getElementById("nav-links");
-    if (navToggle && navLinks) {
-      const closeMenu = () => {
-        navLinks.classList.remove("open");
-        navToggle.classList.remove("open");
-        navToggle.setAttribute("aria-expanded", "false");
-      };
+    navToggle.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      navToggle.classList.toggle("open", isOpen);
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+    });
 
-      navToggle.addEventListener("click", () => {
-        const isOpen = navLinks.classList.toggle("open");
-        navToggle.classList.toggle("open", isOpen);
-        navToggle.setAttribute("aria-expanded", String(isOpen));
-      });
-
-      // Tapping a link should close the menu behind it
-      navLinks
-        .querySelectorAll("a")
-        .forEach((link) => link.addEventListener("click", closeMenu));
-    }
+    // Tapping a link should close the menu behind it
+    navLinks
+      .querySelectorAll("a")
+      .forEach((link) => link.addEventListener("click", closeMenu));
   }
 
   // Page Modules
@@ -188,11 +159,15 @@
     showStep(hashStep ?? 0, { updateUrl: false });
   }
 
-  function initRulesGuide() {
+  function initGlossary() {
     // TODO
   }
 
   function initTurnGuide() {
+    // TODO
+  }
+
+  function initXumaria() {
     // TODO
   }
 
@@ -203,11 +178,14 @@
       case "character-creator.html":
         initCharacterCreator();
         break;
-      case "rules-guide.html":
-        initRulesGuide();
+      case "glossary.html":
+        initGlossary();
         break;
       case "turn-guide.html":
         initTurnGuide();
+        break;
+      case "xumaria.html":
+        initXumaria();
         break;
     }
   }

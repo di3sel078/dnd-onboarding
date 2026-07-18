@@ -16,12 +16,41 @@
   </head>
 
   <body>
-    <!-- Navigation Header (updated in main.js) -->
-    <header></header>
+    <header>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-logo">
+          <img
+            src="assets/d20_transparent.png"
+            alt="d20"
+            class="nav-logo-icon"
+          />
+          D&amp;D Onboarding (5e)
+        </a>
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="nav-links"
+        >
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="character-creator.html">Build a Character</a>
+          <a href="turn-guide.html" class="active">On Your Turn</a>
+          <a href="glossary.html">Glossary</a>
+          <a href="xumaria.html">My Campaign Setting: Xumaria</a>
+        </div>
+      </nav>
+    </header>
 
     <main>
-      <h1>On Your Turn:</h1>
-      <p>Coming Soon!</p>
+      <h1>Turn Guide</h1>
+      <br />
+      <p>Coming soon!</p>
     </main>
 
     <script src="js/main.js"></script>

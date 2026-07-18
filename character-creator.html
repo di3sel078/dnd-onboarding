@@ -17,8 +17,36 @@
   </head>
 
   <body>
-    <!-- Navigation Header (updated in main.js) -->
-    <header></header>
+    <header>
+      <nav class="main-nav">
+        <a href="index.html" class="nav-logo">
+          <img
+            src="assets/d20_transparent.png"
+            alt="d20"
+            class="nav-logo-icon"
+          />
+          D&amp;D Onboarding (5e)
+        </a>
+        <button
+          class="nav-toggle"
+          id="nav-toggle"
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="nav-links"
+        >
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <div class="nav-links" id="nav-links">
+          <a href="character-creator.html" class="active">Build a Character</a>
+          <a href="turn-guide.html">On Your Turn</a>
+          <a href="glossary.html">Glossary</a>
+          <a href="xumaria.html">My Campaign Setting: Xumaria</a>
+        </div>
+      </nav>
+    </header>
 
     <main>
       <!-- Step Tracker -->
@@ -134,11 +162,14 @@
               A full set of dice or a dice rolling app
               <ul>
                 <li>
-                  A dice set includes: 1d4, 1d6, 1d8, 1d10, 1d12, 1d100, 1d20
+                  A dice set includes: 1d4, 1d6, 1d8, 1d10, 1d12, 1d20, 1d100
+                  (percentile dice, pairs with d10)
                   <ul>
                     <li>
-                      The number before the d is how many dice to roll, the
-                      number after is how many sides
+                      <i>
+                        The number before the d is how many dice to roll, the
+                        number after is how many sides
+                      </i>
                     </li>
                   </ul>
                 </li>
@@ -149,7 +180,15 @@
               A pencil (or something to edit your sheet with, but not
               permanently!)
             </li>
-            <li>At least 3-6 people, including the DM</li>
+            <li>
+              4-6 people including the DM (2 players + DM works in a pinch)
+              <ul>
+                <li>
+                  3-5 players is ideal for most games, 6+ players is difficult
+                  to manage for newer DMs
+                </li>
+              </ul>
+            </li>
           </ul>
         </div>
 
@@ -420,13 +459,15 @@
             <li>
               <strong>Primary Ability:</strong> The ability score that matters
               most for this class. When you set your scores in Step 4, this is
-              where you'll usually want your highest number.
+              where you'll usually want your highest number. A " &amp;" means
+              both abilities are important, where an "or" means you can choose
+              either one.
             </li>
             <li>
               <strong>Saving Throw Proficiencies:</strong> The two saving throws
-              (a d20 roll that symbolizes a reaction to the environment) your
-              class is trained in, letting you add your proficiency bonus
-              (explained fully in Step 7) when resisting certain effects.
+              (a d20 roll you make to resist things like poison, fire, or a
+              spell) your class is trained in, letting you add your proficiency
+              bonus (explained fully in Step 7) when resisting certain effects.
             </li>
             <li>
               <strong>Spellcasting:</strong> Whether the class casts spells, and
@@ -570,7 +611,7 @@
               <strong>Saving Throws:</strong> Intelligence &amp; Constitution
             </li>
             <li><strong>Spellcasting:</strong> Yes (Intelligence)</li>
-            <li><strong>Subclass Level:</strong>3</li>
+            <li><strong>Subclass Level:</strong> 3</li>
           </ul>
         </div>
       </div>
@@ -663,28 +704,47 @@
               </li>
             </ol>
           </div>
+
+          <!-- Rolling for Stats -->
           <div>
             <h3>Rolling for Stats</h3>
             <p>
               To roll for your stats you're going to need 4d6 (four six-sided
               dice). Roll all four at once and add up the three highest rolls
               (ignore the lowest rolled die). Then repeat this for all six
-              ability scores. Make sure to jot down your scores somewhere on
-              your sheet, but know these scores aren't final. Things like your
-              race and level will affect your ability scores.
+              ability scores. Once you have all six numbers, assign them to
+              whichever abilities you like (usually putting your highest in your
+              class's primary ability) but know these scores aren't final;
+              Things like your race and level will affect your ability scores.
             </p>
           </div>
+
+          <!-- Standard Array -->
+          <div>
+            <h3>Standard Array</h3>
+            <p>
+              Standard Array is the fastest way to set your ability scores: you
+              get six preset numbers (15, 14, 13, 12, 10, and 8) and assign them
+              to your six stats however you like. There's no math involved, just
+              placement. It's a great option if you want a balanced character
+              without spending time on number-crunching.
+            </p>
+          </div>
+
+          <!-- Point Buy -->
           <div>
             <h3>Point Buy</h3>
             <p>
               Point Buy gives you 27 points to spend on your six ability scores,
               with each score starting at 8. You can raise a score by spending
-              points but keep in mind, lower scores are cheaper (scores 8-13
-              cost 1 point), while pushing a score to 14 or 15 costs more (2
-              points each). No score can go above 15 (before racial bonuses),
-              keeping characters balanced while giving you full control over
-              your build.
+              points but keep in mind, lower scores are cheaper. Each point of
+              increase up to 13 costs 1 point; raising a score from 13 to 14 or
+              from 14 to 15 costs 2 points each. No score can go above 15
+              (before racial bonuses), keeping characters balanced while giving
+              you full control over your build.
             </p>
+
+            <!-- Point Buy Table -->
             <div class="table-wrap">
               <table class="modifier-table">
                 <tr>
@@ -726,16 +786,6 @@
               </table>
             </div>
           </div>
-          <div>
-            <h3>Standard Array</h3>
-            <p>
-              Standard Array is the fastest way to set your ability scores: you
-              get six preset numbers (15, 14, 13, 12, 10, and 8) and assign them
-              to your six stats however you like. There's no math involved, just
-              placement. It's a great option if you want a balanced character
-              without spending time on number-crunching.
-            </p>
-          </div>
         </div>
 
         <!-- What to do with Ability Scores -->
@@ -746,8 +796,8 @@
             ability. They affect your health, how hard you hit, how well you
             take a hit, and so much more. Each Ability Score corresponds to a
             “modifier” which you use to affect your dice rolls. Your modifier is
-            also added to saving throws (rolls you make to resist things like
-            poison, fire, or a spell) depending on which ability score is being
+            also added to saving throws (a d20 roll that symbolizes a reaction
+            to the environment) depending on which ability score is being
             tested.
           </p>
           <p>

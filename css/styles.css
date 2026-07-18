@@ -154,7 +154,7 @@ h1 {
 }
 
 h2 {
-  font-size: var(--text-xl);
+  font-size: var(--text-2xl);
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
   color: var(--color-text);
@@ -163,6 +163,7 @@ h2 {
 
 h3 {
   margin: var(--space-3) 0;
+  font-size: var(--text-lg);
 }
 
 /* Matches h3 styling since browsers don't bold/size <summary> by default */
@@ -222,7 +223,7 @@ p {
 
 .section figure img {
   width: 100%;
-  max-width: 400px;
+  max-width: 800px;
   height: auto;
   border-radius: var(--border-radius);
 }
@@ -349,6 +350,7 @@ hr {
 .table-wrap {
   border-top-left-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
+  margin: var(--space-6) 0;
   overflow: hidden;
 }
 
@@ -391,6 +393,7 @@ hr {
   padding-left: var(--space-6);
   padding-right: var(--space-6);
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .step-tracker-nav::after {
