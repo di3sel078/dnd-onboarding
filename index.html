@@ -20,7 +20,11 @@
     <header>
       <nav class="main-nav">
         <a href="index.html" class="nav-logo">
-          <img src="assets/d20_transparent.png" alt="d20" class="nav-logo-icon" />
+          <img
+            src="assets/d20_transparent.png"
+            alt="d20"
+            class="nav-logo-icon"
+          />
           D&amp;D Onboarding (5e)
         </a>
         <button
@@ -36,10 +40,13 @@
           <span class="nav-toggle-bar"></span>
         </button>
         <div class="nav-links" id="nav-links">
-          <a href="character-creator.html">Build a Character</a>
-          <a href="turn-guide.html">On Your Turn</a>
+          <a href="index.html" class="active">Home</a>
+          <a href="character-creator.html">Build Your Character</a>
+          <a href="turn-guide.html">Survive Combat</a>
+          <a href="roleplaying.html">Play Your Character</a>
           <a href="glossary.html">Glossary</a>
-          <a href="xumaria.html">My Campaign Setting: Xumaria</a>
+          <a href="extra-rules.html" class="nav-sublink">Extra Rules</a>
+          <a href="xumaria.html">My Campaign Setting: The World of Xumaria</a>
         </div>
       </nav>
     </header>
@@ -47,24 +54,49 @@
     <!-- Home Page Content -->
     <main>
       <section class="hero">
-        <h1>A One-Stop D&D Introduction!</h1>
+        <h1>A Simple Guide to Playing D&D!</h1>
         <p class="hero-sub">
           Everything you need to go from curious beginner to ready-to-play
           adventurer.
         </p>
-        <a href="character-creator.html" class="btn btn-primary"
-          >Build Your First Character →</a
-        >
       </section>
 
       <div id="intro-content">
         <div class="section">
           <h2>D&D in One Sentence</h2>
           <p>
-            Dungeons & Dragons is a cooperative tabletop roleplaying game where
-            you and your friends roll dice, battle monsters, and build epic
-            stories together.
+            D&D is a cooperative tabletop roleplaying game where you and your
+            friends roll dice, battle monsters, and build epic stories together.
           </p>
+        </div>
+
+        <div class="section">
+          <h2>How This Website Works</h2>
+          <div class="nav-cards">
+            <a href="character-creator.html" class="nav-card">
+              <h3>Build Your Character</h3>
+              <p>
+                A step-by-step guide to creating your first adventurer, from
+                concept and class to stats and equipment.
+              </p>
+            </a>
+            <span class="nav-card-arrow" aria-hidden="true">→</span>
+            <a href="turn-guide.html" class="nav-card">
+              <h3>Survive Combat</h3>
+              <p>
+                A quick-reference walkthrough for what to do when combat comes
+                around to you.
+              </p>
+            </a>
+            <span class="nav-card-arrow" aria-hidden="true">→</span>
+            <a href="roleplaying.html" class="nav-card">
+              <h3>Play Your Character</h3>
+              <p>
+                Tips for getting into character and playing well with others at
+                the table. (Work in progress!)
+              </p>
+            </a>
+          </div>
         </div>
 
         <div class="section">
@@ -86,11 +118,37 @@
         </div>
 
         <div class="section">
-          <h2>The Core Loop</h2>
+          <h2>The Core Loop of D&D</h2>
+          <div class="loop-cards">
+            <div class="loop-card">
+              <p>The DM describes the scene</p>
+            </div>
+            <span class="loop-card-arrow" aria-hidden="true">→</span>
+            <div class="loop-card">
+              <p>The players state their actions</p>
+            </div>
+            <span class="loop-card-arrow" aria-hidden="true">→</span>
+            <div class="loop-card">
+              <p>The dice resolve uncertain actions</p>
+            </div>
+            <span class="loop-card-arrow" aria-hidden="true">→</span>
+            <div class="loop-card">
+              <p>The DM narrates the results</p>
+            </div>
+            <span
+              class="loop-card-arrow loop-card-arrow-repeat"
+              aria-hidden="true"
+              >↺</span
+            >
+          </div>
+        </div>
+
+        <div class="section">
+          <h2>The Core Loop (Original)</h2>
           <ol>
             <li>The DM describes the scene</li>
             <li>The players state their actions</li>
-            <li>The dice determine the outcome</li>
+            <li>The dice resolve uncertain actions</li>
             <li>The DM narrates the results</li>
             <li>Repeat!</li>
           </ol>

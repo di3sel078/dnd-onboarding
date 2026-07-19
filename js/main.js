@@ -13,7 +13,7 @@
     });
   }
 
-  // Hamburger menu (mobile only — hidden via CSS above the mobile breakpoint)
+  // Hamburger menu (always on — nav-links is a dropdown at every screen size)
   const navToggle = document.getElementById("nav-toggle");
   if (navToggle && navLinks) {
     const closeMenu = () => {
@@ -159,7 +159,15 @@
     showStep(hashStep ?? 0, { updateUrl: false });
   }
 
+  function initRoleplaying() {
+    // TODO
+  }
+
   function initGlossary() {
+    // TODO
+  }
+
+  function initExtraRules() {
     // TODO
   }
 
@@ -178,8 +186,14 @@
       case "character-creator.html":
         initCharacterCreator();
         break;
+      case "roleplaying.html":
+        initRoleplaying();
+        break;
       case "glossary.html":
         initGlossary();
+        break;
+      case "extra-rules.html":
+        initExtraRules();
         break;
       case "turn-guide.html":
         initTurnGuide();
