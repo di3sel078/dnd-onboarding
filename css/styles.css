@@ -40,6 +40,20 @@ main {
   padding: var(--space-12) var(--space-6); /* Top/bottom, then left/right */
 }
 
+/* On larger monitors, widen the reading column instead of leaving it
+   as a narrow strip surrounded by empty space. */
+@media (min-width: 1440px) {
+  main {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1920px) {
+  main {
+    max-width: 1200px;
+  }
+}
+
 /* NAVIGATION */
 
 header {
@@ -214,7 +228,6 @@ h3 {
 p {
   color: var(--color-text);
   line-height: var(--leading-normal);
-  max-width: 65ch; /* ~65 characters per line — optimal for reading */
 }
 
 /* Muted helper text (add class="text-muted" to any element) */
@@ -497,6 +510,18 @@ hr {
 
 .modifier-table td {
   color: var(--color-text);
+}
+
+/* Wider tables (more than 2 columns) need room to scroll instead of
+   overflowing their section, and tighter padding so columns aren't cut off */
+.table-wrap {
+  overflow-x: auto;
+}
+
+.class-table th,
+.class-table td {
+  padding: var(--space-2) var(--space-3);
+  font-size: var(--text-sm);
 }
 
 /* Character Creation Step Tracker */
