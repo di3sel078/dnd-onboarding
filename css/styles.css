@@ -244,6 +244,12 @@ p {
   gap: var(--space-6);
 }
 
+.center-container {
+  margin: var(--space-6);
+  display: flex;
+  justify-content: center;
+}
+
 .section {
   background: var(--color-surface);
   border-left: var(--space-1) solid var(--color-accent);
