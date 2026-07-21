@@ -1,11 +1,15 @@
-/* 
+/*
    STYLES
    Uses tokens from variables.css.
-   Organized: Base → Layout → Nav → Typography → Components 
+   Organized: Reset & Base → Layout → Typography → Navigation → Buttons →
+   Shared Section/Card Styles → Homepage → Character Creator Page → Footer →
+   Responsive
 */
 
-/* BASE */
-/* Applies to the whole page */
+/* ============================================================
+   RESET & BASE
+   Applies to the whole page
+   ============================================================ */
 
 *,
 *::before,
@@ -13,6 +17,7 @@
   box-sizing: border-box; /* Padding doesn't expand element width */
 }
 
+/* Page-wide defaults: background, text color, base font */
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
@@ -31,9 +36,12 @@ p {
   margin: 0;
 }
 
-/* LAYOUT  */
-/* Centers content and controls max reading width */
+/* ============================================================
+   LAYOUT
+   Centers content and controls max reading width
+   ============================================================ */
 
+/* Main content column: centers the page and caps the reading width */
 main {
   max-width: var(--max-width);
   margin: 0 auto; /* Centers the column */
@@ -54,8 +62,74 @@ main {
   }
 }
 
-/* NAVIGATION */
+/* ============================================================
+   TYPOGRAPHY
+   ============================================================ */
 
+/* Page title */
+h1 {
+  font-size: var(--text-4xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em; /* Slight tightening looks cleaner at large sizes */
+}
+
+/* Section heading */
+h2 {
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+/* Sub-heading within a section */
+h3 {
+  margin: var(--space-3) 0;
+  font-size: var(--text-lg);
+}
+
+/* Matches h3 styling since browsers don't bold/size <summary> by default */
+.house-rules-details {
+  display: list-item;
+  font-size: var(--text-lg);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--color-text);
+  margin: var(--space-3) 0;
+  cursor: pointer;
+}
+
+/* Default paragraph color and line height */
+p {
+  color: var(--color-text);
+  line-height: var(--leading-normal);
+}
+
+/* Muted helper text (add class="text-muted" to any element) */
+.text-muted {
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+}
+
+.class-list {
+  display: flex;
+  flex-direction: column;
+  list-style-type: none;
+  padding: var(--space-4);
+  gap: var(--space-6);
+  margin: 0;
+}
+
+.class-list-names {
+  font-size: var(--text-xl);
+}
+
+/* ============================================================
+   NAVIGATION
+   ============================================================ */
+
+/* Site header bar wrapping the nav */
 header {
   background-color: var(--color-nav);
   border-bottom: 1px solid var(--color-border);
@@ -64,6 +138,7 @@ header {
   z-index: 100;
 }
 
+/* Nav bar layout: logo on the left, links/hamburger on the right */
 .main-nav {
   margin: 0 var(--space-8);
   padding: 0 var(--space-8);
@@ -73,6 +148,7 @@ header {
   gap: var(--space-8);
 }
 
+/* Logo + site name, top-left of the nav */
 .nav-logo {
   display: flex;
   align-items: center;
@@ -84,6 +160,16 @@ header {
   margin-right: auto; /* Pushes other links to the right */
 }
 
+/* Small logo image/icon next to the site name */
+.nav-logo-icon {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  margin-left: -2px;
+}
+
+/* Mobile dropdown menu opened by the hamburger button */
 .nav-links {
   display: none;
   position: absolute;
@@ -104,6 +190,7 @@ header {
   display: flex;
 }
 
+/* Base link style shared by all nav links */
 .main-nav a {
   color: var(--color-text-muted);
   text-decoration: none;
@@ -116,8 +203,10 @@ header {
 
 .main-nav a:hover {
   color: var(--color-text);
+  background-color: var(--color-surface);
 }
 
+/* Individual link row inside the mobile dropdown */
 .nav-links a {
   width: 100%;
   padding: var(--space-4) var(--space-6);
@@ -132,6 +221,7 @@ header {
   padding-bottom: 2px;
 }
 
+/* Current-page highlight inside the mobile dropdown */
 .nav-links a.active {
   border-bottom: 1px solid var(--color-border);
   border-left: 3px solid var(--color-accent);
@@ -156,10 +246,12 @@ header {
   gap: var(--space-6);
 }
 
+/* Wrapper for the "Reference" dropdown trigger + menu */
 .nav-dropdown {
   position: relative;
 }
 
+/* Button that opens/closes the Reference dropdown */
 .nav-dropdown-toggle {
   display: flex;
   align-items: center;
@@ -186,6 +278,7 @@ header {
   padding-bottom: 2px;
 }
 
+/* Chevron icon on the dropdown toggle */
 .nav-dropdown-caret {
   font-size: 0.7em;
   transition: transform 0.15s ease;
@@ -195,6 +288,7 @@ header {
   transform: rotate(180deg);
 }
 
+/* Popover menu listing the Reference sub-pages */
 .nav-dropdown-menu {
   display: none;
   flex-direction: column;
@@ -216,6 +310,7 @@ header {
   display: flex;
 }
 
+/* Individual link row inside the Reference dropdown */
 .nav-dropdown-menu a {
   padding: var(--space-3) var(--space-4);
   border-bottom: 1px solid var(--color-border);
@@ -243,6 +338,7 @@ header {
   flex-shrink: 0;
 }
 
+/* One of the three lines making up the hamburger icon */
 .nav-toggle-bar {
   display: block;
   width: 22px;
@@ -266,14 +362,6 @@ header {
   transform: translateY(-7px) rotate(-45deg);
 }
 
-.nav-logo-icon {
-  height: 28px;
-  width: auto;
-  object-fit: contain;
-  flex-shrink: 0;
-  margin-left: -2px;
-}
-
 /* At wider screens, the Reference dropdown replaces the hamburger —
    swap the hamburger dropdown for the inline desktop row */
 @media (min-width: 641px) {
@@ -287,58 +375,71 @@ header {
   }
 }
 
-/* TYPOGRAPHY */
+/* ============================================================
+   BUTTONS
+   ============================================================ */
 
-h1 {
-  font-size: var(--text-4xl);
-  font-weight: var(--weight-bold);
-  line-height: var(--leading-tight);
-  letter-spacing: -0.02em; /* Slight tightening looks cleaner at large sizes */
+/* Base button style shared by all button variants */
+.btn {
+  display: inline-block;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--border-radius);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-base);
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    border-color 0.15s ease;
 }
 
-h2 {
-  font-size: var(--text-2xl);
-  font-weight: var(--weight-bold);
-  line-height: var(--leading-tight);
+/* Filled, high-emphasis button variant */
+.btn-primary {
+  background-color: var(--color-accent);
   color: var(--color-text);
-  margin-bottom: var(--space-3);
+  border: 2px solid var(--color-accent);
 }
 
-h3 {
-  margin: var(--space-3) 0;
-  font-size: var(--text-lg);
+.btn-primary:hover {
+  background-color: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
 }
 
-/* Matches h3 styling since browsers don't bold/size <summary> by default */
-.house-rules-details {
-  display: list-item;
-  font-size: var(--text-lg);
-  font-weight: var(--weight-bold);
-  line-height: var(--leading-tight);
+/* Outlined, lower-emphasis button variant */
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-accent);
   color: var(--color-text);
-  margin: var(--space-3) 0;
-  cursor: pointer;
 }
 
-p {
-  color: var(--color-text);
-  line-height: var(--leading-normal);
-}
-
-/* Muted helper text (add class="text-muted" to any element) */
-.text-muted {
+/* Muted button variant linking out to the glossary */
+.btn-glossary {
   color: var(--color-text-muted);
-  font-size: var(--text-sm);
+  background-color: transparent;
+  border: 2px solid var(--color-text-muted);
+  margin: var(--space-6);
 }
 
-/* 5. CONTENT SECTIONS */
-
-#intro-content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-6);
+.btn-glossary:visited {
+  color: var(--color-text-muted);
 }
 
+.btn-glossary:hover {
+  color: var(--color-text);
+  border: 2px solid var(--color-text);
+}
+
+/* ============================================================
+   SHARED SECTION & CARD STYLES
+   Building blocks reused across every page
+   ============================================================ */
+
+/* Centers its children as a column (e.g. hero content) */
 .center-container {
   margin: var(--space-6);
   display: flex;
@@ -347,6 +448,7 @@ p {
   text-align: center;
 }
 
+/* Card-like content block with a left accent border, used throughout each page */
 .section {
   background: var(--color-surface);
   border-left: var(--space-1) solid var(--color-accent);
@@ -354,23 +456,28 @@ p {
   margin-bottom: var(--space-6);
 }
 
+/* Spaces a paragraph from whatever precedes it within a section */
 .section p {
   margin-top: var(--space-3);
   color: var(--color-text);
 }
 
+/* Extra breathing room before a sub-heading that follows body text */
 .section p + h3 {
   margin-top: var(--space-6);
 }
 
+/* Spaces a button from the content above it within a section */
 .section > .btn {
   margin-top: var(--space-4);
 }
 
+/* Spacing below an image figure in a section */
 .section figure {
   margin-bottom: var(--space-6);
 }
 
+/* Responsive image inside a section figure */
 .section figure img {
   width: 100%;
   max-width: 800px;
@@ -378,6 +485,7 @@ p {
   border-radius: var(--border-radius);
 }
 
+/* Spaces stacked direct-child divs within a section (e.g. repeated blocks) */
 .section > div + div {
   margin-top: var(--space-6);
 }
@@ -389,6 +497,44 @@ hr {
   margin: var(--space-8) 0;
 }
 
+/* Centered call-to-action block at the bottom of a page */
+.page-cta {
+  text-align: center;
+  margin: var(--space-16);
+}
+
+/* ============================================================
+   HOMEPAGE
+   ============================================================ */
+
+/* Stacks the homepage intro's paragraphs with even spacing */
+#intro-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+/* Homepage hero section wrapper */
+.hero {
+  text-align: center;
+}
+
+/* Subtitle text under the hero heading */
+.hero-sub {
+  color: var(--color-text-muted);
+  font-size: var(--text-lg);
+  margin-top: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+/* Row of call-to-action buttons in the hero */
+.hero-actions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+}
+
+/* Homepage grid linking to the three tools, with arrows between the cards */
 .nav-cards {
   display: grid;
   grid-template-columns: 1fr auto 1fr auto 1fr;
@@ -397,6 +543,7 @@ hr {
   margin-bottom: var(--space-8);
 }
 
+/* Arrow glyph between two nav cards */
 .nav-card-arrow {
   align-self: center;
   color: var(--color-text);
@@ -404,6 +551,7 @@ hr {
   font-weight: var(--weight-bold);
 }
 
+/* Individual clickable card linking to a tool */
 .nav-card {
   display: flex;
   flex-direction: column;
@@ -422,17 +570,20 @@ hr {
   transform: translateY(-2px);
 }
 
+/* Nav card title */
 .nav-card h3 {
   color: var(--color-text);
   margin-bottom: var(--space-2);
 }
 
+/* Nav card description text */
 .nav-card p {
   color: var(--color-text-muted);
   font-size: var(--text-sm);
   line-height: var(--leading-normal);
 }
 
+/* Grid arranging the 4 "core loop" cards in a square, with arrows between them */
 .loop-cards {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
@@ -442,9 +593,10 @@ hr {
     "left center right"
     "bl bottom br";
   gap: var(--space-2) var(--space-4);
-  margin-top: var(--space-4);
+  margin-top: var(--space-6);
 }
 
+/* Places each loop card in its grid-area corner */
 .loop-card-tl {
   grid-area: tl;
 }
@@ -461,6 +613,7 @@ hr {
   grid-area: bl;
 }
 
+/* Shared style for the arrow glyphs between loop cards */
 .loop-arrow {
   display: flex;
   align-items: center;
@@ -470,12 +623,15 @@ hr {
   font-weight: var(--weight-bold);
 }
 
+/* Positions each arrow glyph in its grid-area */
 .loop-arrow-top {
   grid-area: top;
+  margin: var(--space-12);
 }
 
 .loop-arrow-right {
   grid-area: right;
+  margin: var(--space-12);
 }
 
 .loop-arrow-bottom {
@@ -486,130 +642,29 @@ hr {
   grid-area: left;
 }
 
+/* Individual "core loop" card */
 .loop-card {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   background: var(--color-bg);
-  border: 1px solid var(--color-accent-border);
+  border: 1px solid var(--color-accent);
   border-radius: var(--border-radius);
-  padding: var(--space-4);
-  padding-bottom: var(--space-6);
-  transition:
-    border-color 0.15s ease,
-    transform 0.15s ease;
 }
 
-.loop-card:hover {
-  border-color: var(--color-accent);
-  transform: translateY(-2px);
-}
-
+/* Loop card's label text */
 .loop-card p {
+  margin: 0;
   color: var(--color-text);
-  font-size: var(--text-sm);
-  line-height: var(--leading-normal);
+  font-size: var(--text-xl);
 }
 
-/* HERO, BUTTONS & FOOTER */
+/* ============================================================
+   CHARACTER CREATOR PAGE
+   ============================================================ */
 
-.hero {
-  text-align: center;
-}
-
-.hero-sub {
-  color: var(--color-text-muted);
-  font-size: var(--text-lg);
-  margin-top: var(--space-4);
-  margin-bottom: var(--space-8);
-}
-
-.hero-actions {
-  display: flex;
-  gap: var(--space-4);
-  justify-content: center;
-}
-
-.btn {
-  display: inline-block;
-  padding: var(--space-3) var(--space-6);
-  border-radius: var(--border-radius);
-  font-weight: var(--weight-semibold);
-  font-size: var(--text-base);
-  text-decoration: none;
-  transition:
-    background-color 0.15s ease,
-    color 0.15s ease,
-    border-color 0.15s ease;
-}
-
-.btn-primary {
-  background-color: var(--color-accent);
-  color: var(--color-text);
-  border: 2px solid var(--color-accent);
-}
-
-.btn-primary:hover {
-  background-color: var(--color-accent-dark);
-  border-color: var(--color-accent-dark);
-}
-
-.btn-secondary {
-  background-color: transparent;
-  color: var(--color-accent);
-  border: 2px solid var(--color-accent);
-}
-
-.btn-secondary:hover {
-  background-color: var(--color-accent);
-  color: var(--color-text);
-}
-
-.page-cta {
-  text-align: center;
-  margin: var(--space-16);
-}
-
-.step-nav {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  margin-top: var(--space-8);
-}
-
-.btn-glossary {
-  color: var(--color-text-muted);
-  background-color: transparent;
-  border: 2px solid var(--color-text-muted);
-  margin: var(--space-6);
-}
-
-.btn-glossary:visited {
-  color: var(--color-text-muted);
-}
-
-.btn-glossary:hover {
-  color: var(--color-text);
-  border: 2px solid var(--color-text);
-}
-
-/* Footer */
-
-.site-footer {
-  border-top: 1px solid var(--color-border);
-  color: var(--color-text-muted);
-  font-size: var(--text-sm);
-  text-align: center;
-  padding: var(--space-8) var(--space-6);
-}
-
-.site-footer p {
-  margin: 0 auto;
-}
-
-/* -- Character Creation Page Content -- */
-
+/* One step of the character creator; hidden unless active */
 .step {
   display: none;
 }
@@ -619,6 +674,7 @@ hr {
   flex-direction: column;
 }
 
+/* "Step X of Y" label */
 .step-count {
   display: block;
   margin: var(--space-3) 0;
@@ -632,21 +688,33 @@ hr {
   font-style: italic;
 }
 
-/* Ability Score Modifier Table */
+/* Prev/Next button row at the bottom of a guide step */
+.step-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: var(--space-8);
+}
 
+/* -- Ability Score Modifier Table -- */
+
+/* Rounded, scrollable wrapper around a table */
 .table-wrap {
   border-top-left-radius: var(--border-radius);
   border-top-right-radius: var(--border-radius);
   margin: var(--space-6) 0;
-  overflow: hidden;
+  overflow: hidden; /* clip the rounded corners... */
+  overflow-x: auto; /* ...but still let wide tables scroll horizontally */
 }
 
+/* Ability score → modifier reference table */
 .modifier-table {
   width: 100%;
   border-collapse: collapse;
   background-color: var(--color-surface);
 }
 
+/* Cell padding/border/alignment for the modifier table */
 .modifier-table th,
 .modifier-table td {
   padding: var(--space-3) var(--space-6);
@@ -654,6 +722,7 @@ hr {
   text-align: center;
 }
 
+/* Header row styling */
 .modifier-table th {
   background-color: var(--color-accent-dark);
   color: var(--color-text);
@@ -665,20 +734,16 @@ hr {
   color: var(--color-text);
 }
 
-/* Wider tables (more than 2 columns) need room to scroll instead of
-   overflowing their section, and tighter padding so columns aren't cut off */
-.table-wrap {
-  overflow-x: auto;
-}
-
+/* Tighter cell padding for the wider class-features table */
 .class-table th,
 .class-table td {
   padding: var(--space-2) var(--space-3);
   font-size: var(--text-sm);
 }
 
-/* Character Creation Step Tracker */
+/* -- Step Tracker -- */
 
+/* Full-bleed row containing the step tracker + its divider line */
 .step-tracker-nav {
   position: relative;
   display: flex;
@@ -695,6 +760,7 @@ hr {
   overflow-x: hidden;
 }
 
+/* Full-width divider line under the tracker */
 .step-tracker-nav::after {
   content: "";
   position: absolute;
@@ -706,6 +772,7 @@ hr {
   background-color: var(--color-border);
 }
 
+/* Row of step pips (the numbered circles) */
 .step-tracker {
   display: flex;
   justify-content: space-between;
@@ -718,6 +785,7 @@ hr {
   gap: var(--space-2);
 }
 
+/* Wrapper for a single step pip + its connector line */
 .tracker-entry {
   position: relative;
   display: flex;
@@ -725,6 +793,7 @@ hr {
   min-width: 0;
 }
 
+/* Clickable button containing a pip + label */
 .tracker-entry-btn {
   display: flex;
   flex-direction: column;
@@ -745,6 +814,7 @@ hr {
 .tracker-entry:hover .step-label {
   color: var(--color-text);
 }
+/* Connector line between one pip and the next */
 .tracker-entry:not(:last-child)::after {
   content: "";
   position: absolute;
@@ -756,7 +826,7 @@ hr {
   z-index: -1;
 }
 
-.step-icon /* defeault */ {
+.step-icon /* default (not yet reached) step pip */ {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -770,12 +840,14 @@ hr {
   color: var(--color-text-muted);
 }
 
+/* Currently selected step */
 .step-icon.active {
   border-color: var(--color-accent-border);
   background-color: var(--color-accent);
   color: var(--color-text);
 }
 
+/* Steps already passed, shown with a checkmark */
 .step-icon.complete {
   border-color: var(--color-accent-border);
   background-color: var(--color-accent-dark);
@@ -792,6 +864,7 @@ hr {
   font-size: var(--text-sm);
 }
 
+/* Text label under each step pip */
 .step-label {
   font-size: var(--text-sm);
   color: var(--color-text-muted);
@@ -832,8 +905,31 @@ hr {
   cursor: not-allowed;
 }
 
-/* RESPONSIVE */
-/* Mobile gets slightly smaller text and tighter padding */
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+/* Site-wide footer bar */
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  color: var(--color-text-muted);
+  font-size: var(--text-sm);
+  text-align: center;
+  padding: var(--space-8) var(--space-6);
+}
+
+/* Centers footer text */
+.site-footer p {
+  margin: 0 auto;
+}
+
+/* ============================================================
+   RESPONSIVE
+   Mobile gets slightly smaller text and tighter padding.
+   These two breakpoints must stay in this order: several rules
+   below (step tracker sizing) are set at 900px and then
+   overridden again at 640px.
+   ============================================================ */
 
 /* Below this width, show only the current step's pip with prev/next
    arrows on either side instead of the full scrolling row of 9 pips. */
@@ -912,14 +1008,54 @@ hr {
 }
 
 @media (max-width: 640px) {
+  /* Layout */
+  main {
+    padding: var(--space-8) var(--space-4);
+  }
+
+  /* Tighten the nav's own margin/padding so the logo has room to
+     breathe now that it's sharing the row with the hamburger button */
+  .main-nav {
+    margin: 0 var(--space-4);
+    padding: 0 var(--space-4);
+    gap: var(--space-4);
+  }
+
+  /* Typography */
   h1 {
     font-size: var(--text-3xl);
   }
 
+  /* Give paragraphs/headings more breathing room and stop long words
+     from overflowing narrow screens */
+  h1,
+  h2,
+  h3,
+  p {
+    overflow-wrap: break-word;
+  }
+
+  /* Shared section styles */
+  .section {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .page-cta .btn {
+    display: block;
+    text-align: center;
+  }
+
+  /* Homepage */
   .nav-cards {
     grid-template-columns: 1fr;
   }
 
+  .nav-card-arrow {
+    justify-self: center;
+    transform: rotate(90deg);
+  }
+
+  /* Loop cards stack to a single column, tl → top → tr → right → br → ... */
   .loop-cards {
     grid-template-columns: 1fr;
     grid-template-rows: none;
@@ -934,6 +1070,7 @@ hr {
       "left";
   }
 
+  /* Rotate the loop arrows to point down the stacked column instead of across */
   .loop-arrow-top {
     transform: rotate(90deg);
   }
@@ -946,21 +1083,10 @@ hr {
     transform: rotate(180deg);
   }
 
-  .nav-card-arrow {
-    justify-self: center;
-    transform: rotate(90deg);
-  }
-
-  main {
-    padding: var(--space-8) var(--space-4);
-  }
-
-  /* Tighten the nav's own margin/padding so the logo has room to
-     breathe now that it's sharing the row with the hamburger button */
-  .main-nav {
-    margin: 0 var(--space-4);
-    padding: 0 var(--space-4);
-    gap: var(--space-4);
+  /* Character creator page */
+  .modifier-table th,
+  .modifier-table td {
+    padding: var(--space-2) var(--space-3);
   }
 
   /* Slightly smaller than the 900px size, but still bigger than desktop */
@@ -985,28 +1111,5 @@ hr {
 
   .step-label {
     font-size: 0.7rem;
-  }
-
-  /* Give paragraphs/headings more breathing room and stop long words
-     from overflowing narrow screens */
-  h1,
-  h2,
-  h3,
-  p {
-    overflow-wrap: break-word;
-  }
-
-  .section {
-    padding: var(--space-6) var(--space-4);
-  }
-
-  .modifier-table th,
-  .modifier-table td {
-    padding: var(--space-2) var(--space-3);
-  }
-
-  .page-cta .btn {
-    display: block;
-    text-align: center;
   }
 }
