@@ -88,13 +88,15 @@ header {
   display: none;
   position: absolute;
   top: 100%;
-  left: 0;
   right: 0;
   flex-direction: column;
   align-items: stretch;
   gap: 0;
+  width: max-content;
+  max-width: min(20rem, 100vw);
   background-color: var(--color-nav);
   border-bottom: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
@@ -145,7 +147,87 @@ header {
   font-size: var(--text-sm) !important;
 }
 
-/* Hamburger button — always visible; nav-links is a dropdown on all sizes */
+/* Desktop nav row — hidden until the min-width breakpoint below, where it
+   replaces the hamburger. The "Reference" dropdown lives at the end of it
+   so it only ever takes up the right side of the bar, not the full width. */
+.nav-links-desktop {
+  display: none;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--color-text-muted);
+  font-family: inherit;
+  font-size: var(--text-sm);
+  font-weight: var(--weight-medium);
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+.nav-dropdown-toggle:hover,
+.nav-dropdown.open .nav-dropdown-toggle {
+  color: var(--color-text);
+}
+
+.nav-dropdown-toggle.active {
+  color: var(--color-text);
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 2px;
+}
+
+.nav-dropdown-caret {
+  font-size: 0.7em;
+  transition: transform 0.15s ease;
+}
+
+.nav-dropdown.open .nav-dropdown-caret {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown-menu {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: var(--space-4);
+  width: max-content;
+  min-width: 10rem;
+  background-color: var(--color-nav);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.nav-dropdown.open .nav-dropdown-menu {
+  display: flex;
+}
+
+.nav-dropdown-menu a {
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+  font-size: var(--text-sm);
+  white-space: nowrap;
+}
+
+.nav-dropdown-menu a:last-child {
+  border-bottom: none;
+}
+
+/* Hamburger button — visible below the breakpoint; nav-links is its dropdown */
 .nav-toggle {
   display: flex;
   flex-direction: column;
@@ -190,6 +272,19 @@ header {
   object-fit: contain;
   flex-shrink: 0;
   margin-left: -2px;
+}
+
+/* At wider screens, the Reference dropdown replaces the hamburger —
+   swap the hamburger dropdown for the inline desktop row */
+@media (min-width: 641px) {
+  .nav-toggle,
+  .nav-links {
+    display: none;
+  }
+
+  .nav-links-desktop {
+    display: flex;
+  }
 }
 
 /* TYPOGRAPHY */
@@ -247,7 +342,9 @@ p {
 .center-container {
   margin: var(--space-6);
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .section {
@@ -338,21 +435,55 @@ hr {
 
 .loop-cards {
   display: grid;
-  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr auto;
-  align-items: stretch;
-  gap: var(--space-4);
+  grid-template-columns: 1fr auto 1fr;
+  grid-template-rows: 1fr auto 1fr;
+  grid-template-areas:
+    "tl top tr"
+    "left center right"
+    "bl bottom br";
+  gap: var(--space-2) var(--space-4);
   margin-top: var(--space-4);
 }
 
-.loop-card-arrow {
-  align-self: center;
+.loop-card-tl {
+  grid-area: tl;
+}
+
+.loop-card-tr {
+  grid-area: tr;
+}
+
+.loop-card-br {
+  grid-area: br;
+}
+
+.loop-card-bl {
+  grid-area: bl;
+}
+
+.loop-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: var(--color-text);
   font-size: var(--text-2xl);
   font-weight: var(--weight-bold);
 }
 
-.loop-card-arrow-repeat {
-  font-size: var(--text-xl);
+.loop-arrow-top {
+  grid-area: top;
+}
+
+.loop-arrow-right {
+  grid-area: right;
+}
+
+.loop-arrow-bottom {
+  grid-area: bottom;
+}
+
+.loop-arrow-left {
+  grid-area: left;
 }
 
 .loop-card {
@@ -364,6 +495,7 @@ hr {
   border: 1px solid var(--color-accent-border);
   border-radius: var(--border-radius);
   padding: var(--space-4);
+  padding-bottom: var(--space-6);
   transition:
     border-color 0.15s ease,
     transform 0.15s ease;
@@ -436,7 +568,7 @@ hr {
 
 .page-cta {
   text-align: center;
-  margin-top: var(--space-16);
+  margin: var(--space-16);
 }
 
 .step-nav {
@@ -444,6 +576,22 @@ hr {
   justify-content: space-between;
   width: 100%;
   margin-top: var(--space-8);
+}
+
+.btn-glossary {
+  color: var(--color-text-muted);
+  background-color: transparent;
+  border: 2px solid var(--color-text-muted);
+  margin: var(--space-6);
+}
+
+.btn-glossary:visited {
+  color: var(--color-text-muted);
+}
+
+.btn-glossary:hover {
+  color: var(--color-text);
+  border: 2px solid var(--color-text);
 }
 
 /* Footer */
@@ -478,11 +626,10 @@ hr {
 }
 
 .sheet-tip /* Tips under each step of where to put things */ {
-  display: flex;
-  font-style: italic;
   color: var(--color-text-muted);
-  padding-top: var(--space-2);
+  margin-top: var(--space-3);
   margin-bottom: var(--space-6);
+  font-style: italic;
 }
 
 /* Ability Score Modifier Table */
@@ -775,11 +922,28 @@ hr {
 
   .loop-cards {
     grid-template-columns: 1fr;
+    grid-template-rows: none;
+    grid-template-areas:
+      "tl"
+      "top"
+      "tr"
+      "right"
+      "br"
+      "bottom"
+      "bl"
+      "left";
   }
 
-  .loop-card-arrow {
-    justify-self: center;
+  .loop-arrow-top {
     transform: rotate(90deg);
+  }
+
+  .loop-arrow-bottom {
+    transform: rotate(-90deg);
+  }
+
+  .loop-arrow-left {
+    transform: rotate(180deg);
   }
 
   .nav-card-arrow {

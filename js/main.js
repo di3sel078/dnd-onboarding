@@ -2,18 +2,109 @@
   // Handles direct file open (pathname ends with '/') and server roots
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
-  // Nav markup is static HTML in each page; mark the current page's link active
-  const navLinks = document.getElementById("nav-links");
-  if (navLinks) {
-    navLinks.querySelectorAll("a").forEach((link) => {
-      link.classList.toggle(
-        "active",
-        link.getAttribute("href") === currentPage,
-      );
-    });
+  // Nav content lives here instead of duplicated in every page's HTML.
+  // Desktop shows the main links inline plus a "Reference" dropdown;
+  // mobile flattens everything (including the reference pages) into the
+  // hamburger dropdown.
+  const NAV_MAIN_LINKS = [
+    { href: "index.html", label: "Home" },
+    { href: "character-creator.html", label: "Build Your Character" },
+    { href: "turn-guide.html", label: "Survive Combat" },
+    { href: "roleplaying.html", label: "Be Your Character" },
+  ];
+
+  const NAV_REFERENCE_LINKS = [
+    { href: "extra-rules.html", label: "Extra Rules" },
+    { href: "glossary.html", label: "Glossary" },
+    { href: "gallery.html", label: "Gallery" },
+    { href: "xumaria.html", label: "Xumaria" },
+  ];
+
+  function linkTag(item) {
+    return `<a href="${item.href}">${item.label}</a>`;
   }
 
-  // Hamburger menu (always on — nav-links is a dropdown at every screen size)
+  function buildNav() {
+    const nav = document.getElementById("main-nav");
+    if (!nav) return;
+
+    // Desktop row skips "Home" — the logo already links there
+    const desktopMainLinks = NAV_MAIN_LINKS.slice(1).map(linkTag).join("");
+    const referenceLinks = NAV_REFERENCE_LINKS.map(linkTag).join("");
+    const mobileLinks = [...NAV_MAIN_LINKS, ...NAV_REFERENCE_LINKS]
+      .map(linkTag)
+      .join("");
+
+    nav.innerHTML = `
+      <a href="index.html" class="nav-logo">
+        <img
+          src="assets/d20_transparent.png"
+          alt="d20"
+          class="nav-logo-icon"
+        />
+        D&amp;D Onboarding (5e)
+      </a>
+      <div class="nav-links-desktop">
+        ${desktopMainLinks}
+        <div class="nav-dropdown" id="nav-reference-dropdown">
+          <button
+            type="button"
+            class="nav-dropdown-toggle"
+            id="nav-reference-toggle"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            Reference <span class="nav-dropdown-caret" aria-hidden="true">&#9660;</span>
+          </button>
+          <div class="nav-dropdown-menu" id="nav-reference-menu">
+            ${referenceLinks}
+          </div>
+        </div>
+      </div>
+      <button
+        class="nav-toggle"
+        id="nav-toggle"
+        type="button"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="nav-links"
+      >
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        ${mobileLinks}
+      </div>
+    `;
+  }
+
+  buildNav();
+
+  // Mark the current page's link(s) active — the link can appear in both
+  // the desktop row/dropdown and the flattened mobile dropdown
+  const mainNav = document.getElementById("main-nav");
+  const navLinks = document.getElementById("nav-links");
+  if (mainNav) {
+    let referenceActive = false;
+    mainNav.querySelectorAll("a[href]").forEach((link) => {
+      const isActive = link.getAttribute("href") === currentPage;
+      link.classList.toggle("active", isActive);
+      if (
+        isActive &&
+        NAV_REFERENCE_LINKS.some((item) => item.href === currentPage)
+      ) {
+        referenceActive = true;
+      }
+    });
+
+    const referenceToggle = document.getElementById("nav-reference-toggle");
+    if (referenceToggle) {
+      referenceToggle.classList.toggle("active", referenceActive);
+    }
+  }
+
+  // Hamburger menu (mobile only — nav-links is a dropdown at small screen sizes)
   const navToggle = document.getElementById("nav-toggle");
   if (navToggle && navLinks) {
     const closeMenu = () => {
@@ -32,6 +123,33 @@
     navLinks
       .querySelectorAll("a")
       .forEach((link) => link.addEventListener("click", closeMenu));
+  }
+
+  // "Reference" dropdown (desktop only — the ▾ menu on the right)
+  const referenceDropdown = document.getElementById("nav-reference-dropdown");
+  const referenceToggle = document.getElementById("nav-reference-toggle");
+  if (referenceDropdown && referenceToggle) {
+    const closeReferenceMenu = () => {
+      referenceDropdown.classList.remove("open");
+      referenceToggle.setAttribute("aria-expanded", "false");
+    };
+
+    referenceToggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const isOpen = referenceDropdown.classList.toggle("open");
+      referenceToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    // Clicking anywhere outside, or picking a link, closes the menu
+    document.addEventListener("click", (event) => {
+      if (!referenceDropdown.contains(event.target)) closeReferenceMenu();
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") closeReferenceMenu();
+    });
+    referenceDropdown
+      .querySelectorAll("a")
+      .forEach((link) => link.addEventListener("click", closeReferenceMenu));
   }
 
   // Page Modules
@@ -179,6 +297,10 @@
     // TODO
   }
 
+  function initGallery() {
+    // TODO
+  }
+
   // Main
 
   function main() {
@@ -200,6 +322,9 @@
         break;
       case "xumaria.html":
         initXumaria();
+        break;
+      case "gallery.html":
+        initGallery();
         break;
     }
   }

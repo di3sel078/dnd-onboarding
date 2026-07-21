@@ -18,37 +18,7 @@
 
   <body>
     <header>
-      <nav class="main-nav">
-        <a href="index.html" class="nav-logo">
-          <img
-            src="assets/d20_transparent.png"
-            alt="d20"
-            class="nav-logo-icon"
-          />
-          D&amp;D Onboarding (5e)
-        </a>
-        <button
-          class="nav-toggle"
-          id="nav-toggle"
-          type="button"
-          aria-label="Toggle navigation menu"
-          aria-expanded="false"
-          aria-controls="nav-links"
-        >
-          <span class="nav-toggle-bar"></span>
-          <span class="nav-toggle-bar"></span>
-          <span class="nav-toggle-bar"></span>
-        </button>
-        <div class="nav-links" id="nav-links">
-          <a href="index.html" class="active">Home</a>
-          <a href="character-creator.html">Build Your Character</a>
-          <a href="turn-guide.html">Survive Combat</a>
-          <a href="roleplaying.html">Be Your Character</a>
-          <a href="extra-rules.html">Extra Rules</a>
-          <a href="glossary.html">Glossary</a>
-          <a href="xumaria.html">My Campaign Setting: The World of Xumaria</a>
-        </div>
-      </nav>
+      <nav class="main-nav" id="main-nav"></nav>
     </header>
 
     <!-- Home Page Content -->
@@ -61,6 +31,12 @@
         </p>
       </section>
 
+      <div class="page-cta">
+        <a href="character-creator.html" class="btn btn-primary"
+          >Build Your First Character →</a
+        >
+      </div>
+
       <div id="intro-content">
         <div class="section">
           <h2>D&D in One Sentence</h2>
@@ -68,35 +44,6 @@
             D&D is a cooperative tabletop roleplaying game where you and your
             friends roll dice, battle monsters, and build epic stories together.
           </p>
-        </div>
-
-        <div class="section">
-          <h2>How This Website Works</h2>
-          <div class="nav-cards">
-            <a href="character-creator.html" class="nav-card">
-              <h3>Build Your Character</h3>
-              <p>
-                A step-by-step guide to creating your first adventurer, from
-                concept and class to stats and equipment.
-              </p>
-            </a>
-            <span class="nav-card-arrow" aria-hidden="true">→</span>
-            <a href="turn-guide.html" class="nav-card">
-              <h3>Survive Combat</h3>
-              <p>
-                A quick-reference walkthrough for what to do when combat comes
-                around to you.
-              </p>
-            </a>
-            <span class="nav-card-arrow" aria-hidden="true">→</span>
-            <a href="roleplaying.html" class="nav-card">
-              <h3>Be Your Character</h3>
-              <p>
-                Tips for getting into character and playing well with others at
-                the table. (Work in progress!)
-              </p>
-            </a>
-          </div>
         </div>
 
         <div class="section">
@@ -120,26 +67,26 @@
         <div class="section">
           <h2>The Core Loop of D&D</h2>
           <div class="loop-cards">
-            <div class="loop-card">
+            <div class="loop-card loop-card-tl">
               <p>The DM describes the scene</p>
             </div>
-            <span class="loop-card-arrow" aria-hidden="true">→</span>
-            <div class="loop-card">
-              <p>The players state their actions</p>
+            <span class="loop-arrow loop-arrow-top" aria-hidden="true">→</span>
+            <div class="loop-card loop-card-tr">
+              <p>The players state their action</p>
             </div>
-            <span class="loop-card-arrow" aria-hidden="true">→</span>
-            <div class="loop-card">
-              <p>The dice resolve uncertain actions</p>
+            <span class="loop-arrow loop-arrow-right" aria-hidden="true"
+              >↓</span
+            >
+            <div class="loop-card loop-card-br">
+              <p>The dice decide the outcome</p>
             </div>
-            <span class="loop-card-arrow" aria-hidden="true">→</span>
-            <div class="loop-card">
+            <span class="loop-arrow loop-arrow-bottom" aria-hidden="true"
+              >←</span
+            >
+            <div class="loop-card loop-card-bl">
               <p>The DM narrates the results</p>
             </div>
-            <span
-              class="loop-card-arrow loop-card-arrow-repeat"
-              aria-hidden="true"
-              >↺</span
-            >
+            <span class="loop-arrow loop-arrow-left" aria-hidden="true">↑</span>
           </div>
         </div>
 
@@ -175,10 +122,39 @@
         </div>
       </div>
 
+      <div class="section">
+        <h2>How This Website Works</h2>
+        <div class="nav-cards">
+          <a href="character-creator.html" class="nav-card">
+            <h3>Build Your Character</h3>
+            <p>
+              A step-by-step guide to creating your first adventurer, from
+              concept and class to stats and equipment.
+            </p>
+          </a>
+          <span class="nav-card-arrow" aria-hidden="true">→</span>
+          <a href="turn-guide.html" class="nav-card">
+            <h3>Survive Combat</h3>
+            <p>
+              A quick-reference walkthrough for what to do when combat comes
+              around to you.
+            </p>
+          </a>
+          <span class="nav-card-arrow" aria-hidden="true">→</span>
+          <a href="roleplaying.html" class="nav-card">
+            <h3>Be Your Character</h3>
+            <p>
+              Tips for getting into character and playing well with others at
+              the table. (Work in progress!)
+            </p>
+          </a>
+        </div>
+      </div>
+
       <div class="page-cta">
-        <a href="character-creator.html" class="btn btn-primary"
-          >Ready? Build Your First Character →</a
-        >
+        <a href="character-creator.html" class="btn btn-primary">
+          Ready? Build Your First Character →
+        </a>
       </div>
     </main>
 
@@ -187,6 +163,10 @@
         D&D 5e (2014) content provided under the Systems Reference Document 5.1,
         licensed under Creative Commons Attribution 4.0 International.
       </p>
+
+      <a href="glossary.html" class="btn btn-glossary"
+        >Stuck on a word? Check the Glossary →</a
+      >
     </footer>
 
     <script src="js/main.js"></script>
