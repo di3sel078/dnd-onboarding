@@ -198,7 +198,8 @@
 
       // Change Button Text
       prevBtn.textContent = index === 0 ? "Home" : "Previous";
-      nextBtn.textContent = index === steps.length - 1 ? "Finish" : "Next";
+      nextBtn.textContent =
+        index === steps.length - 1 ? "Next: How to Survive Combat →" : "Next";
 
       // Mobile tracker arrows only move between steps, so they disable
       // at the ends instead of falling through to Home/Finish
