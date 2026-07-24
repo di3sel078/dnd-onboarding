@@ -426,23 +426,6 @@ header {
   color: var(--color-text);
 }
 
-/* Muted button variant linking out to the glossary */
-.btn-glossary {
-  color: var(--color-text-muted);
-  background-color: transparent;
-  border: 2px solid var(--color-text-muted);
-  margin: var(--space-6);
-}
-
-.btn-glossary:visited {
-  color: var(--color-text-muted);
-}
-
-.btn-glossary:hover {
-  color: var(--color-text);
-  border: 2px solid var(--color-text);
-}
-
 /* ============================================================
    SHARED SECTION & CARD STYLES
    Building blocks reused across every page
@@ -601,7 +584,7 @@ hr {
     "tl top tr"
     "left center right"
     "bl bottom br";
-  gap: var(--space-2) var(--space-4);
+  gap: var(--space-12) var(--space-12);
   margin-top: var(--space-6);
 }
 
@@ -635,12 +618,10 @@ hr {
 /* Positions each arrow glyph in its grid-area */
 .loop-arrow-top {
   grid-area: top;
-  margin: var(--space-12);
 }
 
 .loop-arrow-right {
   grid-area: right;
-  margin: var(--space-12);
 }
 
 .loop-arrow-bottom {
@@ -660,6 +641,7 @@ hr {
   background: var(--color-bg);
   border: 1px solid var(--color-accent);
   border-radius: var(--border-radius);
+  padding: var(--space-6);
 }
 
 /* Loop card's label text */
