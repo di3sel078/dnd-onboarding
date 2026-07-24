@@ -81,6 +81,7 @@ h2 {
   line-height: var(--leading-tight);
   color: var(--color-text);
   margin-bottom: var(--space-3);
+  margin-top: var(--space-3);
 }
 
 /* Sub-heading within a section */
@@ -112,17 +113,25 @@ p {
   font-size: var(--text-sm);
 }
 
+/* Closer to text color than muted */
+.text-tinted {
+  color: var(--color-text-tinted);
+}
+
 .class-list {
   display: flex;
   flex-direction: column;
   list-style-type: none;
+  list-style-position: inside; /* Keeps bullets aligned with text if kept */
   padding: var(--space-4);
   gap: var(--space-6);
   margin: 0;
+  padding-left: 0; /* Removes default indent */
+  margin-left: 0; /* Removes default margins */
 }
 
 .class-list-names {
-  font-size: var(--text-xl);
+  font-size: var(--text-lg);
 }
 
 /* ============================================================
@@ -682,7 +691,7 @@ hr {
 }
 
 .sheet-tip /* Tips under each step of where to put things */ {
-  color: var(--color-text-muted);
+  color: var(--color-text-tinted);
   margin-top: var(--space-3);
   margin-bottom: var(--space-6);
   font-style: italic;

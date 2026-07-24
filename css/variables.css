@@ -10,6 +10,7 @@
   --color-nav: #0c0c0c; /* Navigation bar — darker than surface */
   --color-surface: #161616; /* Cards — slightly lifted from bg */
   --color-text: #ebebeb; /* Body text */
+  --color-text-tinted: #b1b1b1; /* Slightly darker text */
   --color-text-muted: #777777; /* Secondary text, nav links */
   --color-text-subtle: #333333; /* Footer, very de-emphasized */
   --color-accent: #c41e1e; /* Red */
