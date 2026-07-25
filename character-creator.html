@@ -35,7 +35,13 @@
         <menu class="step-tracker">
           <li class="tracker-entry">
             <button class="tracker-entry-btn" type="button">
-              <span class="step-icon active">1</span>
+              <span class="step-icon active">0</span>
+              <span class="step-label">Terms</span>
+            </button>
+          </li>
+          <li class="tracker-entry">
+            <button class="tracker-entry-btn" type="button">
+              <span class="step-icon">1</span>
               <span class="step-label">Sheet</span>
             </button>
           </li>
@@ -106,8 +112,90 @@
 
       <!-- 10 Character Creation Steps -->
 
+      <!-- Step 0 - Rules and Terms-->
+      <div class="step active" id="step-0">
+        <span class="step-count">Step 0 of 10</span>
+        <h1>A Few Terms Before We Begin</h1>
+
+        <div class="sheet-tip">
+          <strong>&#x270E; Sheet Tip: </strong> These are a few terms that will
+          help us going forward. If you have any questions about a word, check
+          the Glossary page under the "Reference" tab.
+        </div>
+
+        <div class="section">
+          <h2>Important Terms</h2>
+
+          <h3>Dice Notation</h3>
+          <p>
+            The number before the d is how many dice to roll, the number after
+            is how many sides each die has. For example, 2d6 means 2 six-sided
+            dice. A full dice set includes: 1d4, 1d6, 1d8, 1d10, 1d12, 1d20, and
+            1d100 (percentile dice, looks like the d10).
+          </p>
+
+          <h3>Ability Check</h3>
+          <p>
+            An Ability Check is when you want to make an action (search a room
+            for a hidden door, pick a lock, etc.), so your DM asks you to roll a
+            d20 and add the relevant skill modifier (more on modifiers in step
+            7). This is the most common type of rolling.
+          </p>
+
+          <h3>Saving Throw</h3>
+          <p>
+            A Saving Throw is a d20 roll made to resist a threat like a spell,
+            trap, poison, or monster's ability.
+          </p>
+
+          <h3>Difficulty Class</h3>
+          <p>
+            The Difficulty Class (DC) is the number you have to meet or beat to
+            succeed at some task. Whether that's withstanding a spell with a
+            Saving Throw DC, succeeding at an ability check with an Ability
+            Check DC, or hitting an enemy against the enemy's Armor Class (their
+            armor's DC).
+          </p>
+
+          <h3>Advantage & Disadvantage</h3>
+          <p>
+            Sometimes, something about your character (like their class or
+            background), or the situation your character is in, will cause your
+            DM to give you something called "advantage" or "disadvantage". When
+            you have Advantage on a d20 roll, you roll the d20 twice and take
+            the higher of the two numbers, then add any relevant modifiers. If
+            you have Disadvantage, you roll the d20 twice and take the lower of
+            the two numbers.
+          </p>
+
+          <h3>Natural 20's & Natural 1's</h3>
+          <p>
+            If you've heard of D&D before, you've probably heard of the
+            excitement of rolling a Natural 20, but what does that mean? Rules
+            As Written (RAW), a Natural 20 only applies to a combat attack roll.
+            When you roll a 20 (before "to hit" modifiers) on a d20 attack roll
+            during combat, you may roll you damage dice twice and then add your
+            damage modifier (more on attacking and damge in step 10). This is
+            also referred to as a "Critical Hit".
+          </p>
+          <p>
+            A common house rule is to consider any Natural 20 (including outside
+            of combat) a Critical Success. Another house rule is to consider
+            Natural 1's as a "critical failure". So instead of picking a lock,
+            maybe the rogue makes the lock even harder to pick by breaking an
+            internal component. Natural 1's and Natural 20's (outside of combat)
+            are not in the official rules, so make sure to check with your DM if
+            they include them, before playing.
+          </p>
+          <div class="text-tinted">
+            Note for DMs: Try to avoid making a Natural 1 completely
+            humilitating, your players are still experts at their class.
+          </div>
+        </div>
+      </div>
+
       <!-- Step 1 - Your Sheet -->
-      <div class="step active" id="step-1">
+      <div class="step" id="step-1">
         <span class="step-count">Step 1 of 10</span>
         <h1>Get Your Character Sheet</h1>
 
@@ -135,16 +223,6 @@
             <li>
               A full set of dice or a dice rolling app
               <ul>
-                <li>
-                  A dice set includes: 1d4, 1d6, 1d8, 1d10, 1d12, 1d20, 1d100
-                  (percentile dice, pairs with d10)
-                  <ul>
-                    <li>
-                      The number before the d is how many dice to roll, the
-                      number after is how many sides
-                    </li>
-                  </ul>
-                </li>
                 <li>Also, if your friends have dice you can always share!</li>
               </ul>
             </li>
@@ -359,81 +437,6 @@
           </p>
         </div>
 
-        <!-- Old Class List
-            <div class="section">
-              <ul class="class-list">
-                <li class="class-list-item">
-                  <strong class="class-list-names">Barbarian -</strong> A fierce
-                  warrior who channels rage into devastating attacks.
-                </li>
-
-                <li class="class-list-item">
-                  <strong class="class-list-names">Bard -</strong> A charismatic
-                  performer who inspires allies and weaves magic through music and
-                  words.
-                </li>
-
-                <li class="class-list-item">
-                  <strong class="class-list-names">Cleric -</strong> A devoted
-                  servant of a deity, channeling divine power to heal and smite.
-                </li>
-
-                <li class="class-list-item">
-                  <strong class="class-list-names">Druid -</strong> A guardian of
-                  nature who can shapeshift and command the elements.
-                </li>
-
-                <li class="class-list-item">
-                  <strong class="class-list-names">Fighter -</strong> A master of
-                  weapons and combat tactics, adaptable to almost any fighting
-                  style.
-                </li>
-
-                <li class="class-list-item">
-                  <strong class="class-list-names">Monk -</strong> A disciplined
-                  martial artist who fights with fists, focus, and inner energy.
-                </li>
-
-                <li class="class-list-item">
-                  <strong class="class-list-names">Paladin -</strong> A holy warrior
-                  bound by a sacred oath to fight for their ideals.
-                </li>
-
-                <li class="class-list-item">
-                  <strong class="class-list-names">Ranger -</strong> A skilled
-                  hunter and tracker at home in the wilderness.
-                </li>
-
-                <li class="class-list-item">
-                  <strong class="class-list-names">Rogue -</strong> A cunning
-                  trickster who relies on stealth, precision, and quick thinking.
-                </li>
-
-                <li class="class-list-item">
-                  <strong class="class-list-names">Sorcerer -</strong> A spellcaster
-                  with magic woven into their very being.
-                </li>
-
-                <li class="class-list-item">
-                  <strong class="class-list-names">Warlock -</strong> A wielder of
-                  magic granted through a pact with a powerful otherworldly patron.
-                </li>
-
-                <li class="class-list-item">
-                  <strong class="class-list-names">Wizard -</strong> A scholarly
-                  spellcaster who masters magic through study and preparation.
-                </li>
-
-                <li class="class-list-item">
-                  <strong class="class-list-names">Artificer (Optional) -</strong>A
-                  brilliant tinkerer who channels their magic into creations.
-                  Artificers are not from the core rules, so make sure you ask your
-                  DM before considering this class.
-                </li>
-              </ul>
-            </div>
-          -->
-
         <!-- Mechanical backgound mention -->
         <div class="section">
           <h2>A Quick Note on Backgrounds</h2>
@@ -539,10 +542,10 @@
         <h1>Choose your Class</h1>
 
         <!-- step content -->
-        <p class="sheet-tip">
+        <div class="sheet-tip">
           <strong>&#x270E; Sheet Tip:</strong> Write this in the "Class &amp;
           Level" box at the top of your character sheet.
-        </p>
+        </div>
 
         <div class="section">
           <h2>What Is a Class?</h2>
@@ -558,57 +561,6 @@
             learn what Ability Scores are in detail in Step 5. For now, just
             know that it's the stat your class relies on most and you'll want it
             to be one of your highest numbers when you assign scores later.
-          </p>
-        </div>
-
-        <!-- Subclasses -->
-        <div class="section">
-          <h2>Subclasses</h2>
-          <p>
-            Within each class there are subclasses that each provide unique
-            features. Most subclasses are chosen at level 3, but some you choose
-            at level 1 or 2. Think of your subclass as a specialization within
-            your class, for example a Fighter might become a Champion (a
-            straightforward, hard-hitting specialist) or an Eldritch Knight (a
-            fighter who dabbles in magic).
-          </p>
-        </div>
-
-        <div class="section">
-          <h2>Proficiencies</h2>
-          <p>
-            Keep an eye out for the following, and write them in the "Other
-            Proficiencies & Languages" box on your character sheet. We'll go
-            over how they work in step 7.
-          </p>
-
-          <h3>Languages</h3>
-          <p>
-            Your race usually grants Common plus one or two more, and your
-            background can add extras.
-          </p>
-
-          <h3>Tools</h3>
-          <p>
-            Things like thieves' tools, an artisan's tools, or a musician's
-            instrument. Being proficient means you add your proficiency bonus
-            when you use that tool for a check.
-          </p>
-
-          <h3>Gaming Sets & Other Proficiencies</h3>
-          <p>
-            A specific gaming set (like dice or playing cards) works just like a
-            tool proficiency, just themed around games of chance instead of a
-            trade.
-          </p>
-
-          <h3>Weapons & Armor</h3>
-          <p>
-            Your class determines which armor categories (light, medium, heavy,
-            shields) you're trained to wear without penalty. Your class also
-            determines which weapon categories (simple and/or martial) you're
-            trained to use. Step 9 includes the full breakdown of weapon & armor
-            types.
           </p>
         </div>
 
@@ -640,7 +592,20 @@
 
           <h3>Subclass Level</h3>
           <p>
-            This is the level where you choose a subclass (explained above).
+            This is the level where you choose a subclass (explained below).
+          </p>
+        </div>
+
+        <!-- Subclasses -->
+        <div class="section">
+          <h2>Subclasses</h2>
+          <p>
+            Within each class there are subclasses that each provide unique
+            features. Most subclasses are chosen at level 3, but some you choose
+            at level 1 or 2. Think of your subclass as a specialization within
+            your class, for example a Fighter might become a Champion (a
+            straightforward, hard-hitting specialist) or an Eldritch Knight (a
+            fighter who dabbles in magic).
           </p>
         </div>
 
@@ -689,14 +654,14 @@
                 <td>Fighter</td>
                 <td>d10</td>
                 <td>Strength or Dexterity</td>
-                <td>None</td>
+                <td>With Subclass (Intelligence)</td>
                 <td>3</td>
               </tr>
               <tr>
                 <td>Monk</td>
                 <td>d8</td>
                 <td>Dexterity &amp; Wisdom</td>
-                <td>None</td>
+                <td>With Subclass (Uses Ki)</td>
                 <td>3</td>
               </tr>
               <tr>
@@ -717,7 +682,7 @@
                 <td>Rogue</td>
                 <td>d8</td>
                 <td>Dexterity</td>
-                <td>None</td>
+                <td>With Subclass (Intelligence)</td>
                 <td>3</td>
               </tr>
               <tr>
@@ -757,6 +722,44 @@
               Note: The Artificer isn't part of the core rules, so make sure you
               ask your DM before choosing this class.
             </i>
+          </p>
+        </div>
+
+        <div class="section">
+          <h2>Proficiencies</h2>
+          <p>
+            Keep an eye out for the following, and write them in the "Other
+            Proficiencies & Languages" box on your character sheet for now.
+            We'll go over how they work later in step 7.
+          </p>
+
+          <h3>Languages</h3>
+          <p>
+            Your race usually grants Common plus one or two more, and your
+            background can add extras.
+          </p>
+
+          <h3>Tools</h3>
+          <p>
+            Things like thieves' tools, an artisan's tools, or a musician's
+            instrument. Being proficient means you add your proficiency bonus
+            when you use that tool for a check.
+          </p>
+
+          <h3>Gaming Sets & Other Proficiencies</h3>
+          <p>
+            A specific gaming set (like dice or playing cards) works just like a
+            tool proficiency, just themed around games of chance instead of a
+            trade.
+          </p>
+
+          <h3>Weapons & Armor</h3>
+          <p>
+            Your class determines which armor categories (light, medium, heavy,
+            shields) you're trained to wear without penalty. Your class also
+            determines which weapon categories (simple and/or martial) you're
+            trained to use. Step 9 includes the full breakdown of weapon & armor
+            types.
           </p>
         </div>
       </div>
@@ -1126,8 +1129,8 @@
             <ul>
               <li>You may reroll 1 stat, but you must take the reroll</li>
               <li>
-                If your 6 ability scores do not add up to 72 (after rerolling
-                your 1 stat), you may reroll all 6 dice
+                If your 6 ability scores do not add up to at least 72 (after
+                rerolling your 1 stat), you may reroll all 6 Ability Scores.
               </li>
             </ul>
           </details>
@@ -1351,9 +1354,11 @@
           <p>
             Tools and gaming sets work just like skills, if you're proficient,
             add your proficiency bonus when you use them. Armor and weapon
-            proficiencies work a little differently, using gear you're not
+            proficiencies work a little differently, using armor you're not
             trained in doesn't just skip a bonus, it actively hurts you, so try
-            to stick to what your class allows.
+            to stick to what your class allows. For weapons, you just don't add
+            the proficiency bonus to your "To Hit" modifier if you're not
+            proficient with that weapon.
           </p>
         </div>
       </div>
@@ -1388,12 +1393,12 @@
           <ul>
             <li>Barbarian</li>
             <li>Fighter (can with subclass)</li>
-            <li>Monk (can with subclas)</li>
+            <li>Monk (can with subclass)</li>
             <li>Rogue (can with subclass)</li>
           </ul>
           <p>
             If you chose any of the above classes and don't plan on using a
-            specific spellcasting subclasses, you can skip this rest of this
+            specific spellcasting subclasses, you can skip the rest of this
             step.
           </p>
 
@@ -1412,12 +1417,10 @@
             <li>Paladin</li>
             <li>Artificer</li>
           </ul>
-          <p>
-            <i class="text-tinted">
-              Note: While the Artificer is a spellcaster, it isn't part of the
-              core rules, so check with your DM before counting on it
-            </i>
-          </p>
+          <div class="text-tinted">
+            Note: While the Artificer is a spellcaster, it isn't part of the
+            core rules, so check with your DM before counting on it
+          </div>
 
           <h3>The Hybrid Spellcaster</h3>
           <p>
@@ -1438,7 +1441,8 @@
             appropriate level with higher-level slots fueling more powerful
             magic. Once you're out of spell slots you can't cast those spells
             again until you take a long rest (8+ hours, in a comfortable
-            location) and recharge them.
+            location) and recharge them. If you're playing a Warlock, you regain
+            your spell slots at any rest, short or long.
           </p>
         </div>
 
@@ -1449,7 +1453,8 @@
             Simple spells you can cast as often as you like. They don't use
             spell slots, so you'll never run out of them, but they're much less
             powerful. Some cantrips scale with your level over time (for
-            example, at level 5 you get two Eldritch Blasts per turn).
+            example, at level 5 when you cast Firebolt, you get 2d10 damage die
+            instead of 1d10).
           </p>
 
           <h3>Leveled Spells</h3>
@@ -1460,6 +1465,12 @@
             meaning you can cast that spell at a higher level for additional
             effects. Make sure to read the spell's text fully to understand what
             it does.
+          </p>
+          <p>
+            If you're playing a Warlock, your spell slots are always the same
+            level. So, if you are a 5th level warlock, you have 2 3rd level
+            spell slots. If you're casting a spell that allows you to up-cast
+            it, you always cast it at your Warlock spell level.
           </p>
         </div>
 
@@ -1482,6 +1493,8 @@
             but only get to ready a limited number at a time equal to your Class
             Level + your Spellcasting Ability Modifier (for example, a 3rd level
             Cleric with a +3 Wisdom, would be able to prepare 6 spells).
+            Paladins & Artificers use half their class level instead, rounded
+            down, with a minimum of 1 prepared spell.
           </p>
         </div>
 
@@ -1575,12 +1588,12 @@
             platinum (pp). Gold is the standard you'll see most often, the
             others mostly show up as flavor or odd change.
           </p>
-          <p>
-            <i class="text-tinted">
-              DM note: Some DMs might not even use electrum, so make sure to
-              communicate with your DM!
-            </i>
-          </p>
+
+          <div class="text-tinted">
+            DM note: Some DMs might not even use electrum, so make sure to
+            communicate with your DM!
+          </div>
+
           <div class="table-wrap">
             <table class="modifier-table">
               <tr>
@@ -1618,7 +1631,7 @@
           <p>
             Your background hands you a small starting amount of coin. Write it
             in the CP / SP / EP / GP / PP boxes on your sheet next to the
-            "Equpiment" box. That will be your spending money for anything you
+            "Equipiment" box. That will be your spending money for anything you
             pick up beyond your starting gear.
           </p>
         </div>
@@ -2195,7 +2208,7 @@
           <h2>Hit Points at First Level</h2>
           <p>
             <strong>Hit points</strong>, or HP, are determined at first level by
-            taking the maximum on your characters hit die (determined by your
+            taking the maximum on your character's hit die (determined by your
             class) and add your Constitution modifier. That will be your maximum
             HP, and your starting current HP.
           </p>
@@ -2222,7 +2235,8 @@
           <p>
             When you take a <strong>long rest</strong> (an 8-hour resting
             period, spent somewhere comfortable), you regain half of your
-            expended hit dice, as well as restore full HP.
+            expended hit dice (rounded down, with a minimum of 1), as well as
+            restore full HP.
           </p>
         </div>
 
@@ -2290,8 +2304,12 @@
 
     <footer class="site-footer">
       <p>
-        D&D 5e (2014) content provided under the Systems Reference Document 5.1,
-        licensed under Creative Commons Attribution 4.0 International.
+        This work includes material taken from the System Reference Document 5.1
+        ('SRD 5.1') by Wizards of the Coast LLC and available at
+        https://dnd.wizards.com/resources/systems-reference-document. The SRD
+        5.1 is licensed under the Creative Commons Attribution 4.0 International
+        License available at
+        https://creativecommons.org/licenses/by/4.0/legalcode.
       </p>
     </footer>
 

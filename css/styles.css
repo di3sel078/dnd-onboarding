@@ -115,7 +115,11 @@ p {
 
 /* Closer to text color than muted */
 .text-tinted {
+  margin-top: var(--space-3);
+  line-height: var(--leading-normal);
   color: var(--color-text-tinted);
+  font-size: var(--text-sm);
+  font-style: italic;
 }
 
 .class-list {

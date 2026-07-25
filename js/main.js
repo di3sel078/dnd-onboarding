@@ -42,7 +42,7 @@
           alt="d20"
           class="nav-logo-icon"
         />
-        D&amp;D Onboarding (5e)
+        A Simple D&amp;D 5e Guide
       </a>
       <div class="nav-links-desktop">
         ${desktopMainLinks}
@@ -166,13 +166,13 @@
     const stepIcons = document.querySelectorAll(".step-icon");
     const trackerEntries = document.querySelectorAll(".tracker-entry-btn");
 
-    // Reads "#step-4" from the URL and returns index 3, or null if
-    // missing/invalid. Hashes are 1-based (step-1..step-10) but the
-    // internal step index stays 0-based.
+    // Reads "#step-4" from the URL and returns index 4, or null if
+    // missing/invalid. Steps run step-0..step-10, so the hash number
+    // matches the internal step index directly.
     function stepFromHash() {
       const match = window.location.hash.match(/^#step-(\d+)$/);
       if (!match) return null;
-      const index = Number(match[1]) - 1;
+      const index = Number(match[1]);
       return index >= 0 && index < steps.length ? index : null;
     }
 
@@ -209,7 +209,7 @@
       // Push a history entry so refresh keeps the step and back steps
       // backward through the guide instead of leaving the page
       if (updateUrl) {
-        const hash = `#step-${index + 1}`;
+        const hash = `#step-${index}`;
         if (window.location.hash !== hash) {
           history.pushState(null, "", hash);
         }
