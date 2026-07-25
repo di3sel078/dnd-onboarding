@@ -41,6 +41,8 @@
           src="assets/d20_transparent.png"
           alt="d20"
           class="nav-logo-icon"
+          width="25"
+          height="28"
         />
         A Simple D&amp;D 5e Guide
       </a>
@@ -162,17 +164,21 @@
     const prevBtn = document.getElementById("btn-prev");
     const trackerNextBtn = document.getElementById("tracker-next");
     const trackerPrevBtn = document.getElementById("tracker-prev");
+    const trackerNav = document.getElementById("step-tracker-nav");
+    const trackerToggleBtn = document.getElementById("tracker-toggle");
+    const trackerToggleCount = document.getElementById("tracker-toggle-count");
 
     const stepIcons = document.querySelectorAll(".step-icon");
+    const stepLabels = document.querySelectorAll(".step-label");
     const trackerEntries = document.querySelectorAll(".tracker-entry-btn");
 
-    // Reads "#step-4" from the URL and returns index 4, or null if
-    // missing/invalid. Steps run step-0..step-10, so the hash number
-    // matches the internal step index directly.
+    // Reads "#step-4" from the URL and returns index 3, or null if
+    // missing/invalid. The hash is 1-indexed (step-1..step-10) to match
+    // each step's id/label, but the internal step index stays 0-based.
     function stepFromHash() {
       const match = window.location.hash.match(/^#step-(\d+)$/);
       if (!match) return null;
-      const index = Number(match[1]);
+      const index = Number(match[1]) - 1;
       return index >= 0 && index < steps.length ? index : null;
     }
 
@@ -196,6 +202,11 @@
         }
       });
 
+      // Active label
+      stepLabels.forEach((label, i) => {
+        label.classList.toggle("active", i === index);
+      });
+
       // Change Button Text
       prevBtn.textContent = index === 0 ? "Home" : "Previous";
       nextBtn.textContent =
@@ -206,10 +217,13 @@
       trackerPrevBtn.disabled = index === 0;
       trackerNextBtn.disabled = index === steps.length - 1;
 
+      // Keep the collapsed bar's step count in sync with the current step
+      trackerToggleCount.textContent = `Step ${index + 1} of ${steps.length}: ${stepLabels[index].textContent}`;
+
       // Push a history entry so refresh keeps the step and back steps
       // backward through the guide instead of leaving the page
       if (updateUrl) {
-        const hash = `#step-${index}`;
+        const hash = `#step-${index + 1}`;
         if (window.location.hash !== hash) {
           history.pushState(null, "", hash);
         }
@@ -254,6 +268,12 @@
       entry.addEventListener("click", () => {
         showStep(i);
       });
+    });
+
+    // Collapse the tracker down to a thin "Step X of 10" bar, or expand it
+    trackerToggleBtn.addEventListener("click", () => {
+      const collapsed = trackerNav.classList.toggle("collapsed");
+      trackerToggleBtn.setAttribute("aria-expanded", String(!collapsed));
     });
 
     // Back/forward buttons (and manual hash edits) fire hashchange —

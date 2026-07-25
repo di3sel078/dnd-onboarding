@@ -11,13 +11,15 @@
   --color-surface: #161616; /* Cards — slightly lifted from bg */
   --color-text: #ebebeb; /* Body text */
   --color-text-tinted: #b1b1b1; /* Slightly darker text */
-  --color-text-muted: #777777; /* Secondary text, nav links */
+  --color-text-muted: #8f8f8f; /* Secondary text, nav links */
   --color-text-subtle: #333333; /* Footer, very de-emphasized */
   --color-accent: #c41e1e; /* Red */
   --color-accent-dark: #a01818; /* Darker red for hover states */
   --color-accent-light: #1e0a0a; /* Dark red tint for subtle backgrounds */
   --color-accent-border: #c41e1e47; /* Subtle red for card borders */
   --color-border: #1d1d1d; /* Lines, dividers */
+  --color-info: #3d7ea6; /* definitions - desaturated steel blue */
+  --color-reference: #8a8a8a; /* reference - neutral grey */
 
   /* --- Typography --- */
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
@@ -52,7 +54,7 @@
 
   /* --- Layout --- */
   --max-width: 720px; /* Single-column reading width */
-  --nav-height: 60px;
+  --nav-height: 80px;
   --border-radius: 0.5rem; /* 8px — subtle rounding */
   --border-radius-sm: 0.25rem;
 }

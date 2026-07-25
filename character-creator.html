@@ -5,6 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>D&D Character Creation</title>
+    <link rel="icon" type="image/png" href="assets/d20_transparent.png" />
 
     <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/variables.css" />
@@ -23,104 +24,124 @@
 
     <main>
       <!-- Step Tracker -->
-      <nav class="step-tracker-nav" aria-label="Progress">
+      <nav class="step-tracker-nav" aria-label="Progress" id="step-tracker-nav">
         <button
-          class="tracker-arrow tracker-arrow-prev"
-          id="tracker-prev"
-          aria-label="Previous step"
+          class="tracker-toggle"
+          id="tracker-toggle"
           type="button"
+          aria-expanded="true"
+          aria-controls="step-tracker-content"
+          aria-label="Toggle step tracker"
         >
-          &lsaquo;
+          <span
+            class="tracker-toggle-caret"
+            aria-hidden="true"
+            title="Click to Expand/Collapse"
+          >
+            &#9650;
+          </span>
+          <span
+            class="tracker-toggle-count"
+            id="tracker-toggle-count"
+            title="Click to Expand/Collapse"
+          >
+            Step 1 of 10
+          </span>
         </button>
-        <menu class="step-tracker">
-          <li class="tracker-entry">
-            <button class="tracker-entry-btn" type="button">
-              <span class="step-icon active">0</span>
-              <span class="step-label">Terms</span>
-            </button>
-          </li>
-          <li class="tracker-entry">
-            <button class="tracker-entry-btn" type="button">
-              <span class="step-icon">1</span>
-              <span class="step-label">Sheet</span>
-            </button>
-          </li>
-          <li class="tracker-entry">
-            <button class="tracker-entry-btn" type="button">
-              <span class="step-icon">2</span>
-              <span class="step-label">Concept</span>
-            </button>
-          </li>
-          <li class="tracker-entry">
-            <button class="tracker-entry-btn" type="button">
-              <span class="step-icon">3</span>
-              <span class="step-label">Class</span>
-            </button>
-          </li>
-          <li class="tracker-entry">
-            <button class="tracker-entry-btn" type="button">
-              <span class="step-icon">4</span>
-              <span class="step-label">Race</span>
-            </button>
-          </li>
-          <li class="tracker-entry">
-            <button class="tracker-entry-btn" type="button">
-              <span class="step-icon">5</span>
-              <span class="step-label">Scores</span>
-            </button>
-          </li>
-          <li class="tracker-entry">
-            <button class="tracker-entry-btn" type="button">
-              <span class="step-icon">6</span>
-              <span class="step-label">Background</span>
-            </button>
-          </li>
-          <li class="tracker-entry">
-            <button class="tracker-entry-btn" type="button">
-              <span class="step-icon">7</span>
-              <span class="step-label">Skills</span>
-            </button>
-          </li>
-          <li class="tracker-entry">
-            <button class="tracker-entry-btn" type="button">
-              <span class="step-icon">8</span>
-              <span class="step-label">Spells</span>
-            </button>
-          </li>
-          <li class="tracker-entry">
-            <button class="tracker-entry-btn" type="button">
-              <span class="step-icon">9</span>
-              <span class="step-label">Equipment</span>
-            </button>
-          </li>
-          <li class="tracker-entry">
-            <button class="tracker-entry-btn" type="button">
-              <span class="step-icon">10</span>
-              <span class="step-label">Combat</span>
-            </button>
-          </li>
-        </menu>
-        <button
-          class="tracker-arrow tracker-arrow-next"
-          id="tracker-next"
-          aria-label="Next step"
-          type="button"
-        >
-          &rsaquo;
-        </button>
+
+        <div class="step-tracker-content" id="step-tracker-content">
+          <button
+            class="tracker-arrow tracker-arrow-prev"
+            id="tracker-prev"
+            aria-label="Previous step"
+            type="button"
+          >
+            &lsaquo;
+          </button>
+          <menu class="step-tracker">
+            <li class="tracker-entry">
+              <button class="tracker-entry-btn" type="button">
+                <span class="step-icon active">1</span>
+                <span class="step-label active">Terms</span>
+              </button>
+            </li>
+            <li class="tracker-entry">
+              <button class="tracker-entry-btn" type="button">
+                <span class="step-icon">2</span>
+                <span class="step-label">Concept</span>
+              </button>
+            </li>
+            <li class="tracker-entry">
+              <button class="tracker-entry-btn" type="button">
+                <span class="step-icon">3</span>
+                <span class="step-label">Class</span>
+              </button>
+            </li>
+            <li class="tracker-entry">
+              <button class="tracker-entry-btn" type="button">
+                <span class="step-icon">4</span>
+                <span class="step-label">Race</span>
+              </button>
+            </li>
+            <li class="tracker-entry">
+              <button class="tracker-entry-btn" type="button">
+                <span class="step-icon">5</span>
+                <span class="step-label">Scores</span>
+              </button>
+            </li>
+            <li class="tracker-entry">
+              <button class="tracker-entry-btn" type="button">
+                <span class="step-icon">6</span>
+                <span class="step-label">Background</span>
+              </button>
+            </li>
+            <li class="tracker-entry">
+              <button class="tracker-entry-btn" type="button">
+                <span class="step-icon">7</span>
+                <span class="step-label">Skills</span>
+              </button>
+            </li>
+            <li class="tracker-entry">
+              <button class="tracker-entry-btn" type="button">
+                <span class="step-icon">8</span>
+                <span class="step-label">Spells</span>
+              </button>
+            </li>
+            <li class="tracker-entry">
+              <button class="tracker-entry-btn" type="button">
+                <span class="step-icon">9</span>
+                <span class="step-label">Equipment</span>
+              </button>
+            </li>
+            <li class="tracker-entry">
+              <button class="tracker-entry-btn" type="button">
+                <span class="step-icon">10</span>
+                <span class="step-label">Combat</span>
+              </button>
+            </li>
+          </menu>
+          <button
+            class="tracker-arrow tracker-arrow-next"
+            id="tracker-next"
+            aria-label="Next step"
+            type="button"
+          >
+            &rsaquo;
+          </button>
+        </div>
       </nav>
 
       <!-- 10 Character Creation Steps -->
 
-      <!-- Step 0 - Rules and Terms-->
-      <div class="step active" id="step-0">
-        <span class="step-count">Step 0 of 10</span>
-        <h1>A Few Terms Before We Begin</h1>
+      <!-- Step 1 - Terms-->
+      <div class="step active" id="step-1">
+        <span class="step-count">Step 1 of 10</span>
+        <h1>Some Terms Before We Begin</h1>
 
         <div class="sheet-tip">
           <strong>&#x270E; Sheet Tip: </strong> These are a few terms that will
           help us going forward. If you have any questions about a word, check
-          the Glossary page under the "Reference" tab.
+          the Glossary page in the menu.
         </div>
 
         <div class="section">
@@ -156,105 +177,6 @@
             Check DC, or hitting an enemy against the enemy's Armor Class (their
             armor's DC).
           </p>
-
-          <h3>Advantage & Disadvantage</h3>
-          <p>
-            Sometimes, something about your character (like their class or
-            background), or the situation your character is in, will cause your
-            DM to give you something called "advantage" or "disadvantage". When
-            you have Advantage on a d20 roll, you roll the d20 twice and take
-            the higher of the two numbers, then add any relevant modifiers. If
-            you have Disadvantage, you roll the d20 twice and take the lower of
-            the two numbers.
-          </p>
-
-          <h3>Natural 20's & Natural 1's</h3>
-          <p>
-            If you've heard of D&D before, you've probably heard of the
-            excitement of rolling a Natural 20, but what does that mean? Rules
-            As Written (RAW), a Natural 20 only applies to a combat attack roll.
-            When you roll a 20 (before "to hit" modifiers) on a d20 attack roll
-            during combat, you may roll you damage dice twice and then add your
-            damage modifier (more on attacking and damge in step 10). This is
-            also referred to as a "Critical Hit".
-          </p>
-          <p>
-            A common house rule is to consider any Natural 20 (including outside
-            of combat) a Critical Success. Another house rule is to consider
-            Natural 1's as a "critical failure". So instead of picking a lock,
-            maybe the rogue makes the lock even harder to pick by breaking an
-            internal component. Natural 1's and Natural 20's (outside of combat)
-            are not in the official rules, so make sure to check with your DM if
-            they include them, before playing.
-          </p>
-          <div class="text-tinted">
-            Note for DMs: Try to avoid making a Natural 1 completely
-            humilitating, your players are still experts at their class.
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 1 - Your Sheet -->
-      <div class="step" id="step-1">
-        <span class="step-count">Step 1 of 10</span>
-        <h1>Get Your Character Sheet</h1>
-
-        <!-- step content -->
-        <div class="sheet-tip">
-          <strong>&#x270E; Sheet Tip: </strong>Linked below is a copy of the
-          official character sheet, you'll be filling it out as you go through
-          each step.
-        </div>
-
-        <div class="section">
-          <h2>What Is a Character Sheet?</h2>
-          <p>
-            A character sheet is a single document that holds everything about
-            your character in one place: your ability scores, race, class,
-            skills, spells, equipment, and more. You'll fill it out as you make
-            choices during character creation, and reference it constantly
-            during play to look up your stats and abilities.
-          </p>
-        </div>
-
-        <div class="section">
-          <h2>What Else Do You Need?</h2>
-          <ul>
-            <li>
-              A full set of dice or a dice rolling app
-              <ul>
-                <li>Also, if your friends have dice you can always share!</li>
-              </ul>
-            </li>
-            <li>
-              A pencil (or something to edit your sheet with, but not
-              permanently!)
-            </li>
-            <li>
-              Ideally, you want 3-5 players plus a DM (4-6 people total). Two
-              players plus a DM works in a pinch, though it can feel sparse. Six
-              or more players is possible but it gets difficult to manage for
-              DMs
-            </li>
-          </ul>
-        </div>
-
-        <div class="section">
-          <h2>Download the Official Sheet</h2>
-          <p>
-            The publisher of D&amp;D provides a free, blank 5e character sheet
-            you can print or fill out digitally.
-          </p>
-          <div class="center-container">
-            <a
-              class="btn btn-primary"
-              href="https://media.wizards.com/2022/dnd/downloads/DnD_5E_CharacterSheet_FormFillable.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Download Blank Character Sheet (PDF)
-            </a>
-          </div>
         </div>
       </div>
 
@@ -544,7 +466,7 @@
         <!-- step content -->
         <div class="sheet-tip">
           <strong>&#x270E; Sheet Tip:</strong> Write this in the "Class &amp;
-          Level" box at the top of your character sheet.
+          Level" box at the top of your character sheet (Ex. Fighter 1).
         </div>
 
         <div class="section">
@@ -555,12 +477,6 @@
             they're good at in a fight, and whether they cast spells. Back in
             Step 2 you saw a one-sentence flavor blurb for each class. Here
             we'll focus on the numbers behind them.
-          </p>
-          <p>
-            This step introduces a concept called "Primary Ability." You'll
-            learn what Ability Scores are in detail in Step 5. For now, just
-            know that it's the stat your class relies on most and you'll want it
-            to be one of your highest numbers when you assign scores later.
           </p>
         </div>
 
@@ -580,7 +496,10 @@
             The ability score that matters most for this class. When you set
             your scores in Step 5, this is where you'll usually want your
             highest number. An "&amp;" means both abilities are important,
-            whereas an "or" means you should choose one or the other.
+            whereas an "or" means you should choose one or the other. For now,
+            just know that it's the stat your class relies on most and you'll
+            want it to be one of your highest numbers when you assign scores
+            later.
           </p>
 
           <h3>Spellcasting</h3>
@@ -611,8 +530,13 @@
 
         <!-- Class list -->
         <div class="section">
-          <h2>The Classes Expanded - The Nitty-Gritty:</h2>
-
+          <h2>The Class List Expanded - The Nitty-Gritty</h2>
+          <p>
+            Stuck on which one to choose? Non-spellcasters, like fighter, are
+            easier to understand for newcomers. If you're leaning spellcaster,
+            Clerics are always a good addition to the party, and aren't too
+            complex.
+          </p>
           <div class="table-wrap">
             <table class="modifier-table class-table">
               <tr>
@@ -730,7 +654,13 @@
           <p>
             Keep an eye out for the following, and write them in the "Other
             Proficiencies & Languages" box on your character sheet for now.
-            We'll go over how they work later in step 7.
+            We'll go over how they work in more detail later in step 7.
+          </p>
+
+          <h3>Skills</h3>
+          <p>
+            Your Class and Background grant you a list of skills, keep track of
+            which ones are offered as we'll choose those in Step 7.
           </p>
 
           <h3>Languages</h3>
@@ -1124,6 +1054,7 @@
           </p>
           <details>
             <summary class="house-rules-details">
+              <span class="icon">▼</span>
               My Personal House Rules for Rolling
             </summary>
             <ul>
@@ -1417,7 +1348,7 @@
             <li>Paladin</li>
             <li>Artificer</li>
           </ul>
-          <div class="text-tinted">
+          <div class="dm-note">
             Note: While the Artificer is a spellcaster, it isn't part of the
             core rules, so check with your DM before counting on it
           </div>
@@ -1589,7 +1520,7 @@
             others mostly show up as flavor or odd change.
           </p>
 
-          <div class="text-tinted">
+          <div class="dm-note">
             DM note: Some DMs might not even use electrum, so make sure to
             communicate with your DM!
           </div>
@@ -1679,7 +1610,10 @@
           </p>
 
           <details>
-            <summary class="house-rules-details">Armor Table:</summary>
+            <summary class="house-rules-details">
+              <span class="icon">▼</span>
+              Armor Table:
+            </summary>
 
             <div class="table-wrap">
               <table class="modifier-table">
@@ -1835,6 +1769,7 @@
 
           <details>
             <summary class="house-rules-details">
+              <span class="icon">▼</span>
               Here is a list of the most common properties:
             </summary>
 
@@ -1888,6 +1823,7 @@
 
           <details>
             <summary class="house-rules-details">
+              <span class="icon">▼</span>
               Simple Melee Weapons Table:
             </summary>
 
@@ -1965,6 +1901,7 @@
 
           <details>
             <summary class="house-rules-details">
+              <span class="icon">▼</span>
               Martial Melee Weapons Table:
             </summary>
 
@@ -2089,7 +2026,10 @@
           </details>
 
           <details>
-            <summary class="house-rules-details">Ranged Weapons Table:</summary>
+            <summary class="house-rules-details">
+              <span class="icon">▼</span>
+              Ranged Weapons Table:
+            </summary>
 
             <div class="table-wrap">
               <table class="modifier-table">
@@ -2304,12 +2244,20 @@
 
     <footer class="site-footer">
       <p>
-        This work includes material taken from the System Reference Document 5.1
-        ('SRD 5.1') by Wizards of the Coast LLC and available at
-        https://dnd.wizards.com/resources/systems-reference-document. The SRD
-        5.1 is licensed under the Creative Commons Attribution 4.0 International
-        License available at
-        https://creativecommons.org/licenses/by/4.0/legalcode.
+        This work includes material taken from the
+        <a
+          href="https://dnd.wizards.com/resources/systems-reference-document"
+          target="_blank"
+          rel="noopener noreferrer"
+          >System Reference Document 5.1</a
+        >
+        ('SRD 5.1') by Wizards of the Coast LLC, licensed under the
+        <a
+          href="https://creativecommons.org/licenses/by/4.0/legalcode"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Creative Commons Attribution 4.0 International License</a
+        >.
       </p>
     </footer>
 

@@ -72,6 +72,7 @@ h1 {
   font-weight: var(--weight-bold);
   line-height: var(--leading-tight);
   letter-spacing: -0.02em; /* Slight tightening looks cleaner at large sizes */
+  margin-bottom: var(--space-3);
 }
 
 /* Section heading */
@@ -101,6 +102,28 @@ h3 {
   cursor: pointer;
 }
 
+summary {
+  list-style: none; /* Chrome, Firefox, Safari */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary .icon {
+  display: inline-block;
+  transform: rotate(270deg);
+  transition: transform 0.25s ease-in-out;
+}
+
+details[open] summary .icon {
+  transform: rotate(360deg);
+}
+
 /* Default paragraph color and line height */
 p {
   color: var(--color-text);
@@ -113,13 +136,8 @@ p {
   font-size: var(--text-sm);
 }
 
-/* Closer to text color than muted */
 .text-tinted {
-  margin-top: var(--space-3);
-  line-height: var(--leading-normal);
   color: var(--color-text-tinted);
-  font-size: var(--text-sm);
-  font-style: italic;
 }
 
 .class-list {
@@ -154,7 +172,7 @@ header {
 /* Nav bar layout: logo on the left, links/hamburger on the right */
 .main-nav {
   margin: 0 var(--space-8);
-  padding: 0 var(--space-8);
+  padding: 0 var(--space-3);
   height: var(--nav-height);
   display: flex;
   align-items: center;
@@ -175,8 +193,8 @@ header {
 
 /* Small logo image/icon next to the site name */
 .nav-logo-icon {
+  width: 25px;
   height: 28px;
-  width: auto;
   object-fit: contain;
   flex-shrink: 0;
   margin-left: -2px;
@@ -259,11 +277,6 @@ header {
   gap: var(--space-6);
 }
 
-/* Wrapper for the "Reference" dropdown trigger + menu */
-.nav-dropdown {
-  position: relative;
-}
-
 /* Button that opens/closes the Reference dropdown */
 .nav-dropdown-toggle {
   display: flex;
@@ -308,7 +321,6 @@ header {
   position: absolute;
   top: 100%;
   right: 0;
-  margin-top: var(--space-4);
   width: max-content;
   min-width: 10rem;
   background-color: var(--color-nav);
@@ -448,8 +460,22 @@ header {
 .section {
   background: var(--color-surface);
   border-left: var(--space-1) solid var(--color-accent);
-  padding: var(--space-8) var(--space-10);
+  padding: var(--space-6) var(--space-8);
   margin-bottom: var(--space-6);
+}
+
+/* Section Variants */
+
+.section-definition {
+  border-left-color: var(--color-info);
+}
+
+.section-reference {
+  border-left-color: var(--color-reference);
+}
+
+.section-warning {
+  border-left-color: var(--color-accent);
 }
 
 /* Spaces a paragraph from whatever precedes it within a section */
@@ -476,7 +502,7 @@ header {
 /* Responsive image inside a section figure */
 .section figure img {
   width: 100%;
-  max-width: 800px;
+  max-width: 400px;
   height: auto;
   border-radius: var(--border-radius);
 }
@@ -574,7 +600,7 @@ hr {
 
 /* Nav card description text */
 .nav-card p {
-  color: var(--color-text-muted);
+  color: var(--color-text-tinted);
   font-size: var(--text-sm);
   line-height: var(--leading-normal);
 }
@@ -636,6 +662,11 @@ hr {
   grid-area: left;
 }
 
+/* Loop arrow's "repeats" version only shows up at the <=640px breakpoint */
+.loop-arrow-repeat {
+  display: none;
+}
+
 /* Individual "core loop" card */
 .loop-card {
   display: flex;
@@ -676,10 +707,18 @@ hr {
   color: var(--color-accent);
 }
 
-.sheet-tip /* Tips under each step of where to put things */ {
+/* Tips under each step of where to put things */
+.sheet-tip {
   color: var(--color-text-tinted);
-  margin-top: var(--space-3);
   margin-bottom: var(--space-6);
+  font-style: italic;
+}
+
+/* Side DM Notes */
+.dm-note {
+  margin-top: var(--space-3);
+  color: var(--color-text-tinted);
+  font-size: var(--text-sm);
   font-style: italic;
 }
 
@@ -740,19 +779,18 @@ hr {
 
 /* Full-bleed row containing the step tracker + its divider line */
 .step-tracker-nav {
-  position: relative;
-  display: flex;
-  align-items: flex-start;
-  justify-content: center;
-  gap: var(--space-3);
-  padding-bottom: var(--space-6);
-  margin-bottom: var(--space-8);
+  margin: var(--space-8);
+  margin-top: -64px;
+  position: sticky;
+  top: calc(var(--nav-height));
+  z-index: 10; /* Stays below the header (z-index: 100) it sticks under */
+  background-color: var(--color-bg);
+  padding: var(--space-8);
   width: 100vw;
   margin-left: calc(50% - 50vw);
-  padding-left: var(--space-6);
-  padding-right: var(--space-6);
   box-sizing: border-box;
   overflow-x: hidden;
+  transition: padding 0.2s ease;
 }
 
 /* Full-width divider line under the tracker */
@@ -765,6 +803,87 @@ hr {
   width: 100vw;
   height: 1px;
   background-color: var(--color-border);
+}
+
+/* Row holding the prev arrow, pips, and next arrow */
+.step-tracker-content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--space-3);
+}
+
+/* Button in the bottom-left corner that collapses/expands the tracker */
+.tracker-toggle {
+  position: absolute;
+  width: fit-content;
+  margin-left: var(--space-3);
+  bottom: var(--space-3);
+  left: var(--space-3);
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: none;
+  border: none;
+  padding: var(--space-1);
+  font: inherit;
+  color: var(--color-text-tinted);
+  cursor: pointer;
+}
+
+/* Highlight both the caret and the count together, but only when the
+   pointer is actually over one of them — not the button's full hit area */
+.tracker-toggle:has(.tracker-toggle-caret:hover) .tracker-toggle-caret,
+.tracker-toggle:has(.tracker-toggle-caret:hover) .tracker-toggle-count,
+.tracker-toggle:has(.tracker-toggle-count:hover) .tracker-toggle-caret,
+.tracker-toggle:has(.tracker-toggle-count:hover) .tracker-toggle-count {
+  color: var(--color-text);
+}
+
+/* Only shown once the tracker is collapsed, next to the caret */
+.tracker-toggle-count {
+  display: none;
+  font-size: var(--text-sm);
+  transition:
+    transform 0.2s ease,
+    color 0.2s ease;
+}
+
+.tracker-toggle-caret {
+  display: inline-block;
+  font-size: var(--text-sm);
+  line-height: 1;
+  transition: transform 0.2s ease;
+}
+
+/* Collapsed state: the tracker shrinks to a thin sticky bar */
+.step-tracker-nav.collapsed {
+  padding-top: var(--space-3);
+  padding-bottom: var(--space-3);
+  cursor: pointer;
+}
+
+.step-tracker-nav.collapsed .step-tracker-content {
+  display: none;
+}
+
+.step-tracker-nav.collapsed .tracker-toggle {
+  position: static;
+  width: 100%;
+  justify-content: left;
+}
+
+.step-tracker-nav.collapsed .tracker-toggle-count {
+  display: inline;
+}
+
+.step-tracker-nav.collapsed .tracker-toggle-count {
+  color: var(--color-text-tinted);
+  font-weight: bold;
+}
+
+.step-tracker-nav.collapsed .tracker-toggle-caret {
+  transform: rotate(180deg);
 }
 
 /* Row of step pips (the numbered circles) */
@@ -862,12 +981,18 @@ hr {
 /* Text label under each step pip */
 .step-label {
   font-size: var(--text-sm);
-  color: var(--color-text-muted);
+  color: var(--color-text-tinted);
   text-align: center;
   white-space: normal;
   overflow-wrap: break-word;
   line-height: 1.2;
   max-width: 100%;
+}
+
+.step-label.active {
+  color: var(--color-text);
+  padding-bottom: var(--space-1);
+  border-bottom: 2px solid var(--color-accent);
 }
 
 /* Prev/next arrows flanking the step tracker, letting you jump a step
@@ -896,7 +1021,8 @@ hr {
 }
 
 .tracker-arrow:disabled {
-  color: var(--color-text-subtle);
+  color: var(--color-text-muted);
+  opacity: 0.75;
   cursor: not-allowed;
 }
 
@@ -918,6 +1044,16 @@ hr {
   margin: 0 auto;
 }
 
+/* Footer links (SRD/license attribution) */
+.site-footer a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+}
+
+.site-footer a:hover {
+  color: var(--color-accent);
+}
+
 /* ============================================================
    RESPONSIVE
    Mobile gets slightly smaller text and tighter padding.
@@ -930,10 +1066,6 @@ hr {
    arrows on either side instead of the full scrolling row of 9 pips. */
 @media (max-width: 900px) {
   .step-tracker-nav {
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    gap: var(--space-3);
     padding-left: var(--space-3);
     padding-right: var(--space-3);
   }
@@ -1074,8 +1206,29 @@ hr {
     transform: rotate(-90deg);
   }
 
+  /* On desktop this arrow points back up to the top-left card, but on the
+     stacked mobile layout there's nothing above it to point to — so swap
+     it for a "repeats" glyph and caption instead of rotating it */
   .loop-arrow-left {
-    transform: rotate(180deg);
+    flex-direction: column;
+    gap: var(--space-1);
+  }
+
+  .loop-arrow-symbol-default {
+    display: none;
+  }
+
+  .loop-arrow-repeat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+  }
+
+  .loop-repeat-caption {
+    font-size: var(--text-sm);
+    font-weight: var(--weight-normal);
+    color: var(--color-text-muted);
   }
 
   /* Character creator page */
