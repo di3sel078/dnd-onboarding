@@ -319,7 +319,118 @@
   }
 
   function initGallery() {
-    // TODO
+    const grid = document.getElementById("character-cards");
+    if (!grid) return;
+
+    // Card content mirrors the "OG Character Examples" section on the page.
+    // Adding a character is one new entry here — the markup is generated.
+    // `description` is a list of paragraphs; `placeholder: true` marks copy
+    // that hasn't been written yet so it renders visibly as a stand-in.
+    // `artist` credits the portrait in the pop-up; omit it and the caption
+    // is left off entirely.
+    const CHARACTERS = [
+      {
+        name: "Crimson",
+        image: "assets/images/characters/crimson.jpeg",
+        alt: "Portrait of Crimson, a half-elf rogue with fiery red hair",
+        artist: "Kaya McCue",
+        description: [
+          "Crimson is a cunning, swashbuckling, half-elf rogue, named for her fiery red hair that made her near impossible to miss on any deck she walked. She didn’t start out as the Pirate Queen, she was just another pair of hands on a creaking ship, quick-fingered (and quicker tongued), with a habit of acting before thinking, which got her into as much trouble as it got her out of.",
+          "What set her apart wasn’t raw power, it was her ability to read a room, find the angle nobody else saw, and talk (or fight) her way through whatever mess her impulses landed her in. Through clever schemes, desperate gambles, and more than a few decisions that should have gotten her killed, she clawed her way from anonymous crew member to the most feared captain on the sea.",
+          "Crimson is a reminder that you don’t need a grand title at the start, sometimes the best stories are about earning one.",
+        ],
+      },
+      {
+        name: "Acharia",
+        image: "assets/images/characters/acharia.jpg",
+        alt: "Placeholder art for Acharia",
+        artist: "Kaya McCue",
+        description: [
+          "Acharia is a life cleric whose story began as an orphan under the care of a fugitive priest. Though naturally volatile and shadowed by a dark disposition, her mentor looked past her rough edges, guiding her toward the path of healing. She eventually joined a band of adventurers who looked the other way regarding her frequent outbursts and questionable morals. Driven by a thirst for dominance, she entered into a sinister pact with a devil, yet her time on the road sparked an unexpected transformation. As her journey progressed, the cold, power-motivated hothead slowly found a new purpose, evolving into a steadfast protector who would sacrifice everything for the family she chose.",
+        ],
+      },
+      {
+        name: "Lyonoris",
+        image: "assets/images/characters/lyo.jpg",
+        alt: "Portrait of Lyonoris",
+        artist: "Robin Laronde",
+        description: ["Description coming soon."],
+        placeholder: true,
+      },
+    ];
+
+    // Marks descriptions that aren't written yet so they read as stand-ins
+    function placeholderClass(character) {
+      return character.placeholder ? "text-placeholder" : "";
+    }
+
+    // The card is just the portrait and the name — the description lives in
+    // the pop-up
+    function cardTag(character) {
+      return `
+        <button
+          type="button"
+          class="character-card"
+          aria-haspopup="dialog"
+          aria-label="Read about ${character.name}"
+        >
+          <img
+            src="${character.image}"
+            alt="${character.alt}"
+            width="400"
+            height="500"
+          />
+          <span class="character-card-name">${character.name}</span>
+        </button>
+      `;
+    }
+
+    grid.innerHTML = CHARACTERS.map(cardTag).join("");
+
+    const modal = document.getElementById("character-modal");
+    const modalImage = document.getElementById("character-modal-image");
+    const modalTitle = document.getElementById("character-modal-title");
+    const modalText = document.getElementById("character-modal-text");
+    const modalCredit = document.getElementById("character-modal-credit");
+    const modalClose = document.getElementById("character-modal-close");
+
+    function openModal(character) {
+      modalImage.src = character.image;
+      modalImage.alt = character.alt;
+      modalTitle.textContent = character.name;
+
+      // Left empty for uncredited art — :empty hides the caption
+      modalCredit.textContent = character.artist
+        ? `Art by: ${character.artist}`
+        : "";
+
+      modalText.innerHTML = character.description
+        .map((text) => `<p class="${placeholderClass(character)}">${text}</p>`)
+        .join("");
+
+      modal.showModal();
+      document.body.classList.add("modal-open");
+    }
+
+    // Loops over whatever was rendered, so a new CHARACTERS entry still needs
+    // no changes here. A real <button> fires click on Enter and Space, so
+    // there's no keydown handler to keep in sync. The hover lift is pure CSS.
+    grid.querySelectorAll(".character-card").forEach((card, index) => {
+      card.addEventListener("click", () => openModal(CHARACTERS[index]));
+    });
+
+    modalClose.addEventListener("click", () => modal.close());
+
+    // A click that lands on the dialog element itself (rather than its
+    // contents) is a click on the backdrop
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) modal.close();
+    });
+
+    // Fires for the X, the backdrop, and Escape alike
+    modal.addEventListener("close", () => {
+      document.body.classList.remove("modal-open");
+    });
   }
 
   // Main

@@ -23,13 +23,129 @@
     </header>
 
     <main>
-      <div>
-        <h1>Coming Soon!</h1>
-        <br />
-        <p>
-          This will be a gallery of character art from our table, with links to
-          credit the artists.
-        </p>
+      <h1>The Gallery</h1>
+      <br />
+
+      <div class="section section-gallery">
+        <h2>Character Cards</h2>
+        <p>Click a card to open it and read about the character.</p>
+        <!-- Cards are rendered from the CHARACTERS array in js/main.js -->
+        <div class="character-cards" id="character-cards"></div>
+      </div>
+
+      <!-- Shell for the card pop-up; contents are filled in by js/main.js -->
+      <dialog
+        class="character-modal"
+        id="character-modal"
+        aria-labelledby="character-modal-title"
+      >
+        <button
+          type="button"
+          class="modal-close"
+          id="character-modal-close"
+          aria-label="Close"
+        >
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+          <span class="nav-toggle-bar"></span>
+        </button>
+        <div class="character-modal-body">
+          <figure class="character-modal-figure">
+            <img
+              class="character-modal-image"
+              id="character-modal-image"
+              src=""
+              alt=""
+              width="400"
+              height="500"
+            />
+            <figcaption
+              class="character-modal-credit text-muted"
+              id="character-modal-credit"
+            ></figcaption>
+          </figure>
+          <div>
+            <h3 class="character-modal-title" id="character-modal-title"></h3>
+            <div id="character-modal-text"></div>
+          </div>
+        </div>
+      </dialog>
+
+      <div class="section">
+        <h2>OG Character Examples</h2>
+
+        <figure>
+          <figcaption>
+            <h3>Aurora Kymatista, AKA "Crimson, The Pirate Queen"</h3>
+          </figcaption>
+          <img
+            src="assets/images/characters/crimson.jpeg"
+            alt="Portrait of Crimson, a half-elf rogue with fiery red hair"
+            width="400"
+            height="500"
+          />
+          <p>
+            Crimson is a cunning, swashbuckling, half-elf rogue, named for her
+            fiery red hair that made her near impossible to miss on any deck she
+            walked. She didn’t start out as the Pirate Queen, she was just
+            another pair of hands on a creaking ship, quick-fingered (and
+            quicker tongued), with a habit of acting before thinking, which got
+            her into as much trouble as it got her out of.
+          </p>
+          <p>
+            What set her apart wasn’t raw power, it was her ability to read a
+            room, find the angle nobody else saw, and talk (or fight) her way
+            through whatever mess her impulses landed her in. Through clever
+            schemes, desperate gambles, and more than a few decisions that
+            should have gotten her killed, she clawed her way from anonymous
+            crew member to the most feared captain on the sea.
+          </p>
+          <p>
+            Crimson is a reminder that you don’t need a grand title at the
+            start, sometimes the best stories are about earning one.
+          </p>
+        </figure>
+
+        <figure>
+          <figcaption>
+            <h3>Lyonoris</h3>
+          </figcaption>
+          <img
+            src="assets/images/characters/lyo.jpg"
+            alt="Placeholder art for example character two"
+            width="400"
+            height="500"
+          />
+          <p>
+            Placeholder paragraph describing this character's concept,
+            personality, and what inspired them.
+          </p>
+        </figure>
+
+        <figure>
+          <figcaption>
+            <h3>Acharia</h3>
+          </figcaption>
+          <img
+            src="assets/images/characters/acharia.jpg"
+            alt="Placeholder art for example character three"
+            width="400"
+            height="500"
+          />
+          <p>
+            Acharia is a life cleric whose story began as an orphan under the
+            care of a fugitive priest. Though naturally volatile and shadowed by
+            a dark disposition, her mentor looked past her rough edges, guiding
+            her toward the path of healing. She eventually joined a band of
+            adventurers who looked the other way regarding her frequent
+            outbursts and questionable morals. Driven by a thirst for dominance,
+            she entered into a sinister pact with a devil, yet her time on the
+            road sparked an unexpected transformation. As her journey
+            progressed, the cold, power-motivated hothead slowly found a new
+            purpose, evolving into a steadfast protector who would sacrifice
+            everything for the family she chose.
+          </p>
+        </figure>
       </div>
     </main>
 

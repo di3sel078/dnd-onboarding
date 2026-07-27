@@ -57,4 +57,5 @@
   --nav-height: 80px;
   --border-radius: 0.5rem; /* 8px — subtle rounding */
   --border-radius-sm: 0.25rem;
+  --border-radius-lg: 1rem;
 }

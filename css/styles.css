@@ -92,7 +92,7 @@ h3 {
 }
 
 /* Matches h3 styling since browsers don't bold/size <summary> by default */
-.house-rules-details {
+.collapse-heading {
   display: list-item;
   font-size: var(--text-lg);
   font-weight: var(--weight-bold);
@@ -234,7 +234,6 @@ header {
 
 .main-nav a:hover {
   color: var(--color-text);
-  background-color: var(--color-surface);
 }
 
 /* Individual link row inside the mobile dropdown */
@@ -248,8 +247,8 @@ header {
 /* Highlight the active page link */
 .main-nav a.active {
   color: var(--color-text);
+  padding-bottom: 4px;
   border-bottom: 2px solid var(--color-accent);
-  padding-bottom: 2px;
 }
 
 /* Current-page highlight inside the mobile dropdown */
@@ -258,7 +257,10 @@ header {
   border-left: 3px solid var(--color-accent);
   padding-left: calc(var(--space-6) - 3px);
   padding-bottom: var(--space-4);
-  background-color: var(--color-accent-dark);
+}
+
+.nav-links a:hover {
+  background-color: var(--color-surface);
 }
 
 /* Indents a subpage link nested under the item above it (e.g. Extra
@@ -478,6 +480,11 @@ header {
   border-left-color: var(--color-accent);
 }
 
+.section-gallery {
+  border: 2px solid var(--color-accent-dark);
+  border-radius: var(--border-radius);
+}
+
 /* Spaces a paragraph from whatever precedes it within a section */
 .section p {
   margin-top: var(--space-3);
@@ -587,7 +594,11 @@ hr {
     transform 0.15s ease;
 }
 
-.nav-card:hover {
+.not-finished {
+  cursor: not-allowed;
+}
+
+.nav-card-finished:hover {
   border-color: var(--color-accent);
   transform: translateY(-2px);
 }
@@ -1055,6 +1066,197 @@ hr {
 }
 
 /* ============================================================
+   GALLERY — CHARACTER CARDS
+   Click-to-reveal cards rendered from the CHARACTERS array in
+   js/main.js. The image and the description sit stacked on top of
+   each other and crossfade — no 3D rotation.
+   ============================================================ */
+
+.character-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+/* Whole card is one button so Enter/Space work without a keydown handler */
+.character-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  padding: 0;
+  background: var(--color-surface);
+  border: 1px solid var(--color-accent-border);
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.character-card:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Fills the card regardless of the source image's aspect ratio */
+.character-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Name sits over the bottom of the image, on a scrim so it stays legible
+   against a light portrait */
+.character-card-name {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: var(--space-6) var(--space-4) var(--space-3);
+  background: linear-gradient(to top, #000000cc, transparent);
+  color: var(--color-text);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+}
+
+/* Stand-in copy that isn't written yet — shown in the pop-up */
+.text-placeholder {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+/* Lift only where there's a real cursor — no hover state on touch */
+@media (hover: hover) and (pointer: fine) {
+  .character-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-8px);
+  }
+}
+
+/* --- Character pop-up --- */
+
+/* Native <dialog> so showModal() handles the top layer, Escape, focus
+   trapping, and focus restore. Most of this is undoing UA dialog defaults. */
+.character-modal {
+  width: min(900px, 92vw);
+  padding: 0;
+  background: var(--color-surface);
+  color: var(--color-text);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+
+.character-modal::backdrop {
+  background: #000000cc;
+}
+
+/* The only scroll container — long descriptions scroll, the close button
+   (a sibling) stays pinned to the panel. Capping the height here rather
+   than on the dialog lets the panel shrink to fit short descriptions. */
+.character-modal-body {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: var(--space-8);
+  align-items: start;
+  padding: var(--space-8);
+  max-height: 85vh;
+  overflow-y: auto;
+}
+
+/* Overrides the browser's default figure margin */
+.character-modal-figure {
+  margin: 0;
+}
+
+.character-modal-image {
+  width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
+}
+
+/* Artist credit under the portrait — sizing/color come from .text-muted */
+.character-modal-credit {
+  margin-top: var(--space-2);
+}
+
+/* Nothing to credit for this character */
+.character-modal-credit:empty {
+  display: none;
+}
+
+.character-modal-title {
+  margin-top: 0;
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-bold);
+}
+
+/* Matches the paragraph spacing used inside .section */
+.character-modal-body p + p {
+  margin-top: var(--space-3);
+}
+
+/* Same X as the open hamburger — reuses .nav-toggle-bar for the bars
+   themselves, since .nav-toggle is display:none above 640px */
+.modal-close {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 2.25rem;
+  height: 2.25rem;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-close .nav-toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.modal-close .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.modal-close .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+.modal-close:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+/* Stops the page scrolling behind the open pop-up */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Highlight the border instantly, without the lift */
+@media (prefers-reduced-motion: reduce) {
+  .character-card {
+    transition: none;
+  }
+
+  .character-card:hover {
+    transform: none;
+  }
+}
+
+/* ============================================================
    RESPONSIVE
    Mobile gets slightly smaller text and tighter padding.
    These two breakpoints must stay in this order: several rules
@@ -1132,6 +1334,11 @@ hr {
   .step-label {
     font-size: var(--text-sm);
   }
+
+  /* Gallery */
+  .character-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 640px) {
@@ -1180,6 +1387,24 @@ hr {
   .nav-card-arrow {
     justify-self: center;
     transform: rotate(90deg);
+  }
+
+  /* Gallery */
+  .character-cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* Image stacks above the text instead of sitting beside it */
+  .character-modal-body {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+    padding: var(--space-6);
+  }
+
+  /* Capped on the figure, not the image, so the credit stays aligned
+     to the portrait's width rather than the full column */
+  .character-modal-figure {
+    max-width: 240px;
   }
 
   /* Loop cards stack to a single column, tl → top → tr → right → br → ... */
