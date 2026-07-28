@@ -205,7 +205,7 @@
 
     // updateUrl is false when we're just reacting to a URL/history change
     // that already happened (initial load, back/forward button)
-    function showStep(index, { updateUrl = true } = {}) {
+    function showStep(index, { updateUrl = true, scroll = true } = {}) {
       currentStep = index;
 
       // Show/Hide Steps
@@ -251,7 +251,12 @@
       }
 
       // Scroll back to the top of the page for the new step
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (scroll) {
+        const prefersReduced = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
+      }
     }
 
     // Button Click Reactions
@@ -302,7 +307,7 @@
     window.addEventListener("hashchange", () => {
       const index = stepFromHash();
       if (index !== null) {
-        showStep(index, { updateUrl: false });
+        showStep(index, { updateUrl: false, scroll: false });
       }
     });
 
@@ -316,7 +321,7 @@
         window.location.pathname + window.location.search,
       );
     }
-    showStep(hashStep ?? 0, { updateUrl: false });
+    showStep(hashStep ?? 0, { updateUrl: false, scroll: false });
   }
 
   function initRoleplaying() {
