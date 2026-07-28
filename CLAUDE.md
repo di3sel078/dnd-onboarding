@@ -18,10 +18,14 @@ python3 -m http.server 8000
 
 **Pages:**
 
-- `index.html` — Homepage with nav to the three tools
-- `character-creator.html` — Step-by-step character creation guide
-- `turn-guide.html` — What to do on your turn in combat
-- `rules-guide.html` — Common/nitpicky rules reference (driven by `data/rules_guide.json`)
+- `index.html` — Homepage with nav to the three main tools
+- `character-creator.html` — 10-step character creation guide (steps deep-link via `#step-N`)
+- `turn-guide.html` — Advantage/disadvantage and natural 20 reference; partially complete
+- `roleplaying.html` — Stub, coming soon
+- `extra-rules.html` — Leveling up reference; partially complete
+- `glossary.html` — Stub, coming soon
+- `gallery.html` — Character card grid with modal popup (JS-rendered from `CHARACTERS` array in `main.js`)
+- `xumaria.html` — Stub, coming soon
 
 **CSS load order** (all pages should include all three in this order):
 
@@ -29,7 +33,7 @@ python3 -m http.server 8000
 2. `css/variables.css` — design tokens (colors, spacing, fonts)
 3. `css/styles.css` — component and layout styles
 
-**JS:** `js/main.js` handles all interactivity; `data/rules_guide.json` is the data source for the rules reference page.
+**JS:** `js/main.js` handles all interactivity.
 
 ## Conventions
 
@@ -38,6 +42,6 @@ python3 -m http.server 8000
 - Clean modern design aesthetic — avoid fantasy-heavy or dungeon-themed visuals
 - CSS custom properties (defined in `variables.css`) for all colors, spacing, and typography values
 
-## Extentions
+## Extensions
 
 - Use Context7 for code generation and library questions
