@@ -53,7 +53,6 @@
             type="button"
             class="nav-dropdown-toggle"
             id="nav-reference-toggle"
-            aria-haspopup="true"
             aria-expanded="false"
           >
             Reference <span class="nav-dropdown-caret" aria-hidden="true">&#9660;</span>
