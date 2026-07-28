@@ -49,6 +49,25 @@
           </span>
         </button>
 
+        <!-- Mobile-only: replaces the whole tracker with a single centered
+             step selector, since there's no room for pips or a toggle -->
+        <select
+          class="step-tracker-select"
+          id="step-tracker-select"
+          aria-label="Jump to step"
+        >
+          <option value="0">Step 1: Terms</option>
+          <option value="1">Step 2: Concept</option>
+          <option value="2">Step 3: Class</option>
+          <option value="3">Step 4: Race</option>
+          <option value="4">Step 5: Scores</option>
+          <option value="5">Step 6: Background</option>
+          <option value="6">Step 7: Skills</option>
+          <option value="7">Step 8: Spells</option>
+          <option value="8">Step 9: Equipment</option>
+          <option value="9">Step 10: Final Stats</option>
+        </select>
+
         <div class="step-tracker-content" id="step-tracker-content">
           <button
             class="tracker-arrow tracker-arrow-prev"
@@ -139,28 +158,49 @@
         <h1>Some Terms Before We Begin</h1>
 
         <div class="sheet-tip">
-          <strong>&#x270E; Sheet Tip: </strong> These are a few terms that will
-          help us going forward. If you have any questions about a word, check
-          the Glossary page in the "Reference" menu.
+          <strong>&#x270E; Sheet Tip: </strong> Grab a blank Character Sheet
+          before you start. Every step you'll go through tells you exactly which
+          box to fill in.
+
+          <div class="center-container">
+            <a
+              class="btn btn-primary"
+              href="https://media.wizards.com/2022/dnd/downloads/DnD_5E_CharacterSheet_FormFillable.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Download Blank Character Sheet (PDF)
+            </a>
+          </div>
         </div>
 
         <div class="section">
           <h2>Important Terms</h2>
-
+          <p>
+            These are a few terms that will help us going forward. If you have
+            any questions about a word, check the Glossary page in the
+            "Reference" menu.
+          </p>
           <h3>Dice Notation</h3>
           <p>
             The number before the d is how many dice to roll, the number after
             is how many sides each die has. For example, 2d6 means 2 six-sided
-            dice. A full dice set includes: 1d4, 1d6, 1d8, 1d10, 1d12, 1d20, and
-            1d100 (percentile dice, looks like the d10).
+            dice. A full dice set includes: d4, d6, d8, d10, d12, d20, and a
+            second d10 marked 00-90. Roll the two d10s together to get a d100
+            (also called a percentile die), with the 00-90 die being the tens
+            place.
           </p>
 
           <h3>Ability Check</h3>
           <p>
-            An Ability Check is when you want to make an action (search a room
+            Ability Checks happen when you want to take an action (search a room
             for a hidden door, pick a lock, etc.), so your DM asks you to roll a
-            d20 and add the relevant skill modifier (more on modifiers in step
-            7). This is the most common type of rolling.
+            d20 and add your relevant ability modifier (modifiers are explained
+            further in Step 5: "So What Do I Do With These Numbers?"). If your
+            roll + the modifier meets or beats the number the DM has in their
+            head (Difficulty Class or DC, see below), you succeed the Ability
+            Check and the action! If the number is lower than the DC the DM set,
+            then you fail the Ability Check and the action.
           </p>
 
           <h3>Saving Throw</h3>
@@ -174,17 +214,57 @@
             The Difficulty Class (DC) is the number you have to meet or beat to
             succeed at some task. Whether that's withstanding a spell with a
             Saving Throw DC, succeeding at an ability check with an Ability
-            Check DC, or hitting an enemy against the enemy's Armor Class (their
-            armor's DC).
+            Check DC, or hitting an enemy against the enemy's Armor Class (AC).
+            AC works exactly like DC, it just has its own name.
           </p>
+
+          <h3>Advantage & Disadvantage</h3>
+          <p>
+            Sometimes, something about your character (like their class or
+            background), or the situation your character is in, will cause your
+            DM to give you something called "advantage" or "disadvantage". When
+            you have Advantage on a d20 roll, you roll the d20 twice and take
+            the higher of the two numbers, then add any relevant modifiers. If
+            you have Disadvantage, you roll the d20 twice and take the lower of
+            the two numbers.
+          </p>
+
+          <h3>Natural 20s & Natural 1s</h3>
+          <p>
+            If you've heard of D&D before, you've probably heard of the
+            excitement of rolling a "Natural 20", but what does that mean? Rules
+            As Written (RAW), a Natural 20 only applies to a combat attack roll.
+            When you roll a 20 (before "to hit" modifiers) on a d20 attack roll
+            during combat, you may roll your damage dice twice and then add your
+            damage modifier (more on attacking and damage in Step 9). This is
+            also referred to as a "Critical Hit".
+          </p>
+          <p>
+            A common house rule is to consider any Natural 20 (like those
+            outside of combat) a Critical Success. Another house rule, that is
+            usually paired with the Natural 20 rule, is to consider Natural 1s
+            (rolling a 1 before modifiers) as a "critical failure". For example,
+            instead of picking a lock, maybe the rogue makes the lock even
+            harder to pick by breaking an internal component. Natural 1s and
+            Natural 20s (outside of combat) are not in the official rules, so
+            make sure to check with your DM if they include them, before
+            playing.
+          </p>
+          <div class="dm-note">
+            Note for DMs: Try to avoid making a Natural 1 completely
+            humiliating, your players are still experts at their class.
+          </div>
         </div>
 
         <div class="section">
           <h2>Proficiencies</h2>
           <p>
-            Keep an eye out for the following, and write them in the "Other
-            Proficiencies & Languages" box on your character sheet for now.
-            We'll go over how they work in more detail later in step 7.
+            You'll pick up proficiencies from your Class (Step 3), Race (Step
+            4), and Background (Step 6).
+          </p>
+          <p>
+            &#x270E; You'll write them down as you go in the "Other
+            Proficiencies & Languages" box.
           </p>
 
           <h3>Skills</h3>
@@ -260,11 +340,11 @@
         <div class="section">
           <h2>Character & Player Name</h2>
           <p>
-            At the very top of your sheet you'll find two boxes: "Character
-            Name" and "Player Name." The character name box is for whatever you
-            land on for the concept you're building, and the player name box is
-            for you, the real person playing them. Quick and easy, but a good
-            first thing to fill in.
+            &#x270E; At the very top of your sheet you'll find two boxes:
+            "Character Name" and "Player Name." The character name box is for
+            whatever you land on for the concept you're building, and the player
+            name box is for you, the real person playing them. Quick and easy,
+            but a good first thing to fill in.
           </p>
         </div>
 
@@ -272,10 +352,10 @@
         <div class="section">
           <h2>Personality Traits, Ideals, Bonds & Flaws</h2>
           <p>
-            Under the name boxes, on the front page, you'll find four small
-            boxes: Personality Traits, Ideals, Bonds, and Flaws. These take the
-            concept you've been building above and turn it into a few concrete
-            lines you (and your DM) can reference at the table.
+            &#x270E; Under the name boxes, on the front page, you'll find four
+            small boxes: Personality Traits, Ideals, Bonds, and Flaws. These
+            take the concept you've been building above and turn it into a few
+            concrete lines you (and your DM) can reference at the table.
           </p>
 
           <h3>Personality Traits</h3>
@@ -318,12 +398,12 @@
             Neutral, and Chaotic (do they follow rules and tradition, or act on
             instinct and personal freedom?). The second word is where they fall
             between Good, Neutral, and Evil (do they look out for others, or
-            mostly for themselves?).
+            mostly for themselves?). Don't overthink it, alignment is a starting
+            point, not a cage.
           </p>
           <p>
-            Don't overthink it, alignment is a starting point, not a cage. Pick
-            whichever combination feels closest to the character you sketched
-            out above, then write it in the "Alignment" box.
+            &#x270E; Pick whichever combination feels closest to the character
+            you sketched out above, then write it in the "Alignment" box.
           </p>
         </div>
 
@@ -474,7 +554,7 @@
           <p>
             The die you roll for hit points (your health). A bigger die means a
             sturdier character. Your class's hit die also sets your starting hit
-            points at level 1.
+            points at level 1. You'll do the actual math in step 10.
           </p>
 
           <h3>Primary Ability/Abilities</h3>
@@ -571,7 +651,7 @@
                 <td>Monk</td>
                 <td>d8</td>
                 <td>Dexterity &amp; Wisdom</td>
-                <td>With Subclass (Uses Ki)</td>
+                <td>None</td>
                 <td>3</td>
               </tr>
               <tr>
@@ -637,15 +717,7 @@
 
         <div class="section">
           <h2>Where To See The Full Class List</h2>
-          <p>
-            Click the button below to see the full list of classes. Once you've
-            decided on a class, write it in the "Class & Level" box at the top
-            of the first page.
-          </p>
-          <p>
-            Ex: If you chose fighter, at first level, you would write: "Fighter
-            1"
-          </p>
+          <p>Click the button below to see the full list of classes.</p>
           <p>
             <span class="dm-note">
               Note: Artificer and Blood Hunter on the link below are not from
@@ -661,12 +733,15 @@
           >
             Browse the Full Class List (dnd5e Wikidot)
           </a>
-
-          <p></p>
         </div>
 
         <div class="section">
           <h2>What to Write Down</h2>
+          <p>
+            &#x270E; Once you've decided on a class, write it in the "Class &
+            Level" box at the top of the first page. For example, if you chose
+            Fighter at first level, you would write: "Fighter 1"
+          </p>
         </div>
       </div>
 
@@ -704,20 +779,26 @@
           <p>
             Most races bump one or more of your six ability scores. This is
             added on top of the scores you'll set in Step 5 (for example, elves
-            get +2 Dexterity).
+            get +2 to Dexterity).
           </p>
 
           <h3>Size</h3>
           <p>
             Typically "Small" or "Medium", which affects things like the space
-            you take up and some of the gear you can use.
+            you take up, the speed you walk, and some of the gear you can use.
           </p>
 
           <h3>Speed</h3>
           <p>
             How far you can move on your turn, measured in feet (most races walk
-            30 feet, some are faster or slower). See more on movement speed
-            below.
+            30 feet, some are faster or slower).
+          </p>
+
+          <h3>Languages</h3>
+          <p>Your race may provide a language in addition to "Common".</p>
+          <p>
+            &#x270E; Write your known languages in the "Other Proficiencies &
+            Languages" box on the first page
           </p>
 
           <h3>Special Traits</h3>
@@ -725,6 +806,11 @@
             Extra perks unique to your race, such as darkvision (seeing in the
             dark), resistance to certain kinds of damage, or a free skill or
             language.
+          </p>
+          <p>
+            &#x270E; Write these down in either the "Features & Traits" box on
+            the first page, or the "Additional Features & Traits" box on the
+            second page.
           </p>
         </div>
 
@@ -741,9 +827,9 @@
           <p>
             Difficult terrain (like rubble, mud, or thick underbrush) costs
             extra movement, and some race traits or spells can boost your speed
-            further. For now, just get your base number written down, you'll use
-            it constantly once you're at the table.
+            further.
           </p>
+          <p>&#x270E; This will go in the "Speed" box on the first page.</p>
         </div>
 
         <div class="section">
@@ -756,10 +842,6 @@
             apply its ability score increases once you set your scores in Step
             5.
           </p>
-          <p>
-            Some races may be from other sources, make sure to confirm with your
-            DM on which sources they use.
-          </p>
           <div class="center-container">
             <a
               class="btn btn-primary"
@@ -770,6 +852,10 @@
               Browse the Full Race List (dnd5e Wikidot)
             </a>
           </div>
+          <p class="dm-note">
+            DM Note: Some races may be from other sources, make sure to confirm
+            with your DM on which sources they use.
+          </p>
         </div>
       </div>
 
@@ -787,63 +873,61 @@
         </div>
 
         <!-- 6 Scores overview -->
-        <div>
-          <div class="section">
-            <h2>What Are the Six Ability Scores?</h2>
-            <h3>Strength (STR)</h3>
-            <p>
-              Measures physical power, athletic training and the extent to which
-              you can exert raw bodily force. In combat, your
-              <strong>Strength</strong> modifier is added to melee weapon attack
-              rolls (to determine if you hit) and to the damage roll (to
-              determine how hard you hit. More on that in step 10)
-            </p>
-            <p>Important For: Barbarian, Fighter (STR based), Paladin</p>
+        <div class="section">
+          <h2>What Are the Six Ability Scores?</h2>
+          <h3>Strength (STR)</h3>
+          <p>
+            Measures physical power, athletic training and the extent to which
+            you can exert raw bodily force. In combat, your
+            <strong>Strength</strong> modifier is added to melee weapon attack
+            rolls (to determine if you hit) and to the damage roll (to determine
+            how hard you hit. More on that in step 10)
+          </p>
+          <p>Important For: Barbarian, Fighter (STR based), Paladin</p>
 
-            <h3>Dexterity (DEX)</h3>
-            <p>
-              Measures physical agility, reflexes, balance, and hand-eye
-              coordination. Dexterity contributes to how hard you are to hit.
-              The more agile you are, the harder it is for enemies to land a
-              blow. You'll calculate the exact number (called
-              <strong>Armor Class</strong> or <strong>AC</strong>) in step 9,
-              once you've also chosen your armor.
-            </p>
-            <p>Important For: Rogue, Ranger, Monk, Fighter (DEX based)</p>
+          <h3>Dexterity (DEX)</h3>
+          <p>
+            Measures physical agility, reflexes, balance, and hand-eye
+            coordination. Dexterity contributes to how hard you are to hit. The
+            more agile you are, the harder it is for enemies to land a blow.
+            You'll calculate the exact number (called
+            <strong>Armor Class</strong> or <strong>AC</strong>) in step 9, once
+            you've also chosen your armor.
+          </p>
+          <p>Important For: Rogue, Ranger, Monk, Fighter (DEX based)</p>
 
-            <h3>Constitution (CON)</h3>
-            <p>
-              Measures internal fortitude, stamina, physical endurance.
-              Constitution is used to determine your Hit Points (your health),
-              your ability to survive harsh environments, and your resilience
-              against poisons and diseases.
-            </p>
-            <p>Important For: Hit Point Calculation</p>
+          <h3>Constitution (CON)</h3>
+          <p>
+            Measures internal fortitude, stamina, physical endurance.
+            Constitution is used to determine your Hit Points (your health),
+            your ability to survive harsh environments, and your resilience
+            against poisons and diseases.
+          </p>
+          <p>Important For: Hit Point Calculation</p>
 
-            <h3>Intelligence (INT)</h3>
-            <p>
-              Measures mental ability, information recall, and analytical skill.
-              Intelligence governs your ability to reason, memorize facts, and
-              understand unfamiliar languages or arcane theories.
-            </p>
-            <p>Important For: Wizard, Artificer</p>
+          <h3>Intelligence (INT)</h3>
+          <p>
+            Measures mental ability, information recall, and analytical skill.
+            Intelligence governs your ability to reason, memorize facts, and
+            understand unfamiliar languages or arcane theories.
+          </p>
+          <p>Important For: Wizard, Artificer</p>
 
-            <h3>Wisdom (WIS)</h3>
-            <p>
-              Measures your attunement to the world, perceptiveness, and
-              intuition. Wisdom represents how well you read body language,
-              notice hidden threats, and harness certain magical energies.
-            </p>
-            <p>Important For: Cleric, Druid, Ranger</p>
+          <h3>Wisdom (WIS)</h3>
+          <p>
+            Measures your attunement to the world, perceptiveness, and
+            intuition. Wisdom represents how well you read body language, notice
+            hidden threats, and harness certain magical energies.
+          </p>
+          <p>Important For: Cleric, Druid, Ranger</p>
 
-            <h3>Charisma (CHA)</h3>
-            <p>
-              Measures your force of personality, eloquence, and leadership.
-              Charisma determines how effectively you can persuade, deceive,
-              intimidate, and charm others.
-            </p>
-            <p>Important For: Bard, Paladin, Sorcerer, Warlock</p>
-          </div>
+          <h3>Charisma (CHA)</h3>
+          <p>
+            Measures your force of personality, eloquence, and leadership.
+            Charisma determines how effectively you can persuade, deceive,
+            intimidate, and charm others.
+          </p>
+          <p>Important For: Bard, Paladin, Sorcerer, Warlock</p>
         </div>
 
         <!-- How to roll them -->
@@ -961,7 +1045,7 @@
             To calculate your modifier, take your Ability Score, subtract 10,
             and divide by 2, rounding down if necessary (see table below).
           </p>
-          <h3>Example (rolled a 17):</h3>
+          <p><strong>Example - You rolled a 17:</strong></p>
           <p>17 - 10 = 7 -> 7 / 2 = 3.5 -> rounded down -> modifier = +3</p>
 
           <!-- Ability Score Modifier Table-->
@@ -1084,15 +1168,37 @@
             Things like a set of lock picking tools, a card set, and/or an extra
             language.
           </p>
+          <p>
+            &#x270E; Write these in the "Other Proficiencies & Languages" box.
+          </p>
 
           <h3>A Small Feature</h3>
           <p>
             A minor roleplaying perk, such as always being able to find a place
             to rest or being recognized by members of a certain group.
           </p>
+          <p>
+            &#x270E; Write this in the "Features & Traits" box on the right side
+            of page 1. If you ran out of room in this box, there's an "Addtional
+            Features & Traits" box on page two.
+          </p>
+
+          <h3>Suggested Traits</h3>
+          <p>
+            Each background comes with tables of sample personality traits,
+            ideals, bonds, and flaws.
+          </p>
+          <p>
+            &#x270E; If you left those boxes blank back in Step 2, now is the
+            time to fill those in. Roll on the tables or pick whichever sounds
+            like your character.
+          </p>
 
           <h3>Starting Equipment</h3>
-          <p>A little bit of themed gear and some coin to get you going.</p>
+          <p>
+            A little bit of themed gear and some coin to get you going. We'll go
+            over equipment more in Step 9.
+          </p>
         </div>
         <div class="section">
           <h2>Choose your Background</h2>
@@ -1144,6 +1250,10 @@
             throw, or an attack. It starts at +2 at level 1 and slowly grows as
             you level up, so everything you're proficient in gets better over
             time.
+          </p>
+          <p>
+            &#x270E; Write your Proficiency Bonus in the "Proficiency Bonus" box
+            on the top left of the first page.
           </p>
           <div class="table-wrap">
             <table class="modifier-table">
@@ -1242,6 +1352,10 @@
             hidden trap or a sneaking enemy, without tipping you off by asking
             for a roll.
           </p>
+          <p>
+            &#x270E; Write your Passive Perception in the "Passive Wisdom
+            (Perception)" box underneath the Ability Scores and Skills coloumns.
+          </p>
         </div>
 
         <div class="section">
@@ -1251,8 +1365,14 @@
             your class and your background each hand you a limited menu to
             choose from. A class might say "choose two from Acrobatics,
             Athletics, Stealth, and a few others," while your background simply
-            grants a fixed couple of skills. Bubble in the skills you end up
-            proficient in under the "Skills" section of your sheet.
+            grants a fixed couple of skills.
+          </p>
+          <p>
+            &#x270E; When selecting a Skill, you'll bubble in the circle next to
+            that Skill on your Character Sheet. Bubble in the Skills from your
+            Background first, as those are preset. Once you've done that, return
+            to your Class's skill list and choose however many your class allows
+            from that list (usually two).
           </p>
         </div>
 
@@ -1262,10 +1382,13 @@
             Tools and gaming sets work just like skills, if you're proficient,
             add your proficiency bonus when you use them. Armor and weapon
             proficiencies work a little differently, using armor you're not
-            trained in doesn't just skip a bonus, it actively hurts you, so try
-            to stick to what your class allows. For weapons, you just don't add
-            the proficiency bonus to your "To Hit" modifier if you're not
-            proficient with that weapon.
+            trained in doesn't just skip a bonus, it actively hinders you
+            (disadvantage on any Ability Check, Saving Throw, or Attack roll
+            using Strength or Dexterity, and you can't cast spells while wearing
+            the armor), so try to stick to what your class allows. For weapons,
+            you just don't add the proficiency bonus to your "To Hit" modifier
+            if you're not proficient with that weapon (more on weapons in Step
+            9).
           </p>
         </div>
       </div>
@@ -1277,8 +1400,9 @@
 
         <!-- step content -->
         <div class="sheet-tip">
-          <strong>&#x270E; Sheet Tip: </strong>Write these on the "Spells" sheet
-          on your character sheet.
+          <strong>&#x270E; Sheet Tip: </strong>Write these on the "Spells" page
+          on your character sheet. We'll be spending most of our time on this
+          page.
         </div>
 
         <div class="section">
@@ -1305,7 +1429,7 @@
           </ul>
           <p>
             If you chose any of the above classes and don't plan on using a
-            spellcasting subclasses, you can skip the rest of this step.
+            spellcasting subclass, you can skip the rest of this step.
           </p>
 
           <h3>Known Spellcasters</h3>
@@ -1313,14 +1437,14 @@
             <li>Bard</li>
             <li>Sorcerer</li>
             <li>Warlock</li>
-            <li>Ranger</li>
+            <li>Ranger (at level 2)</li>
           </ul>
 
           <h3>Prepared Spellcasters</h3>
           <ul>
             <li>Cleric</li>
             <li>Druid</li>
-            <li>Paladin</li>
+            <li>Paladin (at level 2)</li>
             <li>Artificer</li>
           </ul>
           <div class="dm-note">
@@ -1350,6 +1474,11 @@
             location) and recharge them. If you're playing a Warlock, you regain
             your spell slots at any rest, short or long.
           </p>
+          <p>
+            &#x270E; Write these in the "Slots Total" box (next to the spell
+            level) on the third page of the character sheet, for each spell
+            level you have access to.
+          </p>
         </div>
 
         <div class="section">
@@ -1359,18 +1488,21 @@
             Simple spells you can cast as often as you like. They don't use
             spell slots, so you'll never run out of them, but they're much less
             powerful. Some cantrips scale with your level over time (for
-            example, at level 5 when you cast Firebolt, you get 2d10 damage die
+            example, at level 5 when you cast Firebolt, you get 2d10 damage dice
             instead of 1d10).
           </p>
+          <p>&#x270E; Write these under "Cantrips" on the third page</p>
 
           <h3>Leveled Spells</h3>
           <p>
             The stronger spells (levels 1 through 9) that cost a spell slot of
             that spell's level each time you cast them. The higher the level,
-            the stronger the spell. Some spells allow you to "Up-Cast" them,
-            meaning you can cast that spell at a higher level for additional
-            effects. Make sure to read the spell's text fully to understand what
-            it does.
+            the stronger the spell.
+          </p>
+          <p>
+            Some spells allow you to "Up-Cast" them, meaning you can cast that
+            spell at a higher level for additional effects. Make sure to read
+            the spell's text fully to understand what it does.
           </p>
           <p>
             If you're playing a Warlock, your spell slots are always the same
@@ -1378,6 +1510,7 @@
             spell slots. If you're casting a spell that allows you to up-cast
             it, you always cast it at your Warlock spell level.
           </p>
+          <p>&#x270E; Write these under the appropriate Spell Level</p>
         </div>
 
         <div class="section">
@@ -1415,13 +1548,19 @@
             your ability scores and proficiency bonus figured out from Steps 5
             and 7.
           </p>
+          <p>
+            &#x270E; Write your main spell casting ability (WIS, INT, or CHA) in
+            the "Spellcasting Ability" box at the top of your Spell page.
+          </p>
 
-          <h3>Spell Attack Modifier</h3>
+          <h3>Spell Attack Bonus</h3>
           <p>
             Your proficiency bonus + your spellcasting ability modifier. Used
             just like a weapon's attack bonus, for spells that require you to
             roll to hit (like Fire Bolt).
           </p>
+          <p>&#x270E; Write this in the "Spell Attack Bonus" box</p>
+
           <h3>Spell Save DC</h3>
           <p>
             8 + your proficiency bonus + your spellcasting ability modifier. For
@@ -1429,18 +1568,19 @@
             Fireball), this is the number they need to meet or beat to avoid or
             reduce the effect.
           </p>
+          <p>&#x270E; Write this in your "Spell Save DC" box</p>
         </div>
 
         <div class="section">
           <h2>Spells Under "Attacks & Spellcasting"</h2>
           <p>
-            Some of your spells also get logged in the "Attacks & Spellcasting"
-            section, the same table you'll use for weapons in Step 9. For a
-            spell you attack with, list the spell's name, use your Spell Attack
-            Modifier (above) as the attack bonus, and use the spell's damage die
-            plus any modifier the spell calls for. For spells that use a saving
-            throw instead, just note the effect and reference your Spell Save
-            DC.
+            &#x270E; Some of your spells also get logged in the "Attacks &
+            Spellcasting" section, the same table you'll use for weapons in Step
+            9. For a spell you attack with, list the spell's name, use your
+            Spell Attack Modifier (above) as the attack bonus, and use the
+            spell's damage die plus any modifier the spell calls for. For spells
+            that use a saving throw instead, just note the effect and reference
+            your Spell Save DC.
           </p>
         </div>
       </div>
@@ -1463,6 +1603,11 @@
             weapons, armor, and the assorted supplies that keep an adventurer
             alive. At level 1 you don't have to shop for any of it, your class
             and background hand you a starting kit automatically.
+          </p>
+          <p>
+            &#x270E; You'll write all of your equipment inside the "Equipment"
+            box on the first page, and you'll write any treasure you find in the
+            "Treasure" box on the second page.
           </p>
         </div>
 
@@ -1494,11 +1639,6 @@
             platinum (pp). Gold is the standard you'll see most often, the
             others mostly show up as flavor or odd change.
           </p>
-
-          <div class="dm-note">
-            DM note: Some DMs might not even use electrum, so make sure to
-            communicate with your DM!
-          </div>
 
           <div class="table-wrap">
             <table class="modifier-table">
@@ -1535,10 +1675,15 @@
             </table>
           </div>
           <p>
-            Your background hands you a small starting amount of coin. Write it
-            in the CP / SP / EP / GP / PP boxes on your sheet next to the
-            "Equipment" box. That will be your spending money for anything you
-            pick up beyond your starting gear.
+            &#x270E; Your background hands you a small starting amount of coin.
+            Write it in the CP / SP / EP / GP / PP boxes on your sheet next to
+            the "Equipment" box. That will be your spending money for anything
+            you pick up beyond your starting gear.
+          </p>
+
+          <p class="dm-note">
+            DM note: Some DMs might not even use electrum, so make sure to
+            communicate with your DM!
           </p>
         </div>
 
@@ -1582,6 +1727,13 @@
             Shields are held in one hand and add a bit of extra protection on
             top of whatever armor you're already wearing. For your AC, add +2 to
             any of the above armor types (if you're proficient with shields).
+          </p>
+
+          <p>
+            &#x270E; Your starting armor comes from your Class, which we
+            discussed in Step 3. Take the armor you wrote down in Step 3 and
+            calculate your Armor Class (AC). Now write it down in the "Armor
+            Class" box on page one.
           </p>
 
           <details>
@@ -1751,7 +1903,8 @@
             <h3>Finesse</h3>
             <p>
               You can use Dexterity instead of Strength for your attack and
-              damage rolls.
+              damage rolls, but whichever you choose you must use for both types
+              of rolls.
             </p>
 
             <h3>Light</h3>
@@ -2084,8 +2237,9 @@
           <h3>Attack Bonus</h3>
           <p>
             The second box is for "Attack Bonus", which is equal to your
-            relevant weapon modifier + proficiency bonus. For ranged weapons,
-            your attack bonus will be your proficiency bonus + your Dexterity
+            relevant weapon modifier + proficiency bonus (only if you're
+            proficient with that weapon, see Step 7). For ranged weapons, your
+            attack bonus will be your proficiency bonus + your Dexterity
             modifier. For (most) melee weapons, your attack bonus will be your
             proficiency bonus + your Strength modifier. If your melee weapon has
             the
@@ -2105,7 +2259,18 @@
             succeed on an attack roll, you'll roll the damage die and add the
             modifier and that's how many hit points your enemy loses.
           </p>
+          <p>
+            If you roll a Natural 20 (a 20 on the die before modifiers) roll
+            your damage dice twice, and add your bonus once.
+          </p>
         </div>
+
+        <p>
+          &#x270E; Your starting Weapons come from your Class, which we
+          discussed in Step 3. Take the weapons you wrote down in Step 3 and
+          calculate your Attack Bonus and Damage die/type. Now write them down
+          in the "Attacks & Spellcasting" box on page one.
+        </p>
       </div>
 
       <!-- Step 10 - Final Important Stats -->
@@ -2126,6 +2291,11 @@
             taking the maximum on your character's hit die (determined by your
             class) and add your Constitution modifier. That will be your maximum
             HP, and your starting current HP.
+          </p>
+          <p>
+            &#x270E; Once you've calculated your starting HP, write it down next
+            to "Hit Point Maximum" and above "Current Hit Points" on the first
+            page.
           </p>
         </div>
 
@@ -2149,28 +2319,13 @@
           </p>
           <p>
             When you take a <strong>long rest</strong> (an 8-hour resting
-            period, spent somewhere comfortable), you regain half of your
-            expended hit dice (rounded down, with a minimum of 1), as well as
-            restore full HP.
-          </p>
-        </div>
-
-        <div class="section">
-          <h2>Death Saves</h2>
-          <p>
-            If your HP drops to 0, you're not dead yet, you're dying. At the
-            start of each of your turns, roll a d20 death saving throw (no
-            modifiers added): a 10 or higher is a success, anything lower is a
-            failure. Rack up three successes and you stabilize (still at 0 HP,
-            but no longer in danger). Rack up three failures and your character
-            dies.
+            period, spent somewhere comfortable), you regain half of your total
+            hit dice (rounded down, with a minimum of 1), as well as restore
+            full HP. At level 1, that would just be one hit die.
           </p>
           <p>
-            A natural 20 is special, you regain 1 HP and pop back into the fight
-            immediately. A natural 1 counts as two failures instead of one.
-            Taking any damage while you're at 0 HP counts as an automatic
-            failure (two, if it's a critical hit). Mark your successes and
-            failures in the small circles on your sheet.
+            &#x270E; Write these in the "Hit Dice" box on the first page, in
+            both spots: next to "Total" and above "Hit Dice".
           </p>
         </div>
 
@@ -2185,8 +2340,8 @@
             made you proficient in that save (back in Step 3).
           </p>
           <p>
-            Fill in all six saving throw modifiers on your sheet, and don't
-            forget to mark the two your class made you proficient in.
+            &#x270E; Fill in all six saving throw modifiers on your sheet, and
+            don't forget to mark the two your class made you proficient in.
           </p>
         </div>
 
@@ -2198,6 +2353,10 @@
             Initiative is +2. When combat begins, everyone rolls a d20 and adds
             their Initiative bonus (including the enemies!) That then determines
             the turn order of the combat encounter.
+          </p>
+          <p>
+            &#x270E; Write the Initiative bonus in the "Initiative" box on the
+            first page.
           </p>
         </div>
 

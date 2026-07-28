@@ -732,6 +732,10 @@ hr {
   font-style: italic;
 }
 
+.sheet-tip a {
+  font-style: normal;
+}
+
 /* Side DM Notes */
 .dm-note {
   margin-top: var(--space-3);
@@ -770,7 +774,6 @@ hr {
 .modifier-table th,
 .modifier-table td {
   padding: var(--space-3) var(--space-6);
-  border: 1px solid var(--color-text-subtle);
   text-align: center;
 }
 
@@ -780,10 +783,12 @@ hr {
   color: var(--color-text);
   font-weight: var(--weight-semibold);
   font-size: var(--text-sm);
+  border: 1px solid var(--color-border);
 }
 
 .modifier-table td {
   color: var(--color-text);
+  border: 1px solid var(--color-table-border);
 }
 
 /* Tighter cell padding for the wider class-features table */
@@ -798,7 +803,7 @@ hr {
 /* Full-bleed row containing the step tracker + its divider line */
 .step-tracker-nav {
   margin: var(--space-8);
-  margin-top: -64px;
+  margin-top: calc(var(--space-12) * -1 - var(--space-8));
   position: sticky;
   top: calc(var(--nav-height));
   z-index: 10; /* Stays below the header (z-index: 100) it sticks under */
@@ -1013,6 +1018,20 @@ hr {
   border-bottom: 2px solid var(--color-accent);
 }
 
+/* Dropdown that replaces the pip row on narrow screens; hidden otherwise */
+.step-tracker-select {
+  display: none;
+  width: 100%;
+  max-width: 20rem;
+  font: inherit;
+  font-size: var(--text-sm);
+  color: var(--color-text);
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-sm);
+  padding: var(--space-2) var(--space-3);
+}
+
 /* Prev/next arrows flanking the step tracker, letting you jump a step
    without picking a specific pip. */
 .tracker-arrow {
@@ -1173,9 +1192,13 @@ hr {
   overflow-y: auto;
 }
 
-/* Overrides the browser's default figure margin */
+/* margin: 0 overrides the browser's default figure margin. align-self
+   centers the portrait against the description column, which is almost
+   always the taller of the two — the grid's align-items: start still
+   holds the text at the top. */
 .character-modal-figure {
   margin: 0;
+  align-self: center;
 }
 
 .character-modal-image {
@@ -1459,27 +1482,21 @@ body.modal-open {
     padding: var(--space-2) var(--space-3);
   }
 
-  /* Slightly smaller than the 900px size, but still bigger than desktop */
-  .step-icon,
-  .step-icon.active,
-  .step-icon.complete {
-    width: 3rem;
-    height: 3rem;
-    font-size: var(--text-base);
+  /* Below this width, the whole tracker (toggle + pips/arrows) collapses
+     down to just the centered step selector — no expand/collapse state,
+     no caret, just one control that always jumps directly to a step. */
+  .step-tracker-nav {
+    padding-top: var(--space-3);
+    padding-bottom: var(--space-3);
   }
 
-  .tracker-arrow {
-    margin-top: calc((3rem - 2.5rem) / 2);
+  .tracker-toggle,
+  .step-tracker-content {
+    display: none;
   }
 
-  .tracker-entry::before,
-  .tracker-entry:not(:last-child)::after,
-  .tracker-entry:last-child::after {
-    top: 1.5rem;
-    width: calc(50% - 2rem);
-  }
-
-  .step-label {
-    font-size: 0.7rem;
+  .step-tracker-select {
+    display: block;
+    margin: 0 auto;
   }
 }

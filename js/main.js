@@ -44,7 +44,7 @@
           width="25"
           height="28"
         />
-        A Simple D&amp;D 5e Guide
+        An Introductory D&amp;D 5e Guide
       </a>
       <div class="nav-links-desktop">
         ${desktopMainLinks}
@@ -188,6 +188,7 @@
     const trackerNav = document.getElementById("step-tracker-nav");
     const trackerToggleBtn = document.getElementById("tracker-toggle");
     const trackerToggleCount = document.getElementById("tracker-toggle-count");
+    const trackerSelect = document.getElementById("step-tracker-select");
 
     const stepIcons = document.querySelectorAll(".step-icon");
     const stepLabels = document.querySelectorAll(".step-label");
@@ -240,6 +241,9 @@
 
       // Keep the collapsed bar's step count in sync with the current step
       trackerToggleCount.textContent = `Step ${index + 1} of ${steps.length}: ${stepLabels[index].textContent}`;
+
+      // Keep the mobile <select> in sync with the current step
+      trackerSelect.value = String(index);
 
       // Push a history entry so refresh keeps the step and back steps
       // backward through the guide instead of leaving the page
@@ -294,6 +298,11 @@
       entry.addEventListener("click", () => {
         showStep(i);
       });
+    });
+
+    // Mobile step select: jump directly to the chosen step
+    trackerSelect.addEventListener("change", () => {
+      showStep(Number(trackerSelect.value));
     });
 
     // Collapse the tracker down to a thin "Step X of 10" bar, or expand it
@@ -378,7 +387,7 @@
       {
         name: "Maeve",
         image: "assets/images/characters/maeve.jpg",
-        alt: "Potrait of Maeve",
+        alt: "Portrait of Maeve",
         artist: "Kaya McCue",
         description: ["Description coming soon"],
         placeholder: true,
@@ -386,7 +395,7 @@
       {
         name: "Hana",
         image: "assets/images/characters/hana.jpg",
-        alt: "Potrait of Hana",
+        alt: "Portrait of Hana",
         artist: "Kaya McCue",
         description: ["Description coming soon"],
         placeholder: true,
@@ -399,20 +408,10 @@
         description: ["Description coming soon."],
         placeholder: true,
       },
-      /*
-      {
-        name: "Quinn",
-        image: "assets/images/characters/quinn.jpg",
-        alt: "Portrait of Quinn",
-        artist: "Tyler Warhola",
-        description: ["Description coming soon"],
-        placeholder: true,
-      },
-      */
       {
         name: "Hal",
         image: "assets/images/characters/hal.jpg",
-        alt: "Potrait of Hal",
+        alt: "Portrait of Hal",
         artist: "Robin Laronde",
         description: ["Description coming soon"],
         placeholder: true,

@@ -17,7 +17,8 @@
   --color-accent-dark: #a01818; /* Darker red for hover states */
   --color-accent-light: #1e0a0a; /* Dark red tint for subtle backgrounds */
   --color-accent-border: #c41e1e47; /* Subtle red for card borders */
-  --color-border: #1d1d1d; /* Lines, dividers */
+  --color-border: #3a3a3a; /* Lines, dividers */
+  --color-table-border: #4a4a4a; /* Table borders */
   --color-info: #3d7ea6; /* definitions - desaturated steel blue */
   --color-reference: #8a8a8a; /* reference - neutral grey */
 
