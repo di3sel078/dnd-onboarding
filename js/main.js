@@ -343,11 +343,27 @@
       {
         name: "Acharia",
         image: "assets/images/characters/acharia.jpg",
-        alt: "Placeholder art for Acharia",
+        alt: "Portrait of Acharia",
         artist: "Kaya McCue",
         description: [
           "Acharia is a life cleric whose story began as an orphan under the care of a fugitive priest. Though naturally volatile and shadowed by a dark disposition, her mentor looked past her rough edges, guiding her toward the path of healing. She eventually joined a band of adventurers who looked the other way regarding her frequent outbursts and questionable morals. Driven by a thirst for dominance, she entered into a sinister pact with a devil, yet her time on the road sparked an unexpected transformation. As her journey progressed, the cold, power-motivated hothead slowly found a new purpose, evolving into a steadfast protector who would sacrifice everything for the family she chose.",
         ],
+      },
+      {
+        name: "Maeve",
+        image: "assets/images/characters/maeve.jpg",
+        alt: "Potrait of Maeve",
+        artist: "Kaya McCue",
+        description: ["Description coming soon"],
+        placeholder: true,
+      },
+      {
+        name: "Hana",
+        image: "assets/images/characters/hana.jpg",
+        alt: "Potrait of Hana",
+        artist: "Kaya McCue",
+        description: ["Description coming soon"],
+        placeholder: true,
       },
       {
         name: "Lyonoris",
@@ -355,6 +371,24 @@
         alt: "Portrait of Lyonoris",
         artist: "Robin Laronde",
         description: ["Description coming soon."],
+        placeholder: true,
+      },
+      /*
+      {
+        name: "Quinn",
+        image: "assets/images/characters/quinn.jpg",
+        alt: "Portrait of Quinn",
+        artist: "Tyler Warhola",
+        description: ["Description coming soon"],
+        placeholder: true,
+      },
+      */
+      {
+        name: "Hal",
+        image: "assets/images/characters/hal.jpg",
+        alt: "Potrait of Hal",
+        artist: "Robin Laronde",
+        description: ["Description coming soon"],
         placeholder: true,
       },
     ];

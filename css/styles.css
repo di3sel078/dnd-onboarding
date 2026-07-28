@@ -138,6 +138,7 @@ p {
 
 .text-tinted {
   color: var(--color-text-tinted);
+  line-height: var(--leading-normal);
 }
 
 .class-list {
@@ -1023,8 +1024,8 @@ hr {
   line-height: 1;
   cursor: pointer;
   transition:
-    border-color 0.15s ease,
-    color 0.15s ease;
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .tracker-arrow:hover:not(:disabled) {
