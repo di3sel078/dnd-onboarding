@@ -28,6 +28,12 @@ body {
   -webkit-font-smoothing: antialiased; /* Crisper text on Mac/iOS */
 }
 
+/* Consistent keyboard-focus ring across all interactive elements */
+:focus-visible {
+  outline: 2px solid #f0524f;
+  outline-offset: 2px;
+}
+
 /* Remove default margin from elements we'll space ourselves */
 h1,
 h2,
@@ -1099,11 +1105,6 @@ hr {
     transform 0.15s ease;
 }
 
-.character-card:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
-}
-
 /* Fills the card regardless of the source image's aspect ratio */
 .character-card img {
   display: block;
@@ -1234,11 +1235,6 @@ hr {
 
 .modal-close .nav-toggle-bar:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
-}
-
-.modal-close:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: 2px;
 }
 
 /* Stops the page scrolling behind the open pop-up */
