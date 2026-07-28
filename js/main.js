@@ -125,6 +125,25 @@
     navLinks
       .querySelectorAll("a")
       .forEach((link) => link.addEventListener("click", closeMenu));
+
+    // Close on Escape and return focus to the toggle button
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && navLinks.classList.contains("open")) {
+        closeMenu();
+        navToggle.focus();
+      }
+    });
+
+    // Close when clicking anywhere outside the nav
+    document.addEventListener("click", (event) => {
+      if (
+        navLinks.classList.contains("open") &&
+        !navToggle.contains(event.target) &&
+        !navLinks.contains(event.target)
+      ) {
+        closeMenu();
+      }
+    });
   }
 
   // "Reference" dropdown (desktop only — the ▾ menu on the right)
@@ -147,7 +166,10 @@
       if (!referenceDropdown.contains(event.target)) closeReferenceMenu();
     });
     document.addEventListener("keydown", (event) => {
-      if (event.key === "Escape") closeReferenceMenu();
+      if (event.key === "Escape") {
+        closeReferenceMenu();
+        referenceToggle.focus();
+      }
     });
     referenceDropdown
       .querySelectorAll("a")
