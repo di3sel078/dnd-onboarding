@@ -4,7 +4,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The World of Xumaria</title>
+    <title>D&D Character Options</title>
     <link rel="icon" type="image/png" href="assets/d20_transparent.png" />
 
     <link rel="stylesheet" href="css/reset.css" />
@@ -23,26 +23,65 @@
     </header>
 
     <main>
-      <div>
-        <h1>Coming Soon!</h1>
+      <h1>Character Options</h1>
+      <p class="page-intro">
+        A quick reference for the classes, races, and backgrounds from the free
+        core rules (SRD 5.1). Click any card to see its full entry. Building a
+        character? This pairs with the
+        <a class="text-link" href="character-creator.html"
+          >Build Your Character</a
+        >
+        guide.
+      </p>
+
+      <div class="section section-full-border" id="classes">
+        <h2>Classes</h2>
+        <p>
+          Your class is your character's profession and the biggest driver of
+          what they can do. You pick it in Step 3 of the character builder.
+        </p>
+        <h3>Core Classes</h3>
+        <!-- Cards are rendered from the CLASSES array in js/reference-data.js -->
+        <div class="option-cards" id="class-cards"></div>
+
         <br />
-        <p>This will be a page describing my homebrew world named: "Xumaria"</p>
+
+        <h2>Other Classes</h2>
+        <p>
+          Not part of the free core rules, but popular additions from later
+          sourcebooks and homebrew.
+        </p>
+        <div class="option-cards" id="other-class-cards"></div>
       </div>
 
-      <div class="section section-full-border" id="verdarii">
-        <h2>Verdarii - A Homebrew Race</h2>
+      <div class="section section-full-border" id="races">
+        <h2>Races</h2>
         <p>
-          A nature-bound Elven people from the Xumaria setting, who found
-          refuge among the forests of Eryn Lasgalen and spread across the
-          world wherever nature runs deep.
+          Your race is your character's ancestry: a small bundle of built-in
+          traits, plus ability score increases. You pick it in Step 4.
         </p>
+        <!-- Cards are rendered from the RACES array in js/reference-data.js -->
+        <div class="option-cards" id="race-cards"></div>
+
+        <div class="center-container">
+          <h3>Interested in a flora-based elf race?</h3>
+
+          <a class="btn btn-secondary" href="xumaria.html">
+            Check out the Verdarii →
+          </a>
+        </div>
+      </div>
+
+      <div class="section section-full-border" id="backgrounds">
+        <h2>Backgrounds</h2>
         <p>
-          "Verdarii (Base)" below is the base race and lists the traits every
-          Verdarii shares; the other five cards are subraces that have each
-          grown to reflect the wild region they call home.
+          Your background is what your character did before adventuring. You
+          pick it in Step 6. Only the Acolyte is part of the free SRD, so the
+          other backgrounds link out to the free D&D Basic Rules for their full
+          entries.
         </p>
-        <!-- Cards are rendered from the VERDARII_SUBRACES array in js/reference-data.js -->
-        <div class="option-cards" id="verdarii-cards"></div>
+        <!-- Cards are rendered from the BACKGROUNDS array in js/reference-data.js -->
+        <div class="option-cards" id="background-cards"></div>
       </div>
 
       <!-- Shell for the entry pop-up; contents are filled in by js/main.js -->

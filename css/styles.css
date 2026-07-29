@@ -465,6 +465,16 @@ header {
   text-align: center;
 }
 
+/* Inline text link within body copy (prose, tables) */
+.text-link {
+  color: var(--color-text-accent);
+  text-decoration: underline;
+}
+
+.text-link:hover {
+  color: var(--color-accent);
+}
+
 /* Card-like content block with a left accent border, used throughout each page */
 .section {
   background: var(--color-surface);
@@ -487,7 +497,7 @@ header {
   border-left-color: var(--color-accent);
 }
 
-.section-gallery {
+.section-full-border {
   border: 2px solid var(--color-accent-dark);
   border-radius: var(--border-radius);
 }
@@ -890,6 +900,11 @@ hr {
   display: none;
 }
 
+/* Hide step pips on the sheet review step */
+.step-tracker-nav.review-active .step-tracker-content {
+  display: none;
+}
+
 .step-tracker-nav.collapsed .tracker-toggle {
   position: static;
   width: 100%;
@@ -1277,6 +1292,107 @@ body.modal-open {
 }
 
 /* ============================================================
+   CHARACTER OPTIONS — REFERENCE CARDS + POP-UP
+   Card grids rendered from js/reference-data.js. Cards reuse the
+   gallery cards' surface/border/hover treatment, minus the
+   portrait; the pop-up reuses the gallery modal shell with a
+   single text column.
+   ============================================================ */
+
+/* Intro paragraph between the page title and the first section */
+.page-intro {
+  margin: var(--space-4) 0 var(--space-6);
+  color: var(--color-text-tinted);
+}
+
+/* Same 3-wide grid as .character-cards */
+.option-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+/* Same button-as-card pattern as .character-card, without the portrait */
+.option-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-accent-border);
+  border-radius: var(--border-radius-lg);
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+  transition:
+    border-color 0.15s ease,
+    transform 0.15s ease;
+}
+
+.option-card-name {
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+  line-height: var(--leading-tight);
+}
+
+.option-card-summary {
+  font-size: var(--text-sm);
+  color: var(--color-text-tinted);
+  line-height: var(--leading-normal);
+}
+
+/* Same lift as the gallery cards */
+@media (hover: hover) and (pointer: fine) {
+  .option-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-8px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .option-card {
+    transition: none;
+  }
+
+  .option-card:hover {
+    transform: none;
+  }
+}
+
+/* --- Entry pop-up (shares .character-modal and .modal-close styles) --- */
+
+.options-modal {
+  width: min(760px, 92vw);
+}
+
+/* Text-only: single column instead of the gallery's portrait + text grid */
+.options-modal .character-modal-body {
+  display: block;
+}
+
+/* Uniform paragraph spacing, including after headings, lists, and tables */
+.options-modal p {
+  margin-top: var(--space-3);
+}
+
+/* Sub-headings inside an entry (Starting Equipment, Traits, Feature...) */
+.options-modal h4 {
+  margin-top: var(--space-6);
+  font-size: var(--text-lg);
+  font-weight: var(--weight-semibold);
+}
+
+.options-modal ul {
+  margin-top: var(--space-2);
+}
+
+.options-modal .table-wrap {
+  margin-top: var(--space-3);
+}
+
+/* ============================================================
    RESPONSIVE
    Mobile gets slightly smaller text and tighter padding.
    These two breakpoints must stay in this order: several rules
@@ -1359,6 +1475,11 @@ body.modal-open {
   .character-cards {
     grid-template-columns: repeat(2, 1fr);
   }
+
+  /* Character options */
+  .option-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 @media (max-width: 640px) {
@@ -1411,6 +1532,11 @@ body.modal-open {
 
   /* Gallery */
   .character-cards {
+    grid-template-columns: 1fr;
+  }
+
+  /* Character options */
+  .option-cards {
     grid-template-columns: 1fr;
   }
 

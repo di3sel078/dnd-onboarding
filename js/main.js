@@ -14,6 +14,7 @@
   ];
 
   const NAV_REFERENCE_LINKS = [
+    { href: "character-options.html", label: "Character Options" },
     { href: "extra-rules.html", label: "Extra Rules" },
     { href: "glossary.html", label: "Glossary" },
     { href: "gallery.html", label: "Gallery" },
@@ -194,6 +195,48 @@
     const stepLabels = document.querySelectorAll(".step-label");
     const trackerEntries = document.querySelectorAll(".tracker-entry-btn");
 
+    // Remembers the step between visits. The URL hash still wins (deep
+    // links, refresh); this covers leaving the page and coming back.
+    const STEP_STORAGE_KEY = "creator-step";
+    const TRACKER_COLLAPSED_STORAGE_KEY = "creator-tracker-collapsed";
+
+    function saveStep(index) {
+      // localStorage can throw (private browsing, blocked storage) — a
+      // failed save just means the page opens on step 1 next visit
+      try {
+        localStorage.setItem(STEP_STORAGE_KEY, String(index));
+      } catch (_) {}
+    }
+
+    function readSavedStep() {
+      try {
+        const raw = localStorage.getItem(STEP_STORAGE_KEY);
+        if (raw === null) return null;
+        const index = Number(raw);
+        return Number.isInteger(index) && index >= 0 && index < steps.length
+          ? index
+          : null;
+      } catch (_) {
+        return null;
+      }
+    }
+
+    function saveTrackerCollapsed(collapsed) {
+      // Same best-effort save as saveStep — a failed write just means the
+      // tracker opens expanded next visit
+      try {
+        localStorage.setItem(TRACKER_COLLAPSED_STORAGE_KEY, String(collapsed));
+      } catch (_) {}
+    }
+
+    function readTrackerCollapsed() {
+      try {
+        return localStorage.getItem(TRACKER_COLLAPSED_STORAGE_KEY) === "true";
+      } catch (_) {
+        return false;
+      }
+    }
+
     // Reads "#step-4" from the URL and returns index 3, or null if
     // missing/invalid. The hash is 1-indexed (step-1..step-10) to match
     // each step's id/label, but the internal step index stays 0-based.
@@ -208,6 +251,9 @@
     // that already happened (initial load, back/forward button)
     function showStep(index, { updateUrl = true, scroll = true } = {}) {
       currentStep = index;
+      saveStep(index);
+      const totalPlaySteps = steps.length - 1; // excludes the review step
+      const isReviewStep = index === steps.length - 1;
 
       // Show/Hide Steps
       steps.forEach((step) => step.classList.remove("active"));
@@ -231,16 +277,30 @@
 
       // Change Button Text
       prevBtn.textContent = index === 0 ? "Home" : "Previous";
-      nextBtn.textContent =
-        index === steps.length - 1 ? "Next: How to Survive Combat →" : "Next";
+      if (isReviewStep) {
+        // Review step: Next goes to the combat guide
+        nextBtn.textContent = "Next: How to Survive Combat →";
+      } else if (index === steps.length - 2) {
+        // Step 10: Next goes to the review step
+        nextBtn.textContent = "Next: Review Your Sheet →";
+      } else {
+        nextBtn.textContent = "Next";
+      }
 
       // Mobile tracker arrows only move between steps, so they disable
       // at the ends instead of falling through to Home/Finish
       trackerPrevBtn.disabled = index === 0;
       trackerNextBtn.disabled = index === steps.length - 1;
 
+      // Hide the step pips on the review step: it isn't in the tracker
+      trackerNav.classList.toggle("review-active", isReviewStep);
+
       // Keep the collapsed bar's step count in sync with the current step
-      trackerToggleCount.textContent = `Step ${index + 1} of ${steps.length}: ${stepLabels[index].textContent}`;
+      if (isReviewStep) {
+        trackerToggleCount.textContent = "Review your sheet";
+      } else {
+        trackerToggleCount.textContent = `Step ${index + 1} of ${totalPlaySteps}: ${stepLabels[index].textContent}`;
+      }
 
       // Keep the mobile <select> in sync with the current step
       trackerSelect.value = String(index);
@@ -259,7 +319,10 @@
         const prefersReduced = window.matchMedia(
           "(prefers-reduced-motion: reduce)",
         ).matches;
-        window.scrollTo({ top: 0, behavior: prefersReduced ? "auto" : "smooth" });
+        window.scrollTo({
+          top: 0,
+          behavior: prefersReduced ? "auto" : "smooth",
+        });
       }
     }
 
@@ -309,7 +372,14 @@
     trackerToggleBtn.addEventListener("click", () => {
       const collapsed = trackerNav.classList.toggle("collapsed");
       trackerToggleBtn.setAttribute("aria-expanded", String(!collapsed));
+      saveTrackerCollapsed(collapsed);
     });
+
+    // Restore the tracker's collapsed/expanded state from the last visit
+    if (readTrackerCollapsed()) {
+      trackerNav.classList.add("collapsed");
+      trackerToggleBtn.setAttribute("aria-expanded", "false");
+    }
 
     // Back/forward buttons (and manual hash edits) fire hashchange —
     // sync the visible step without pushing another history entry
@@ -320,7 +390,8 @@
       }
     });
 
-    // Restore step from a deep link or refresh; otherwise start clean at step 0
+    // Restore step from a deep link or refresh, then from the last visit's
+    // saved step; otherwise start clean at step 0
     const hashStep = stepFromHash();
     if (window.location.hash && hashStep === null) {
       // Invalid hash (e.g. "#step-99") — clean it up rather than leaving a broken URL
@@ -330,7 +401,12 @@
         window.location.pathname + window.location.search,
       );
     }
-    showStep(hashStep ?? 0, { updateUrl: false, scroll: false });
+    const savedStep = hashStep === null ? readSavedStep() : null;
+    if (savedStep !== null && savedStep > 0) {
+      // Reflect the restored step in the URL without adding a history entry
+      history.replaceState(null, "", `#step-${savedStep + 1}`);
+    }
+    showStep(hashStep ?? savedStep ?? 0, { updateUrl: false, scroll: false });
   }
 
   function initRoleplaying() {
@@ -350,7 +426,17 @@
   }
 
   function initXumaria() {
-    // TODO
+    // Entry data lives in js/reference-data.js, loaded just before this
+    // file on xumaria.html only
+    if (typeof VERDARII_SUBRACES === "undefined") return;
+
+    initOptionCards([
+      {
+        gridId: "verdarii-cards",
+        entries: VERDARII_SUBRACES,
+        modalHtml: raceModalHtml,
+      },
+    ]);
   }
 
   function initGallery() {
@@ -492,6 +578,255 @@
     });
   }
 
+  // Skips the row entirely when the field is empty/missing
+  function field(label, value) {
+    return value ? `<p><strong>${label}:</strong> ${value}</p>` : "";
+  }
+
+  function traitTags(traits) {
+    return traits
+      .map(
+        (trait) =>
+          `<p><strong><em>${trait.name}.</em></strong> ${trait.desc}</p>`,
+      )
+      .join("");
+  }
+
+  function raceModalHtml(entry) {
+    const subraces = entry.subraces
+      .map(
+        (subrace) => `
+          <h4>Subrace: ${subrace.name}</h4>
+          <p>${subrace.desc}</p>
+          ${field("Ability Score Increase", subrace.asi)}
+          ${traitTags(subrace.traits)}
+        `,
+      )
+      .join("");
+    return `
+      <p>${entry.summary}</p>
+      ${field("Ability Score Increase", entry.asi)}
+      ${field("Age", entry.age)}
+      ${field("Alignment", entry.alignment)}
+      ${field("Size", entry.size)}
+      ${field("Speed", entry.speed)}
+      ${field("Darkvision", entry.darkvision)}
+      ${field("Languages", entry.languages)}
+      ${entry.traits.length ? `<h4>Traits</h4>${traitTags(entry.traits)}` : ""}
+      ${subraces}
+    `;
+  }
+
+  // Wires a shared dialog (#options-modal) to one or more grids of option
+  // cards. Each section is { gridId, entries, modalHtml }; entries render
+  // as buttons in the grid and open the shared modal via modalHtml(entry).
+  // Used by both character-options.html (classes/races/backgrounds) and
+  // xumaria.html (Verdarii).
+  function initOptionCards(sections) {
+    const modal = document.getElementById("options-modal");
+    const modalTitle = document.getElementById("options-modal-title");
+    const modalText = document.getElementById("options-modal-text");
+    const modalClose = document.getElementById("options-modal-close");
+    if (!modal) return;
+
+    // Entry id -> { entry, modalHtml }, for deep links like #fighter
+    const entriesById = new Map();
+
+    function openModal(entry, modalHtml) {
+      modalTitle.textContent = entry.name;
+      modalText.innerHTML = modalHtml(entry);
+      modal.showModal();
+      document.body.classList.add("modal-open");
+      // Long entries should always open scrolled to the top
+      modal.querySelector(".character-modal-body").scrollTop = 0;
+    }
+
+    for (const section of sections) {
+      const grid = document.getElementById(section.gridId);
+      if (!grid) continue;
+
+      // The entry id doubles as the card's anchor id
+      grid.innerHTML = section.entries
+        .map(
+          (entry) => `
+            <button
+              type="button"
+              class="option-card"
+              id="${entry.id}"
+              aria-haspopup="dialog"
+            >
+              <span class="option-card-name">${entry.name}</span>
+              <span class="option-card-summary">${entry.summary}</span>
+            </button>
+          `,
+        )
+        .join("");
+
+      grid.querySelectorAll(".option-card").forEach((card, index) => {
+        const entry = section.entries[index];
+        entriesById.set(entry.id, { entry, modalHtml: section.modalHtml });
+        card.addEventListener("click", () =>
+          openModal(entry, section.modalHtml),
+        );
+      });
+    }
+
+    modalClose.addEventListener("click", () => modal.close());
+
+    // A click that lands on the dialog element itself (rather than its
+    // contents) is a click on the backdrop. Escape is handled natively.
+    modal.addEventListener("click", (event) => {
+      if (event.target === modal) modal.close();
+    });
+
+    modal.addEventListener("close", () => {
+      document.body.classList.remove("modal-open");
+    });
+
+    // Deep links (e.g. character-options.html#fighter) scroll to the card
+    // and open its entry. Closing the modal is not tied to history — the
+    // back button navigates pages, not pop-ups.
+    function openFromHash() {
+      const found = entriesById.get(window.location.hash.slice(1));
+      if (!found) return;
+      const card = document.getElementById(found.entry.id);
+      if (card) card.scrollIntoView({ block: "center" });
+      if (modal.open) modal.close();
+      openModal(found.entry, found.modalHtml);
+    }
+
+    window.addEventListener("hashchange", openFromHash);
+    openFromHash();
+  }
+
+  function initCharacterOptions() {
+    // Entry data lives in js/reference-data.js, loaded just before this
+    // file on character-options.html only
+    if (typeof CLASSES === "undefined") return;
+
+    // One roll table (d8 Personality Trait, d6 Ideal, ...) as rows
+    function rollTableTag(die, label, rows) {
+      return `
+        <div class="table-wrap">
+          <table class="modifier-table">
+            <tr><th>${die}</th><th>${label}</th></tr>
+            ${rows.map((row, i) => `<tr><td>${i + 1}</td><td>${row}</td></tr>`).join("")}
+          </table>
+        </div>
+      `;
+    }
+
+    // Renders the level 1 class feature(s), or nothing until they're filled
+    // in on the entry (see js/reference-data.js)
+    function level1FeaturesHtml(entry) {
+      if (!entry.level1Feature) return "";
+      const secondary = entry.level1FeatureSecondary
+        ? `<p><strong><em>${entry.level1FeatureSecondary.name}.</em></strong> ${entry.level1FeatureSecondary.desc}</p>`
+        : "";
+      return `
+        <h4>Level 1 Features</h4>
+        <p><strong><em>${entry.level1Feature.name}.</em></strong> ${entry.level1Feature.desc}</p>
+        ${secondary}
+      `;
+    }
+
+    function classModalHtml(entry) {
+      const spellcasting = entry.spellcasting
+        ? `${entry.spellcasting.ability}. ${entry.spellcasting.note}`
+        : "None";
+      // Spell lists are deliberately not reprinted — link out instead
+      const spellListLink = entry.spellcasting
+        ? `<p>
+            Spell lists aren't reprinted here.
+            <a href="https://www.dndbeyond.com/sources/dnd/basic-rules-2014/spells"
+              target="_blank" rel="noopener noreferrer">Browse the full spell
+              list in the free D&amp;D Basic Rules</a>.
+          </p>`
+        : "";
+      return `
+        <p>${entry.description}</p>
+        ${field("Hit Die", entry.hitDie)}
+        ${field("Hit Points at Level 1", entry.hpAtFirst)}
+        ${field("Primary Ability", entry.primaryAbility)}
+        ${field("Saving Throws", entry.saves)}
+        ${field("Armor", entry.armor)}
+        ${field("Weapons", entry.weapons)}
+        ${field("Tools", entry.tools)}
+        ${field("Skills", entry.skills)}
+        ${field("Spellcasting", spellcasting)}
+        <h4>Starting Equipment</h4>
+        <p>
+          You start with the following, in addition to the equipment granted
+          by your background:
+        </p>
+        <ul>${entry.equipment.map((item) => `<li>${item}</li>`).join("")}</ul>
+        ${level1FeaturesHtml(entry)}
+        <h4>${entry.subclass.term} (Subclass, chosen at level ${entry.subclass.level})</h4>
+        <p>
+          <strong>${entry.subclass.name}</strong>: ${entry.subclass.blurb}
+        </p>
+        ${spellListLink}
+      `;
+    }
+
+    function backgroundModalHtml(entry) {
+      // PHB backgrounds aren't in the SRD — name and pointer only
+      if (!entry.srd) {
+        return `
+          <p>${entry.summary}</p>
+          <p>
+            This background comes from the Player's Handbook, so its full
+            rules aren't part of the free SRD and can't be reprinted here.
+          </p>
+          <p>
+            <a class="btn btn-primary" href="${entry.link}"
+              target="_blank" rel="noopener noreferrer">
+              Read the Full Entry (D&amp;D Basic Rules)
+            </a>
+          </p>
+        `;
+      }
+      const characteristics = entry.characteristics;
+      return `
+        <p>${entry.description}</p>
+        ${field("Skill Proficiencies", entry.skills)}
+        ${field("Tool Proficiencies", entry.tools)}
+        ${field("Languages", entry.languages)}
+        ${field("Equipment", entry.equipment)}
+        <h4>Feature: ${entry.feature.name}</h4>
+        <p>${entry.feature.desc}</p>
+        <h4>Suggested Characteristics</h4>
+        <p>${characteristics.intro}</p>
+        ${rollTableTag("d8", "Personality Trait", characteristics.personalityTraits)}
+        ${rollTableTag("d6", "Ideal", characteristics.ideals)}
+        ${rollTableTag("d6", "Bond", characteristics.bonds)}
+        ${rollTableTag("d6", "Flaw", characteristics.flaws)}
+      `;
+    }
+
+    // Each grid renders one array from reference-data.js — adding an entry
+    // there needs no changes here. Classes are split across two grids by
+    // their `core` flag (see reference-data.js).
+    initOptionCards([
+      {
+        gridId: "class-cards",
+        entries: CLASSES.filter((entry) => entry.core !== false),
+        modalHtml: classModalHtml,
+      },
+      {
+        gridId: "other-class-cards",
+        entries: CLASSES.filter((entry) => entry.core === false),
+        modalHtml: classModalHtml,
+      },
+      { gridId: "race-cards", entries: RACES, modalHtml: raceModalHtml },
+      {
+        gridId: "background-cards",
+        entries: BACKGROUNDS,
+        modalHtml: backgroundModalHtml,
+      },
+    ]);
+  }
+
   // Main
 
   function main() {
@@ -516,6 +851,9 @@
         break;
       case "gallery.html":
         initGallery();
+        break;
+      case "character-options.html":
+        initCharacterOptions();
         break;
     }
   }

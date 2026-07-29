@@ -55,6 +55,7 @@ This is for Tyler to run, not Claude — see Verification below.
 - CSS custom properties (defined in `variables.css`) for all colors, spacing, and typography values. Check for an existing token before adding one
 - Reuse the existing breakpoints (`max-width: 900px`, `max-width: 640px`, `min-width: 641px`) rather than inventing new ones
 - Use simple one-line comments where appropriate
+- No em-dashes in page copy (HTML text content, JS string literals shown to users). Restructure the sentence instead — use a period, comma, colon, or semicolon
 
 ## Verification
 
