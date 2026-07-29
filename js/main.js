@@ -730,6 +730,58 @@
       `;
     }
 
+    // Renders the level-by-level class table (Level, Proficiency Bonus,
+    // Features, plus any class-specific columns), or nothing until it's
+    // filled in on the entry (see js/reference-data.js)
+    function featuresTableHtml(entry) {
+      if (!entry.featuresTable) return "";
+      const { columns, rows } = entry.featuresTable;
+      return `
+        <details>
+          <summary class="collapse-heading">
+            <span class="icon">▼</span>
+            Class Features by Level
+          </summary>
+          <div class="table-wrap">
+            <table class="modifier-table class-table">
+              <tr>${columns.map((col) => `<th>${col}</th>`).join("")}</tr>
+              ${rows
+                .map(
+                  (row) =>
+                    `<tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>`,
+                )
+                .join("")}
+            </table>
+          </div>
+        </details>
+      `;
+    }
+
+    // Renders full write-ups for every class feature past level 1 (level 1
+    // is already covered by level1FeaturesHtml above), or nothing until
+    // it's filled in on the entry (see js/reference-data.js)
+    function featureDescriptionsHtml(entry) {
+      if (!entry.featureDescriptions || !entry.featureDescriptions.length) {
+        return "";
+      }
+      return `
+        <details>
+          <summary class="collapse-heading">
+            <span class="icon">▼</span>
+            Full Class Features (All Levels)
+          </summary>
+          ${entry.featureDescriptions
+            .map(
+              (group) => `
+                <h4>Level ${group.level}</h4>
+                ${traitTags(group.features)}
+              `,
+            )
+            .join("")}
+        </details>
+      `;
+    }
+
     function classModalHtml(entry) {
       const spellcasting = entry.spellcasting
         ? `${entry.spellcasting.ability}. ${entry.spellcasting.note}`
@@ -760,7 +812,9 @@
           by your background:
         </p>
         <ul>${entry.equipment.map((item) => `<li>${item}</li>`).join("")}</ul>
+        ${featuresTableHtml(entry)}
         ${level1FeaturesHtml(entry)}
+        ${featureDescriptionsHtml(entry)}
         <h4>${entry.subclass.term} (Subclass, chosen at level ${entry.subclass.level})</h4>
         <p>
           <strong>${entry.subclass.name}</strong>: ${entry.subclass.blurb}

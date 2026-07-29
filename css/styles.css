@@ -437,6 +437,7 @@ header {
 .btn-primary:hover {
   background-color: var(--color-accent-dark);
   border-color: var(--color-accent-dark);
+  cursor: pointer;
 }
 
 /* Outlined, lower-emphasis button variant */
@@ -900,8 +901,8 @@ hr {
   display: none;
 }
 
-/* Hide step pips on the sheet review step */
-.step-tracker-nav.review-active .step-tracker-content {
+/* Hide the tracker entirely on the sheet review step */
+.step-tracker-nav.review-active {
   display: none;
 }
 

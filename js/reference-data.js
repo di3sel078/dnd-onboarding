@@ -18,6 +18,26 @@
 // its level 1 class feature(s) (e.g. Barbarian's Rage). They're null by
 // default; the "Level 1 Features" section only renders once filled in.
 //
+// featuresTable is the level-by-level class table (like the ones in the
+// PHB): { columns: [...header labels], rows: [[...cell values], ...] }.
+// One row per level, one column per entry in `columns` (Level and
+// Proficiency Bonus are always first, then Features, then any
+// class-specific columns like Barbarian's Rages/Rage Damage). It's null
+// by default; the table only renders once filled in. See `barbarian`
+// below for a filled-in example.
+//
+// featureDescriptions is the full write-up for every feature past level 1
+// (level 1 is already covered by level1Feature / level1FeatureSecondary),
+// so a class can eventually have every feature up to level 20 described.
+// Fill in as an array of per-level groups:
+//   featureDescriptions: [
+//     { level: 2, features: [{ name: "Feature Name", desc: "..." }] },
+//     { level: 3, features: [{ name: "...", desc: "..." }, { name: "...", desc: "..." }] },
+//     ...
+//   ],
+// Only include levels that grant a new feature; it's null by default and
+// the section only renders once filled in.
+//
 // Classes that aren't part of the core rules (e.g. Artificer, Blood
 // Hunter) are marked `core: false` and render under the "Other Classes"
 // sub-heading on character-options.html instead of the main grid.
@@ -56,6 +76,32 @@ const CLASSES = [
       name: "Unarmored Defense",
       desc: "While you are not wearing any armor, your armor class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit.",
     },
+    featuresTable: {
+      columns: ["Level", "Prof. Bonus", "Features", "Rages", "Rage Damage"],
+      rows: [
+        ["1", "+2", "Rage, Unarmored Defense", "2", "+2"],
+        ["2", "+2", "Reckless Attack, Danger Sense", "2", "+2"],
+        ["3", "+2", "Primal Path", "3", "+2"],
+        ["4", "+2", "Ability Score Improvement", "3", "+2"],
+        ["5", "+3", "Extra Attack, Fast Movement", "3", "+2"],
+        ["6", "+3", "Path feature", "4", "+2"],
+        ["7", "+3", "Feral Instinct", "4", "+2"],
+        ["8", "+3", "Ability Score Improvement", "4", "+2"],
+        ["9", "+4", "Brutal Critical (1 die)", "4", "+3"],
+        ["10", "+4", "Path feature", "4", "+3"],
+        ["11", "+4", "Relentless Rage", "4", "+3"],
+        ["12", "+4", "Ability Score Improvement", "5", "+3"],
+        ["13", "+5", "Brutal Critical (2 dice)", "5", "+3"],
+        ["14", "+5", "Path feature", "5", "+3"],
+        ["15", "+5", "Persistent Rage", "5", "+3"],
+        ["16", "+5", "Ability Score Improvement", "5", "+4"],
+        ["17", "+6", "Brutal Critical (3 dice)", "6", "+4"],
+        ["18", "+6", "Indomitable Might", "6", "+4"],
+        ["19", "+6", "Ability Score Improvement", "6", "+4"],
+        ["20", "+6", "Primal Champion", "Unlimited", "+4"],
+      ],
+    },
+    featureDescriptions: null,
     subclass: {
       term: "Primal Path",
       level: 3,
@@ -93,6 +139,8 @@ const CLASSES = [
     // (leave null if the class only grants one feature at level 1).
     level1Feature: null,
     level1FeatureSecondary: null,
+    featuresTable: null,
+    featureDescriptions: null,
     subclass: {
       term: "Bard College",
       level: 3,
@@ -132,6 +180,8 @@ const CLASSES = [
     // (leave null if the class only grants one feature at level 1).
     level1Feature: null,
     level1FeatureSecondary: null,
+    featuresTable: null,
+    featureDescriptions: null,
     subclass: {
       term: "Divine Domain",
       level: 1,
@@ -169,6 +219,8 @@ const CLASSES = [
     // (leave null if the class only grants one feature at level 1).
     level1Feature: null,
     level1FeatureSecondary: null,
+    featuresTable: null,
+    featureDescriptions: null,
     subclass: {
       term: "Druid Circle",
       level: 2,
@@ -204,6 +256,8 @@ const CLASSES = [
     // (leave null if the class only grants one feature at level 1).
     level1Feature: null,
     level1FeatureSecondary: null,
+    featuresTable: null,
+    featureDescriptions: null,
     subclass: {
       term: "Martial Archetype",
       level: 3,
@@ -238,6 +292,8 @@ const CLASSES = [
     // (leave null if the class only grants one feature at level 1).
     level1Feature: null,
     level1FeatureSecondary: null,
+    featuresTable: null,
+    featureDescriptions: null,
     subclass: {
       term: "Monastic Tradition",
       level: 3,
@@ -275,6 +331,8 @@ const CLASSES = [
     // (leave null if the class only grants one feature at level 1).
     level1Feature: null,
     level1FeatureSecondary: null,
+    featuresTable: null,
+    featureDescriptions: null,
     subclass: {
       term: "Sacred Oath",
       level: 3,
@@ -313,6 +371,8 @@ const CLASSES = [
     // (leave null if the class only grants one feature at level 1).
     level1Feature: null,
     level1FeatureSecondary: null,
+    featuresTable: null,
+    featureDescriptions: null,
     subclass: {
       term: "Ranger Archetype",
       level: 3,
@@ -348,6 +408,8 @@ const CLASSES = [
     // (leave null if the class only grants one feature at level 1).
     level1Feature: null,
     level1FeatureSecondary: null,
+    featuresTable: null,
+    featureDescriptions: null,
     subclass: {
       term: "Roguish Archetype",
       level: 3,
@@ -385,6 +447,8 @@ const CLASSES = [
     // (leave null if the class only grants one feature at level 1).
     level1Feature: null,
     level1FeatureSecondary: null,
+    featuresTable: null,
+    featureDescriptions: null,
     subclass: {
       term: "Sorcerous Origin",
       level: 1,
@@ -423,6 +487,8 @@ const CLASSES = [
     // (leave null if the class only grants one feature at level 1).
     level1Feature: null,
     level1FeatureSecondary: null,
+    featuresTable: null,
+    featureDescriptions: null,
     subclass: {
       term: "Otherworldly Patron",
       level: 1,
@@ -462,6 +528,8 @@ const CLASSES = [
     // (leave null if the class only grants one feature at level 1).
     level1Feature: null,
     level1FeatureSecondary: null,
+    featuresTable: null,
+    featureDescriptions: null,
     subclass: {
       term: "Arcane Tradition",
       level: 2,
@@ -506,6 +574,8 @@ const CLASSES = [
       desc: "At 1st level, you've learned how to invest a spark of magic into mundane objects. To use this ability, you must have thieve's tools, or artisan's tools in hand. You then touch a Tiny nonmagical object as an action and give it a magical property of your choice from a list of options. The chosen property lasts indefinitely. As an action, you can touch the object to end the property early.",
     },
     level1FeatureSecondary: null,
+    featuresTable: null,
+    featureDescriptions: null,
     subclass: {
       term: "Artificer Specialist",
       level: 3,
@@ -552,6 +622,8 @@ const CLASSES = [
       name: "Blood Maledict",
       desc: "Also at 1st level, you gain the ability to channel, and sometimes sacrifice, a part of your vital essence to curse and manipulate creatures through hemocraft magic. You learn one Blood Curse of your choice. While invoking a Blood Curse, but before it affects the target, you can choose to amplify the curse by taking necrotic damage equal to one roll of your hemocraft die. An amplified curse grants an additional effect, noted in the curse's description. Creatures that do not have blood are immune to the curse unless it has beeen amplified.",
     },
+    featuresTable: null,
+    featureDescriptions: null,
     subclass: {
       term: "Blood Hunter Order",
       level: 3,
