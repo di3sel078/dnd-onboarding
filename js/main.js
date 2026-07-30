@@ -439,6 +439,37 @@
     ]);
   }
 
+  // Fills in one full section per core class on classes.html. Sections are
+  // static in the HTML (so their #anchors work without JS); this only
+  // renders their contents. Artificer and Blood Hunter are skipped: they
+  // aren't SRD content, so classes.html has no section for them.
+  function initClasses() {
+    // Entry data lives in js/reference-data.js, loaded just before this
+    // file on classes.html
+    if (typeof CLASSES === "undefined") return;
+
+    for (const entry of CLASSES) {
+      if (entry.core === false) continue;
+
+      const container = document.querySelector(
+        `.class-detail[data-class-id="${entry.id}"]`,
+      );
+      if (!container) continue;
+
+      container.innerHTML = `
+        <h3>Overview</h3>
+        ${classModalHtml(entry)}
+        <h3>Features by Level</h3>
+        <p>
+          Every feature your class gives you, with the level you get it in
+          parentheses. Anything your subclass adds is listed generically,
+          since each subclass fills those slots differently.
+        </p>
+        ${levelFeaturesHtml(entry)}
+      `;
+    }
+  }
+
   function initGallery() {
     const grid = document.getElementById("character-cards");
     if (!grid) return;
@@ -617,6 +648,89 @@
     `;
   }
 
+  // Renders full write-ups for every class feature past level 1, or nothing
+  // until it's filled in on the entry (see js/reference-data.js)
+  function featureDescriptionsHtml(entry) {
+    if (!entry.featureDescriptions || !entry.featureDescriptions.length) {
+      return "";
+    }
+    return `
+      <details>
+        <summary class="collapse-heading">
+          <span class="icon">▼</span>
+          Full Class Features (All Levels)
+        </summary>
+        ${entry.featureDescriptions
+          .map(
+            (group) => `
+              <h4>Level ${group.level}</h4>
+              ${traitTags(group.features)}
+            `,
+          )
+          .join("")}
+      </details>
+    `;
+  }
+
+  // Every base class feature and the level it's gained, in the same
+  // name-then-description shape as the level 1 write-ups above. The
+  // descriptions aren't written yet, so each one carries a placeholder for
+  // now. Subclass rows are already worded generically in the data (see
+  // js/reference-data.js), so no specific subclass is ever named.
+  function levelFeaturesHtml(entry) {
+    if (!entry.levelFeatures || !entry.levelFeatures.length) return "";
+    return traitTags(
+      entry.levelFeatures.map((feature) => ({
+        name: `${feature.name} (${feature.level})`,
+        desc: "Description coming soon.",
+      })),
+    );
+  }
+
+  // The shared class write-up, used verbatim by both the pop-up on
+  // character-options.html and the full sections on classes.html. Kept
+  // link-free on purpose: character-options.html appends its own link to
+  // classes.html via classModalHtmlWithLink below, which would be
+  // circular if it lived in here.
+  function classModalHtml(entry) {
+    const spellcasting = entry.spellcasting
+      ? `${entry.spellcasting.ability}. ${entry.spellcasting.note}`
+      : "None";
+    // Spell lists are deliberately not reprinted — link out instead
+    const spellListLink = entry.spellcasting
+      ? `<p>
+          Spell lists aren't reprinted here.
+          <a href="https://www.dndbeyond.com/sources/dnd/basic-rules-2014/spells"
+            target="_blank" rel="noopener noreferrer">Browse the full spell
+            list in the free D&amp;D Basic Rules</a>.
+        </p>`
+      : "";
+    return `
+      <p>${entry.description}</p>
+      ${field("Hit Die", entry.hitDie)}
+      ${field("Hit Points at Level 1", entry.hpAtFirst)}
+      ${field("Primary Ability", entry.primaryAbility)}
+      ${field("Saving Throws", entry.saves)}
+      ${field("Armor", entry.armor)}
+      ${field("Weapons", entry.weapons)}
+      ${field("Tools", entry.tools)}
+      ${field("Skills", entry.skills)}
+      ${field("Spellcasting", spellcasting)}
+      <h4>Starting Equipment</h4>
+      <p>
+        You start with the following, in addition to the equipment granted
+        by your background:
+      </p>
+      <ul>${entry.equipment.map((item) => `<li>${item}</li>`).join("")}</ul>
+      ${featureDescriptionsHtml(entry)}
+      <h4>${entry.subclass.term} (Subclass, chosen at level ${entry.subclass.level})</h4>
+      <p>
+        <strong>${entry.subclass.name}</strong>: ${entry.subclass.blurb}
+      </p>
+      ${spellListLink}
+    `;
+  }
+
   // Wires a shared dialog (#options-modal) to one or more grids of option
   // cards. Each section is { gridId, entries, modalHtml }; entries render
   // as buttons in the grid and open the shared modal via modalHtml(entry).
@@ -716,110 +830,17 @@
       `;
     }
 
-    // Renders the level 1 class feature(s), or nothing until they're filled
-    // in on the entry (see js/reference-data.js)
-    function level1FeaturesHtml(entry) {
-      if (!entry.level1Feature) return "";
-      const secondary = entry.level1FeatureSecondary
-        ? `<p><strong><em>${entry.level1FeatureSecondary.name}.</em></strong> ${entry.level1FeatureSecondary.desc}</p>`
-        : "";
+    // The bare write-up plus a link into that class's section on
+    // classes.html. Only the core-class grid uses this: Artificer and Blood
+    // Hunter aren't SRD content and have no section over there.
+    function classModalHtmlWithLink(entry) {
       return `
-        <h4>Level 1 Features</h4>
-        <p><strong><em>${entry.level1Feature.name}.</em></strong> ${entry.level1Feature.desc}</p>
-        ${secondary}
-      `;
-    }
-
-    // Renders the level-by-level class table (Level, Proficiency Bonus,
-    // Features, plus any class-specific columns), or nothing until it's
-    // filled in on the entry (see js/reference-data.js)
-    function featuresTableHtml(entry) {
-      if (!entry.featuresTable) return "";
-      const { columns, rows } = entry.featuresTable;
-      return `
-        <details>
-          <summary class="collapse-heading">
-            <span class="icon">▼</span>
-            Class Features by Level
-          </summary>
-          <div class="table-wrap">
-            <table class="modifier-table class-table">
-              <tr>${columns.map((col) => `<th>${col}</th>`).join("")}</tr>
-              ${rows
-                .map(
-                  (row) =>
-                    `<tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>`,
-                )
-                .join("")}
-            </table>
-          </div>
-        </details>
-      `;
-    }
-
-    // Renders full write-ups for every class feature past level 1 (level 1
-    // is already covered by level1FeaturesHtml above), or nothing until
-    // it's filled in on the entry (see js/reference-data.js)
-    function featureDescriptionsHtml(entry) {
-      if (!entry.featureDescriptions || !entry.featureDescriptions.length) {
-        return "";
-      }
-      return `
-        <details>
-          <summary class="collapse-heading">
-            <span class="icon">▼</span>
-            Full Class Features (All Levels)
-          </summary>
-          ${entry.featureDescriptions
-            .map(
-              (group) => `
-                <h4>Level ${group.level}</h4>
-                ${traitTags(group.features)}
-              `,
-            )
-            .join("")}
-        </details>
-      `;
-    }
-
-    function classModalHtml(entry) {
-      const spellcasting = entry.spellcasting
-        ? `${entry.spellcasting.ability}. ${entry.spellcasting.note}`
-        : "None";
-      // Spell lists are deliberately not reprinted — link out instead
-      const spellListLink = entry.spellcasting
-        ? `<p>
-            Spell lists aren't reprinted here.
-            <a href="https://www.dndbeyond.com/sources/dnd/basic-rules-2014/spells"
-              target="_blank" rel="noopener noreferrer">Browse the full spell
-              list in the free D&amp;D Basic Rules</a>.
-          </p>`
-        : "";
-      return `
-        <p>${entry.description}</p>
-        ${field("Hit Die", entry.hitDie)}
-        ${field("Hit Points at Level 1", entry.hpAtFirst)}
-        ${field("Primary Ability", entry.primaryAbility)}
-        ${field("Saving Throws", entry.saves)}
-        ${field("Armor", entry.armor)}
-        ${field("Weapons", entry.weapons)}
-        ${field("Tools", entry.tools)}
-        ${field("Skills", entry.skills)}
-        ${field("Spellcasting", spellcasting)}
-        <h4>Starting Equipment</h4>
+        ${classModalHtml(entry)}
         <p>
-          You start with the following, in addition to the equipment granted
-          by your background:
+          <a class="btn btn-secondary" href="classes.html#${entry.id}">
+            Full Class Details →
+          </a>
         </p>
-        <ul>${entry.equipment.map((item) => `<li>${item}</li>`).join("")}</ul>
-        ${featuresTableHtml(entry)}
-        ${level1FeaturesHtml(entry)}
-        ${featureDescriptionsHtml(entry)}
-        <h4>${entry.subclass.term} (Subclass, chosen at level ${entry.subclass.level})</h4>
-        <p>
-          <strong>${entry.subclass.name}</strong>: ${entry.subclass.blurb}
-        </p>
-        ${spellListLink}
       `;
     }
 
@@ -865,7 +886,7 @@
       {
         gridId: "class-cards",
         entries: CLASSES.filter((entry) => entry.core !== false),
-        modalHtml: classModalHtml,
+        modalHtml: classModalHtmlWithLink,
       },
       {
         gridId: "other-class-cards",
@@ -908,6 +929,9 @@
         break;
       case "character-options.html":
         initCharacterOptions();
+        break;
+      case "classes.html":
+        initClasses();
         break;
     }
   }

@@ -1379,13 +1379,17 @@ body.modal-open {
 }
 
 /* Sub-headings inside an entry (Starting Equipment, Traits, Feature...) */
-.options-modal h4 {
+/* .class-detail is the same write-up rendered as a full section on
+   classes.html instead of inside the pop-up, so it needs the same spacing */
+.options-modal h4,
+.class-detail h4 {
   margin-top: var(--space-6);
   font-size: var(--text-lg);
   font-weight: var(--weight-semibold);
 }
 
-.options-modal ul {
+.options-modal ul,
+.class-detail ul {
   margin-top: var(--space-2);
 }
 
