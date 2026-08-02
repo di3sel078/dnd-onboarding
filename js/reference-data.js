@@ -1,9 +1,10 @@
 // ============================================================
 // CHARACTER OPTIONS DATA
-// CLASSES/RACES/BACKGROUNDS are for character-options.html, rendered by
-// initCharacterOptions() in js/main.js. VERDARII_SUBRACES is for
-// xumaria.html, rendered by initXumaria(). Loaded only by those two pages,
-// before main.js.
+// CLASSES/RACES/BACKGROUNDS render as option cards in Steps 3, 4, and 6 of
+// character-creator.html via initCharacterOptionCards() in js/main.js, and
+// CLASSES also fills out the full class write-ups on classes.html via
+// initClasses(). VERDARII_SUBRACES is for xumaria.html, rendered by
+// initXumaria(). Loaded only by those pages, before main.js.
 //
 // Mechanical text is taken from the SRD 5.1 (CC BY 4.0), verified
 // against the Open5e API (SRD-tagged results only). The SRD contains
@@ -11,7 +12,7 @@
 // `description` here is original wording written for this site.
 //
 // Adding an entry: append an object to the right array. The `id` is
-// the card's anchor hash (character-options.html#fighter) and must be
+// the card's anchor hash (character-creator.html#fighter) and must be
 // unique across all three arrays. No rendering JS changes needed.
 //
 // level1Feature / level1FeatureSecondary and featuresTable are no longer
@@ -44,7 +45,7 @@
 //
 // Classes that aren't part of the core rules (e.g. Artificer, Blood
 // Hunter) are marked `core: false` and render under the "Other Classes"
-// sub-heading on character-options.html instead of the main grid.
+// sub-heading in Step 3 of character-creator.html instead of the main grid.
 // ============================================================
 
 const CLASSES = [
@@ -834,7 +835,7 @@ const CLASSES = [
     tools:
       "Thieves' Tools, Tinker's Tools, one type of Artisan Tools of your choice",
     skills:
-      "Choose two from Arcana, History, Investivation, Medicine, Nature, Perception, Sleight of Hand",
+      "Choose two from Arcana, History, Investigation, Medicine, Nature, Perception, Sleight of Hand",
     equipment: [
       "any two simple weapons",
       "a light crossbow and 20 bolts",
@@ -843,7 +844,7 @@ const CLASSES = [
     ],
     spellcasting: {
       ability: "Intelligence",
-      note: "Full spellcaster from level 1, casting prepared spells.",
+      note: "Half-caster (same slot progression as Paladin/Ranger), but uniquely starts casting at level 1 instead of level 2.",
     },
     // Level 1 class feature(s), e.g. Barbarian's Rage. Fill in as
     // { name: "Feature Name", desc: "What it does." }. secondary is optional
@@ -873,7 +874,7 @@ const CLASSES = [
       "Blood Hunters are clever warriors driven by an undying determination to destroy evil new and old. Armed with rites of secretive blood magic and a willingness to sacrifice their own vitality and humanity for their cause they protect the realm from the shadows, even as they remain ever vigilant against being drawn to the darkness that consumes the monsters they hunt.",
     hitDie: "d10",
     hpAtFirst: "10 + your Constitution modifier",
-    primaryAbility: "Constituion & Dexterity or Strength",
+    primaryAbility: "Constitution & Dexterity or Strength",
     saves: "Dexterity & Intelligence",
     armor: "Light Armor, Medium Armor, Shields",
     weapons: "Simple Weapons, Martial weapons",

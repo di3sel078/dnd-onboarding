@@ -303,7 +303,7 @@ header {
 }
 
 .nav-dropdown-toggle:hover,
-.nav-dropdown.open .nav-dropdown-toggle {
+.nav-dropdown.open > .nav-dropdown-toggle {
   color: var(--color-text);
 }
 
@@ -319,7 +319,7 @@ header {
   transition: transform 0.15s ease;
 }
 
-.nav-dropdown.open .nav-dropdown-caret {
+.nav-dropdown.open > .nav-dropdown-toggle .nav-dropdown-caret {
   transform: rotate(180deg);
 }
 
@@ -340,7 +340,7 @@ header {
   z-index: 10;
 }
 
-.nav-dropdown.open .nav-dropdown-menu {
+.nav-dropdown.open > .nav-dropdown-menu {
   display: flex;
 }
 
@@ -354,6 +354,28 @@ header {
 
 .nav-dropdown-menu a:last-child {
   border-bottom: none;
+}
+
+/* "Character Options" submenu, nested one level inside the Reference
+   dropdown (see js/main.js buildNav). The outer dropdown menu clips
+   overflow for its rounded corners, so this expands in place underneath
+   its own toggle instead of flying out beside it. */
+.nav-dropdown-nested .nav-dropdown-toggle {
+  width: 100%;
+  justify-content: space-between;
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-dropdown-nested .nav-dropdown-menu {
+  position: static;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.nav-dropdown-nested .nav-dropdown-menu a {
+  padding-left: var(--space-8);
 }
 
 /* Hamburger button — visible below the breakpoint; nav-links is its dropdown */
@@ -443,7 +465,7 @@ header {
 /* Outlined, lower-emphasis button variant */
 .btn-secondary {
   background-color: transparent;
-  color: var(--color-accent);
+  color: var(--color-text-accent);
   border: 2px solid var(--color-accent);
 }
 
@@ -499,7 +521,7 @@ header {
 }
 
 .section-full-border {
-  border: 2px solid var(--color-accent-dark);
+  border: 4px solid var(--color-accent-dark);
   border-radius: var(--border-radius);
 }
 
@@ -603,7 +625,7 @@ hr {
   display: flex;
   flex-direction: column;
   background: var(--color-surface);
-  border: 1px solid var(--color-accent-border);
+  border: 4px solid var(--color-accent-border);
   border-radius: var(--border-radius);
   padding: var(--space-6);
   text-decoration: none;
@@ -703,7 +725,7 @@ hr {
   justify-content: center;
   text-align: center;
   background: var(--color-bg);
-  border: 1px solid var(--color-accent);
+  border: 2px solid var(--color-accent);
   border-radius: var(--border-radius);
   padding: var(--space-6);
 }
@@ -1128,7 +1150,7 @@ hr {
   aspect-ratio: 4 / 5;
   padding: 0;
   background: var(--color-surface);
-  border: 1px solid var(--color-accent-border);
+  border: 4px solid var(--color-accent-border);
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   cursor: pointer;
@@ -1321,7 +1343,7 @@ body.modal-open {
   gap: var(--space-2);
   padding: var(--space-4);
   background: var(--color-surface);
-  border: 1px solid var(--color-accent-border);
+  border: 4px solid var(--color-accent-border);
   border-radius: var(--border-radius-lg);
   cursor: pointer;
   font: inherit;

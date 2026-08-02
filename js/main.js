@@ -14,11 +14,17 @@
   ];
 
   const NAV_REFERENCE_LINKS = [
-    { href: "character-options.html", label: "Character Options" },
     { href: "extra-rules.html", label: "Extra Rules" },
     { href: "glossary.html", label: "Glossary" },
     { href: "gallery.html", label: "Gallery" },
     { href: "xumaria.html", label: "Xumaria" },
+  ];
+
+  // Nested one level inside the Reference dropdown (see buildNav below).
+  // Classes/races/backgrounds live inline in character-creator.html now;
+  // this is just the standalone full class write-ups page.
+  const NAV_CHARACTER_OPTIONS_LINKS = [
+    { href: "classes.html", label: "Classes" },
   ];
 
   function linkTag(item) {
@@ -32,7 +38,16 @@
     // Desktop row skips "Home" — the logo already links there
     const desktopMainLinks = NAV_MAIN_LINKS.slice(1).map(linkTag).join("");
     const referenceLinks = NAV_REFERENCE_LINKS.map(linkTag).join("");
-    const mobileLinks = [...NAV_MAIN_LINKS, ...NAV_REFERENCE_LINKS]
+    const characterOptionsLinks = NAV_CHARACTER_OPTIONS_LINKS.map(
+      linkTag,
+    ).join("");
+    // Mobile flattens everything, including the nested Character Options
+    // links, into one dropdown — no room for a second level there
+    const mobileLinks = [
+      ...NAV_MAIN_LINKS,
+      ...NAV_CHARACTER_OPTIONS_LINKS,
+      ...NAV_REFERENCE_LINKS,
+    ]
       .map(linkTag)
       .join("");
 
@@ -59,6 +74,22 @@
             Reference <span class="nav-dropdown-caret" aria-hidden="true">&#9660;</span>
           </button>
           <div class="nav-dropdown-menu" id="nav-reference-menu">
+            <div
+              class="nav-dropdown nav-dropdown-nested"
+              id="nav-character-options-dropdown"
+            >
+              <button
+                type="button"
+                class="nav-dropdown-toggle"
+                id="nav-character-options-toggle"
+                aria-expanded="false"
+              >
+                Character Options <span class="nav-dropdown-caret" aria-hidden="true">&#9660;</span>
+              </button>
+              <div class="nav-dropdown-menu" id="nav-character-options-menu">
+                ${characterOptionsLinks}
+              </div>
+            </div>
             ${referenceLinks}
           </div>
         </div>
@@ -87,8 +118,15 @@
   // the desktop row/dropdown and the flattened mobile dropdown
   const mainNav = document.getElementById("main-nav");
   const navLinks = document.getElementById("nav-links");
+  const characterOptionsDropdown = document.getElementById(
+    "nav-character-options-dropdown",
+  );
+  const characterOptionsToggle = document.getElementById(
+    "nav-character-options-toggle",
+  );
   if (mainNav) {
     let referenceActive = false;
+    let characterOptionsActive = false;
     mainNav.querySelectorAll("a[href]").forEach((link) => {
       const isActive = link.getAttribute("href") === currentPage;
       link.classList.toggle("active", isActive);
@@ -98,11 +136,28 @@
       ) {
         referenceActive = true;
       }
+      if (
+        isActive &&
+        NAV_CHARACTER_OPTIONS_LINKS.some((item) => item.href === currentPage)
+      ) {
+        referenceActive = true;
+        characterOptionsActive = true;
+      }
     });
 
     const referenceToggle = document.getElementById("nav-reference-toggle");
     if (referenceToggle) {
       referenceToggle.classList.toggle("active", referenceActive);
+    }
+
+    if (characterOptionsToggle) {
+      characterOptionsToggle.classList.toggle("active", characterOptionsActive);
+    }
+    if (characterOptionsActive && characterOptionsDropdown) {
+      // Land on classes.html with the submenu already expanded, so its
+      // active link isn't hidden behind a collapsed dropdown
+      characterOptionsDropdown.classList.add("open");
+      characterOptionsToggle.setAttribute("aria-expanded", "true");
     }
   }
 
@@ -153,6 +208,12 @@
     const closeReferenceMenu = () => {
       referenceDropdown.classList.remove("open");
       referenceToggle.setAttribute("aria-expanded", "false");
+      // The nested Character Options dropdown lives inside this menu, so
+      // it should never stay expanded once the menu itself is hidden
+      if (characterOptionsDropdown && characterOptionsToggle) {
+        characterOptionsDropdown.classList.remove("open");
+        characterOptionsToggle.setAttribute("aria-expanded", "false");
+      }
     };
 
     referenceToggle.addEventListener("click", (event) => {
@@ -174,6 +235,17 @@
     referenceDropdown
       .querySelectorAll("a")
       .forEach((link) => link.addEventListener("click", closeReferenceMenu));
+  }
+
+  // "Character Options" submenu, nested one level inside the Reference
+  // dropdown above — expands in place rather than flying out, since its
+  // parent menu clips overflowing content for its rounded corners
+  if (characterOptionsDropdown && characterOptionsToggle) {
+    characterOptionsToggle.addEventListener("click", (event) => {
+      event.stopPropagation();
+      const isOpen = characterOptionsDropdown.classList.toggle("open");
+      characterOptionsToggle.setAttribute("aria-expanded", String(isOpen));
+    });
   }
 
   // Page Modules
@@ -482,20 +554,9 @@
     // is left off entirely.
     const CHARACTERS = [
       {
-        name: "Crimson",
-        image: "assets/images/characters/crimson.jpeg",
-        alt: "Portrait of Crimson, a half-elf rogue with fiery red hair",
-        artist: "Kaya McCue",
-        description: [
-          "Crimson is a cunning, swashbuckling, half-elf rogue, named for her fiery red hair that made her near impossible to miss on any deck she walked. She didn’t start out as the Pirate Queen, she was just another pair of hands on a creaking ship, quick-fingered (and quicker tongued), with a habit of acting before thinking, which got her into as much trouble as it got her out of.",
-          "What set her apart wasn’t raw power, it was her ability to read a room, find the angle nobody else saw, and talk (or fight) her way through whatever mess her impulses landed her in. Through clever schemes, desperate gambles, and more than a few decisions that should have gotten her killed, she clawed her way from anonymous crew member to the most feared captain on the sea.",
-          "Crimson is a reminder that you don’t need a grand title at the start, sometimes the best stories are about earning one.",
-        ],
-      },
-      {
         name: "Acharia",
         image: "assets/images/characters/acharia.jpg",
-        alt: "Portrait of Acharia",
+        alt: "Portrait of Acharia, a red tiefling cleric/warlock",
         artist: "Kaya McCue",
         description: [
           "Acharia is a life cleric whose story began as an orphan under the care of a fugitive priest. Though naturally volatile and shadowed by a dark disposition, her mentor looked past her rough edges, guiding her toward the path of healing. She eventually joined a band of adventurers who looked the other way regarding her frequent outbursts and questionable morals. Driven by a thirst for dominance, she entered into a sinister pact with a devil, yet her time on the road sparked an unexpected transformation. As her journey progressed, the cold, power-motivated hothead slowly found a new purpose, evolving into a steadfast protector who would sacrifice everything for the family she chose.",
@@ -504,7 +565,7 @@
       {
         name: "Maeve",
         image: "assets/images/characters/maeve.jpg",
-        alt: "Portrait of Maeve",
+        alt: "Portrait of Maeve, a sea elf life cleric",
         artist: "Kaya McCue",
         description: ["Description coming soon"],
         placeholder: true,
@@ -512,15 +573,42 @@
       {
         name: "Hana",
         image: "assets/images/characters/hana.jpg",
-        alt: "Portrait of Hana",
+        alt: "Portrait of Hana, a mycrovarii grave cleric",
         artist: "Kaya McCue",
+        description: ["Description coming soon"],
+        placeholder: true,
+      },
+      {
+        name: "Crimson",
+        image: "assets/images/characters/crimson.jpg",
+        alt: "Portrait of Crimson, a half-elf swashbuckler rogue",
+        artist: "Kaya McCue",
+        description: [
+          "Crimson is a cunning, swashbuckling, half-elf rogue, named for her fiery red hair that made her near impossible to miss on any deck she walked. She didn’t start out as the Pirate Queen, she was just another pair of hands on a creaking ship, quick-fingered (and quicker tongued), with a habit of acting before thinking, which got her into as much trouble as it got her out of.",
+          "What set her apart wasn’t raw power, it was her ability to read a room, find the angle nobody else saw, and talk (or fight) her way through whatever mess her impulses landed her in. Through clever schemes, desperate gambles, and more than a few decisions that should have gotten her killed, she clawed her way from anonymous crew member to the most feared captain on the sea.",
+          "Crimson is a reminder that you don’t need a grand title at the start, sometimes the best stories are about earning one.",
+        ],
+      },
+      {
+        name: "Clementine",
+        image: "assets/images/characters/clem.jpg",
+        alt: "Portrait of Clementine, a half-elf rogue",
+        artist: "Kaya McCue",
+        description: ["Description coming soon"],
+        placeholder: true,
+      },
+      {
+        name: "Quinn",
+        image: "assets/images/characters/quinn.jpg",
+        alt: "Portrait of Quinn, a blue tiefling path of the beast barbarian",
+        artist: "Tyler Warhola",
         description: ["Description coming soon"],
         placeholder: true,
       },
       {
         name: "Lyonoris",
         image: "assets/images/characters/lyo.jpg",
-        alt: "Portrait of Lyonoris",
+        alt: "Portrait of Lyonoris, an earth genasi paladin",
         artist: "Robin Laronde",
         description: ["Description coming soon."],
         placeholder: true,
@@ -528,7 +616,15 @@
       {
         name: "Hal",
         image: "assets/images/characters/hal.jpg",
-        alt: "Portrait of Hal",
+        alt: "Portrait of Hal, a human champion fighter",
+        artist: "Robin Laronde",
+        description: ["Description coming soon"],
+        placeholder: true,
+      },
+      {
+        name: "Fish of The River",
+        image: "assets/images/characters/fish.jpg",
+        alt: "Portrait of Fish of The River, a tabaxi rogue",
         artist: "Robin Laronde",
         description: ["Description coming soon"],
         placeholder: true,
@@ -688,8 +784,8 @@
   }
 
   // The shared class write-up, used verbatim by both the pop-up on
-  // character-options.html and the full sections on classes.html. Kept
-  // link-free on purpose: character-options.html appends its own link to
+  // character-creator.html and the full sections on classes.html. Kept
+  // link-free on purpose: character-creator.html appends its own link to
   // classes.html via classModalHtmlWithLink below, which would be
   // circular if it lived in here.
   function classModalHtml(entry) {
@@ -734,7 +830,7 @@
   // Wires a shared dialog (#options-modal) to one or more grids of option
   // cards. Each section is { gridId, entries, modalHtml }; entries render
   // as buttons in the grid and open the shared modal via modalHtml(entry).
-  // Used by both character-options.html (classes/races/backgrounds) and
+  // Used by both character-creator.html (classes/races/backgrounds) and
   // xumaria.html (Verdarii).
   function initOptionCards(sections) {
     const modal = document.getElementById("options-modal");
@@ -797,7 +893,7 @@
       document.body.classList.remove("modal-open");
     });
 
-    // Deep links (e.g. character-options.html#fighter) scroll to the card
+    // Deep links (e.g. character-creator.html#fighter) scroll to the card
     // and open its entry. Closing the modal is not tied to history — the
     // back button navigates pages, not pop-ups.
     function openFromHash() {
@@ -813,9 +909,12 @@
     openFromHash();
   }
 
-  function initCharacterOptions() {
+  // Renders the class/race/background option cards used in Steps 3, 4, and
+  // 6 of character-creator.html, plus the shared #options-modal pop-up they
+  // open into.
+  function initCharacterOptionCards() {
     // Entry data lives in js/reference-data.js, loaded just before this
-    // file on character-options.html only
+    // file on character-creator.html only
     if (typeof CLASSES === "undefined") return;
 
     // One roll table (d8 Personality Trait, d6 Ideal, ...) as rows
@@ -908,6 +1007,7 @@
     switch (currentPage) {
       case "character-creator.html":
         initCharacterCreator();
+        initCharacterOptionCards();
         break;
       case "roleplaying.html":
         initRoleplaying();
@@ -926,9 +1026,6 @@
         break;
       case "gallery.html":
         initGallery();
-        break;
-      case "character-options.html":
-        initCharacterOptions();
         break;
       case "classes.html":
         initClasses();
