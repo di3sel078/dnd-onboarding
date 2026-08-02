@@ -38,9 +38,8 @@
     // Desktop row skips "Home" — the logo already links there
     const desktopMainLinks = NAV_MAIN_LINKS.slice(1).map(linkTag).join("");
     const referenceLinks = NAV_REFERENCE_LINKS.map(linkTag).join("");
-    const characterOptionsLinks = NAV_CHARACTER_OPTIONS_LINKS.map(
-      linkTag,
-    ).join("");
+    const characterOptionsLinks =
+      NAV_CHARACTER_OPTIONS_LINKS.map(linkTag).join("");
     // Mobile flattens everything, including the nested Character Options
     // links, into one dropdown — no room for a second level there
     const mobileLinks = [
@@ -936,7 +935,8 @@
       return `
         ${classModalHtml(entry)}
         <p>
-          <a class="btn btn-secondary" href="classes.html#${entry.id}">
+          <a class="btn btn-secondary" href="classes.html#${entry.id}" target="_blank"
+>
             Full Class Details →
           </a>
         </p>
