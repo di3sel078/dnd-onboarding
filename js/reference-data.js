@@ -15,13 +15,13 @@
 // the card's anchor hash (character-creator.html#fighter) and must be
 // unique across all three arrays. No rendering JS changes needed.
 //
-// level1Feature / level1FeatureSecondary and featuresTable are no longer
-// rendered anywhere: levelFeatures (below) now covers what a class gets at
-// every level, so showing them too was duplicate information. They're kept
-// because their contents are still useful source material. Barbarian's
-// level1Feature prose is exactly the kind of description levelFeatures
-// entries need, and its featuresTable holds the verified SRD 5.1 resource
-// progression (Rages, Rage Damage) that the flat list deliberately drops.
+// level1Feature / level1FeatureSecondary render in the class modal (see
+// classModalHtml in js/main.js) as the class's Level 1 Features. featuresTable
+// is not rendered anywhere: levelFeatures (below) covers what a class gets at
+// every level instead, so showing both was duplicate information.
+// featuresTable is kept because its contents are still useful source
+// material — Barbarian's holds the verified SRD 5.1 resource progression
+// (Rages, Rage Damage) that the flat list deliberately drops.
 //
 // levelFeatures is the flat "what do I get and when" list used by
 // classes.html: [{ name: "Rage", level: 1 }, ...] in level order, covering
@@ -167,8 +167,14 @@ const CLASSES = [
     // Level 1 class feature(s), e.g. Barbarian's Rage. Fill in as
     // { name: "Feature Name", desc: "What it does." }. secondary is optional
     // (leave null if the class only grants one feature at level 1).
-    level1Feature: null,
-    level1FeatureSecondary: null,
+    level1Feature: {
+      name: "Bardic Inspiration (d6)",
+      desc: "Using words or music you inspire others. As a bonus action you may choose one creature (other than yourself) within 60 feet of you and can hear you. That creature then gains one Bardic Inspiration die, which starts as a d6. That creature may roll the die and add the number they rolled to a single ability check, attack roll, or saving throws it makes.",
+    },
+    level1FeatureSecondary: {
+      name: "Spellcasting",
+      desc: null,
+    },
     featuresTable: null,
     featureDescriptions: null,
     levelFeatures: [
@@ -236,8 +242,14 @@ const CLASSES = [
     // Level 1 class feature(s), e.g. Barbarian's Rage. Fill in as
     // { name: "Feature Name", desc: "What it does." }. secondary is optional
     // (leave null if the class only grants one feature at level 1).
-    level1Feature: null,
-    level1FeatureSecondary: null,
+    level1Feature: {
+      name: "Divine Domain",
+      desc: null,
+    },
+    level1FeatureSecondary: {
+      name: "Spellcasting",
+      desc: null,
+    },
     featuresTable: null,
     featureDescriptions: null,
     levelFeatures: [
@@ -298,8 +310,14 @@ const CLASSES = [
     // Level 1 class feature(s), e.g. Barbarian's Rage. Fill in as
     // { name: "Feature Name", desc: "What it does." }. secondary is optional
     // (leave null if the class only grants one feature at level 1).
-    level1Feature: null,
-    level1FeatureSecondary: null,
+    level1Feature: {
+      name: "Druidic",
+      desc: null,
+    },
+    level1FeatureSecondary: {
+      name: "Spellcasting",
+      desc: null,
+    },
     featuresTable: null,
     featureDescriptions: null,
     levelFeatures: [
@@ -354,8 +372,14 @@ const CLASSES = [
     // Level 1 class feature(s), e.g. Barbarian's Rage. Fill in as
     // { name: "Feature Name", desc: "What it does." }. secondary is optional
     // (leave null if the class only grants one feature at level 1).
-    level1Feature: null,
-    level1FeatureSecondary: null,
+    level1Feature: {
+      name: "Fighting Style",
+      desc: null,
+    },
+    level1FeatureSecondary: {
+      name: "Second Wind",
+      desc: null,
+    },
     featuresTable: null,
     featureDescriptions: null,
     levelFeatures: [
@@ -414,8 +438,14 @@ const CLASSES = [
     // Level 1 class feature(s), e.g. Barbarian's Rage. Fill in as
     // { name: "Feature Name", desc: "What it does." }. secondary is optional
     // (leave null if the class only grants one feature at level 1).
-    level1Feature: null,
-    level1FeatureSecondary: null,
+    level1Feature: {
+      name: "Martial Arts",
+      desc: null,
+    },
+    level1FeatureSecondary: {
+      name: "Unarmored Defense",
+      desc: null,
+    },
     featuresTable: null,
     featureDescriptions: null,
     levelFeatures: [
@@ -482,8 +512,14 @@ const CLASSES = [
     // Level 1 class feature(s), e.g. Barbarian's Rage. Fill in as
     // { name: "Feature Name", desc: "What it does." }. secondary is optional
     // (leave null if the class only grants one feature at level 1).
-    level1Feature: null,
-    level1FeatureSecondary: null,
+    level1Feature: {
+      name: "Divine Sense",
+      desc: null,
+    },
+    level1FeatureSecondary: {
+      name: "Lay on Hands",
+      desc: null,
+    },
     featuresTable: null,
     featureDescriptions: null,
     levelFeatures: [
@@ -545,8 +581,14 @@ const CLASSES = [
     // Level 1 class feature(s), e.g. Barbarian's Rage. Fill in as
     // { name: "Feature Name", desc: "What it does." }. secondary is optional
     // (leave null if the class only grants one feature at level 1).
-    level1Feature: null,
-    level1FeatureSecondary: null,
+    level1Feature: {
+      name: "Favored Enemy",
+      desc: null,
+    },
+    level1FeatureSecondary: {
+      name: "Natural Explorer",
+      desc: null,
+    },
     featuresTable: null,
     featureDescriptions: null,
     levelFeatures: [
@@ -611,8 +653,14 @@ const CLASSES = [
     // Level 1 class feature(s), e.g. Barbarian's Rage. Fill in as
     // { name: "Feature Name", desc: "What it does." }. secondary is optional
     // (leave null if the class only grants one feature at level 1).
-    level1Feature: null,
-    level1FeatureSecondary: null,
+    level1Feature: {
+      name: "Expertise",
+      desc: null,
+    },
+    level1FeatureSecondary: {
+      name: "Sneak Attack",
+      desc: null,
+    },
     featuresTable: null,
     featureDescriptions: null,
     levelFeatures: [
@@ -674,8 +722,14 @@ const CLASSES = [
     // Level 1 class feature(s), e.g. Barbarian's Rage. Fill in as
     // { name: "Feature Name", desc: "What it does." }. secondary is optional
     // (leave null if the class only grants one feature at level 1).
-    level1Feature: null,
-    level1FeatureSecondary: null,
+    level1Feature: {
+      name: "Sorcerous Origin",
+      desc: null,
+    },
+    level1FeatureSecondary: {
+      name: "Spellcasting",
+      desc: null,
+    },
     featuresTable: null,
     featureDescriptions: null,
     levelFeatures: [
@@ -731,8 +785,14 @@ const CLASSES = [
     // Level 1 class feature(s), e.g. Barbarian's Rage. Fill in as
     // { name: "Feature Name", desc: "What it does." }. secondary is optional
     // (leave null if the class only grants one feature at level 1).
-    level1Feature: null,
-    level1FeatureSecondary: null,
+    level1Feature: {
+      name: "Otherworldly Patron",
+      desc: null,
+    },
+    level1FeatureSecondary: {
+      name: "Pact Magic",
+      desc: null,
+    },
     featuresTable: null,
     featureDescriptions: null,
     levelFeatures: [
@@ -791,8 +851,14 @@ const CLASSES = [
     // Level 1 class feature(s), e.g. Barbarian's Rage. Fill in as
     // { name: "Feature Name", desc: "What it does." }. secondary is optional
     // (leave null if the class only grants one feature at level 1).
-    level1Feature: null,
-    level1FeatureSecondary: null,
+    level1Feature: {
+      name: "Arcane Recovery",
+      desc: null,
+    },
+    level1FeatureSecondary: {
+      name: "Spellcasting",
+      desc: null,
+    },
     featuresTable: null,
     featureDescriptions: null,
     levelFeatures: [
@@ -900,7 +966,7 @@ const CLASSES = [
     },
     level1FeatureSecondary: {
       name: "Blood Maledict",
-      desc: "Also at 1st level, you gain the ability to channel, and sometimes sacrifice, a part of your vital essence to curse and manipulate creatures through hemocraft magic. You learn one Blood Curse of your choice. While invoking a Blood Curse, but before it affects the target, you can choose to amplify the curse by taking necrotic damage equal to one roll of your hemocraft die. An amplified curse grants an additional effect, noted in the curse's description. Creatures that do not have blood are immune to the curse unless it has beeen amplified.",
+      desc: "Also at 1st level, you gain the ability to channel, and sometimes sacrifice, a part of your vital essence to curse and manipulate creatures through hemocraft magic. You learn one Blood Curse of your choice. While invoking a Blood Curse, but before it affects the target, you can choose to amplify the curse by taking necrotic damage equal to one roll of your hemocraft die. An amplified curse grants an additional effect, noted in the curse's description. Creatures that do not have blood are immune to the curse unless it has been amplified.",
     },
     featuresTable: null,
     featureDescriptions: null,
@@ -1280,35 +1346,14 @@ const VERDARII_SUBRACES = [
     name: "Mycovarii",
     summary:
       "Children of the Rot and Roots: swamp and bog dwellers who see decay as the soil for new life.",
-    asi: "Your Dexterity score increases by 2, and your Wisdom score increases by 1.",
-    age: "Like other elves, Verdarii can live to be over 750 years old.",
-    alignment: null,
-    size: "You are Medium.",
-    speed:
-      "Your walking speed is 30 feet, and you can walk through any nature-based difficult terrain as if it was normal.",
-    darkvision:
-      "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.",
-    languages: "You can speak, read, and write Common and Elven.",
     traits: [
       {
-        name: "Creature Type",
-        desc: "You are a Humanoid. You are also considered an elf for any prerequisite or effect that requires you to be an elf.",
-      },
-      {
-        name: "Fey Ancestry",
-        desc: "You have advantage on saving throws you make to avoid or end the charmed condition on yourself, and magic can't put you to sleep.",
+        name: "Ability Score Increase",
+        desc: "In addition to your Dexterity score increasing by 2 (from Verdarii Base), your Wisdom score also increases by 1.",
       },
       {
         name: "Child of the Forest",
         desc: "Forest animals have an extraordinary affinity with your people. You can communicate simple ideas to any Beast that lives in a forest. It can understand your words, though you have no special ability to understand it in return.",
-      },
-      {
-        name: "Keen Senses",
-        desc: "You have proficiency in the Perception skill.",
-      },
-      {
-        name: "Trance",
-        desc: "You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours if you spend those hours in a trance-like meditation.",
       },
       {
         name: "Spore-link",
@@ -1342,35 +1387,10 @@ const VERDARII_SUBRACES = [
     name: "Solarii",
     summary:
       "Children of the Wind: sun-chasing wanderers of the prairie and open sky.",
-    asi: "Your Dexterity score increases by 2, and your Charisma score increases by 1.",
-    age: "Like other elves, Verdarii can live to be over 750 years old.",
-    alignment: null,
-    size: "You are Medium.",
-    speed:
-      "Your walking speed is 30 feet, and you can walk through any nature-based difficult terrain as if it was normal.",
-    darkvision:
-      "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.",
-    languages: "You can speak, read, and write Common and Elven.",
     traits: [
       {
-        name: "Creature Type",
-        desc: "You are a Humanoid. You are also considered an elf for any prerequisite or effect that requires you to be an elf.",
-      },
-      {
-        name: "Fey Ancestry",
-        desc: "You have advantage on saving throws you make to avoid or end the charmed condition on yourself, and magic can't put you to sleep.",
-      },
-      {
-        name: "Child of the Forest",
-        desc: "Forest animals have an extraordinary affinity with your people. You can communicate simple ideas to any Beast that lives in a forest. It can understand your words, though you have no special ability to understand it in return.",
-      },
-      {
-        name: "Keen Senses",
-        desc: "You have proficiency in the Perception skill.",
-      },
-      {
-        name: "Trance",
-        desc: "You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours if you spend those hours in a trance-like meditation.",
+        name: "Ability Score Increase",
+        desc: "In addition to your Dexterity score increasing by 2 (from Verdarii Base), your Charisma score also increases by 1.",
       },
       {
         name: "Step of the Windgrass",
@@ -1400,35 +1420,10 @@ const VERDARII_SUBRACES = [
     name: "Canoparii",
     summary:
       "Children of the Green Veil: jungle guardians whose bodies bloom with vines and blossoms.",
-    asi: "Your Dexterity score increases by 2, and your Constitution score increases by 1.",
-    age: "Like other elves, Verdarii can live to be over 750 years old.",
-    alignment: null,
-    size: "You are Medium.",
-    speed:
-      "Your walking speed is 30 feet, and you can walk through any nature-based difficult terrain as if it was normal.",
-    darkvision:
-      "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.",
-    languages: "You can speak, read, and write Common and Elven.",
     traits: [
       {
-        name: "Creature Type",
-        desc: "You are a Humanoid. You are also considered an elf for any prerequisite or effect that requires you to be an elf.",
-      },
-      {
-        name: "Fey Ancestry",
-        desc: "You have advantage on saving throws you make to avoid or end the charmed condition on yourself, and magic can't put you to sleep.",
-      },
-      {
-        name: "Child of the Forest",
-        desc: "Forest animals have an extraordinary affinity with your people. You can communicate simple ideas to any Beast that lives in a forest. It can understand your words, though you have no special ability to understand it in return.",
-      },
-      {
-        name: "Keen Senses",
-        desc: "You have proficiency in the Perception skill.",
-      },
-      {
-        name: "Trance",
-        desc: "You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours if you spend those hours in a trance-like meditation.",
+        name: "Ability Score Increase",
+        desc: "In addition to your Dexterity score increasing by 2 (from Verdarii Base), your Constitution score also increases by 1.",
       },
       {
         name: "Vinegrasp",
@@ -1461,36 +1456,11 @@ const VERDARII_SUBRACES = [
     id: "thornarii",
     name: "Thornarii",
     summary:
-      "The Wardens of the Wild: barkskinned, thorned protectors of forest and grove.",
-    asi: "Your Dexterity score increases by 2, and your Strength score increases by 1.",
-    age: "Like other elves, Verdarii can live to be over 750 years old.",
-    alignment: null,
-    size: "You are Medium.",
-    speed:
-      "Your walking speed is 30 feet, and you can walk through any nature-based difficult terrain as if it was normal.",
-    darkvision:
-      "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.",
-    languages: "You can speak, read, and write Common and Elven.",
+      "The Children of the Forest: barkskinned, thorned protectors of forest and grove.",
     traits: [
       {
-        name: "Creature Type",
-        desc: "You are a Humanoid. You are also considered an elf for any prerequisite or effect that requires you to be an elf.",
-      },
-      {
-        name: "Fey Ancestry",
-        desc: "You have advantage on saving throws you make to avoid or end the charmed condition on yourself, and magic can't put you to sleep.",
-      },
-      {
-        name: "Child of the Forest",
-        desc: "Forest animals have an extraordinary affinity with your people. You can communicate simple ideas to any Beast that lives in a forest. It can understand your words, though you have no special ability to understand it in return.",
-      },
-      {
-        name: "Keen Senses",
-        desc: "You have proficiency in the Perception skill.",
-      },
-      {
-        name: "Trance",
-        desc: "You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours if you spend those hours in a trance-like meditation.",
+        name: "Ability Score Increase",
+        desc: "In addition to your Dexterity score increasing by 2 (from Verdarii Base), your Strength score also increases by 1.",
       },
       {
         name: "Barkskin",
@@ -1520,35 +1490,10 @@ const VERDARII_SUBRACES = [
     name: "Luminarii",
     summary:
       "Children of the Bloom: gentle, flower-bringing diplomats of meadow and field.",
-    asi: "Your Dexterity score increases by 2, and your Charisma or Wisdom score increases by 1 (your choice).",
-    age: "Like other elves, Verdarii can live to be over 750 years old.",
-    alignment: null,
-    size: "You are Medium.",
-    speed:
-      "Your walking speed is 30 feet, and you can walk through any nature-based difficult terrain as if it was normal.",
-    darkvision:
-      "You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You discern colors in that darkness only as shades of gray.",
-    languages: "You can speak, read, and write Common and Elven.",
     traits: [
       {
-        name: "Creature Type",
-        desc: "You are a Humanoid. You are also considered an elf for any prerequisite or effect that requires you to be an elf.",
-      },
-      {
-        name: "Fey Ancestry",
-        desc: "You have advantage on saving throws you make to avoid or end the charmed condition on yourself, and magic can't put you to sleep.",
-      },
-      {
-        name: "Child of the Forest",
-        desc: "Forest animals have an extraordinary affinity with your people. You can communicate simple ideas to any Beast that lives in a forest. It can understand your words, though you have no special ability to understand it in return.",
-      },
-      {
-        name: "Keen Senses",
-        desc: "You have proficiency in the Perception skill.",
-      },
-      {
-        name: "Trance",
-        desc: "You don't need to sleep, and magic can't put you to sleep. You can finish a long rest in 4 hours if you spend those hours in a trance-like meditation.",
+        name: "Ability Score Increase",
+        desc: "In addition to your Dexterity score increasing by 2 (from Verdarii Base), your Charisma or Wisodm score also increases by 1.",
       },
       {
         name: "Pollen of Serenity",

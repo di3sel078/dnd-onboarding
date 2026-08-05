@@ -478,6 +478,16 @@
       history.replaceState(null, "", `#step-${savedStep + 1}`);
     }
     showStep(hashStep ?? savedStep ?? 0, { updateUrl: false, scroll: false });
+
+    if (typeof VERDARII_SUBRACES === "undefined") return;
+
+    initOptionCards([
+      {
+        gridId: "verdarii-cards",
+        entries: VERDARII_SUBRACES,
+        modalHtml: raceModalHtml,
+      },
+    ]);
   }
 
   function initRoleplaying() {
@@ -497,17 +507,7 @@
   }
 
   function initXumaria() {
-    // Entry data lives in js/reference-data.js, loaded just before this
-    // file on xumaria.html only
-    if (typeof VERDARII_SUBRACES === "undefined") return;
-
-    initOptionCards([
-      {
-        gridId: "verdarii-cards",
-        entries: VERDARII_SUBRACES,
-        modalHtml: raceModalHtml,
-      },
-    ]);
+    // TODO
   }
 
   // Fills in one full section per core class on classes.html. Sections are
@@ -743,6 +743,19 @@
     `;
   }
 
+  // Level 1 class feature(s) (e.g. Barbarian's Rage + Unarmored Defense).
+  // secondary is optional, so most classes render just one.
+  function level1FeaturesHtml(entry) {
+    const features = [entry.level1Feature, entry.level1FeatureSecondary].filter(
+      Boolean,
+    );
+    if (!features.length) return "";
+    return `
+      <h4>Level 1 Features</h4>
+      ${traitTags(features)}
+    `;
+  }
+
   // Renders full write-ups for every class feature past level 1, or nothing
   // until it's filled in on the entry (see js/reference-data.js)
   function featureDescriptionsHtml(entry) {
@@ -817,6 +830,7 @@
         by your background:
       </p>
       <ul>${entry.equipment.map((item) => `<li>${item}</li>`).join("")}</ul>
+      ${level1FeaturesHtml(entry)}
       ${featureDescriptionsHtml(entry)}
       <h4>${entry.subclass.term} (Subclass, chosen at level ${entry.subclass.level})</h4>
       <p>

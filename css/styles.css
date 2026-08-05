@@ -841,7 +841,7 @@ hr {
   top: calc(var(--nav-height));
   z-index: 10; /* Stays below the header (z-index: 100) it sticks under */
   background-color: var(--color-bg);
-  padding: var(--space-8);
+  padding: var(--space-4);
   width: 100vw;
   margin-left: calc(50% - 50vw);
   box-sizing: border-box;
