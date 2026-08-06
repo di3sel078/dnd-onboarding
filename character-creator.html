@@ -45,7 +45,7 @@
             id="tracker-toggle-count"
             title="Click to Expand/Collapse"
           >
-            Step 1 of 10
+            Before You Begin: Terms
           </span>
         </button>
 
@@ -56,16 +56,16 @@
           id="step-tracker-select"
           aria-label="Jump to step"
         >
-          <option value="0">Step 1: Terms</option>
-          <option value="1">Step 2: Concept</option>
-          <option value="2">Step 3: Class</option>
-          <option value="3">Step 4: Race</option>
-          <option value="4">Step 5: Scores</option>
-          <option value="5">Step 6: Background</option>
-          <option value="6">Step 7: Skills</option>
-          <option value="7">Step 8: Spells</option>
-          <option value="8">Step 9: Equipment</option>
-          <option value="9">Step 10: Final Stats</option>
+          <option value="1">Step 1: Concept</option>
+          <option value="2">Step 2: Class</option>
+          <option value="3">Step 3: Race</option>
+          <option value="4">Step 4: Scores</option>
+          <option value="5">Step 5: Background</option>
+          <option value="6">Step 6: Skills</option>
+          <option value="7">Step 7: Spells</option>
+          <option value="8">Step 8: Equipment</option>
+          <option value="9">Step 9: Final Stats</option>
+          <option value="10">Step 10: Sheet Review</option>
         </select>
 
         <div class="step-tracker-content" id="step-tracker-content">
@@ -80,62 +80,62 @@
           <menu class="step-tracker">
             <li class="tracker-entry">
               <button class="tracker-entry-btn" type="button">
-                <span class="step-icon active">1</span>
-                <span class="step-label active">Terms</span>
-              </button>
-            </li>
-            <li class="tracker-entry">
-              <button class="tracker-entry-btn" type="button">
-                <span class="step-icon">2</span>
+                <span class="step-icon">1</span>
                 <span class="step-label">Concept</span>
               </button>
             </li>
             <li class="tracker-entry">
               <button class="tracker-entry-btn" type="button">
-                <span class="step-icon">3</span>
+                <span class="step-icon">2</span>
                 <span class="step-label">Class</span>
               </button>
             </li>
             <li class="tracker-entry">
               <button class="tracker-entry-btn" type="button">
-                <span class="step-icon">4</span>
+                <span class="step-icon">3</span>
                 <span class="step-label">Race</span>
               </button>
             </li>
             <li class="tracker-entry">
               <button class="tracker-entry-btn" type="button">
-                <span class="step-icon">5</span>
+                <span class="step-icon">4</span>
                 <span class="step-label">Scores</span>
               </button>
             </li>
             <li class="tracker-entry">
               <button class="tracker-entry-btn" type="button">
-                <span class="step-icon">6</span>
+                <span class="step-icon">5</span>
                 <span class="step-label">Background</span>
               </button>
             </li>
             <li class="tracker-entry">
               <button class="tracker-entry-btn" type="button">
-                <span class="step-icon">7</span>
+                <span class="step-icon">6</span>
                 <span class="step-label">Skills</span>
               </button>
             </li>
             <li class="tracker-entry">
               <button class="tracker-entry-btn" type="button">
-                <span class="step-icon">8</span>
+                <span class="step-icon">7</span>
                 <span class="step-label">Spells</span>
               </button>
             </li>
             <li class="tracker-entry">
               <button class="tracker-entry-btn" type="button">
-                <span class="step-icon">9</span>
+                <span class="step-icon">8</span>
                 <span class="step-label">Equipment</span>
               </button>
             </li>
             <li class="tracker-entry">
               <button class="tracker-entry-btn" type="button">
-                <span class="step-icon">10</span>
+                <span class="step-icon">9</span>
                 <span class="step-label">Final Stats</span>
+              </button>
+            </li>
+            <li class="tracker-entry">
+              <button class="tracker-entry-btn" type="button">
+                <span class="step-icon">10</span>
+                <span class="step-label">Review</span>
               </button>
             </li>
           </menu>
@@ -150,11 +150,11 @@
         </div>
       </nav>
 
-      <!-- 10 Character Creation Steps -->
+      <!-- Pre-Step + 9 Character Creation Steps + Sheet Review -->
 
-      <!-- Step 1 - Terms-->
-      <div class="step active" id="step-1">
-        <span class="step-count">Step 1 of 10</span>
+      <!-- Step 0 - Terms (pre-tracker step, not counted in the tracker) -->
+      <div class="step active" id="step-0">
+        <span class="step-count"> </span>
         <h1>Some Terms Before We Begin</h1>
 
         <div class="sheet-tip">
@@ -196,7 +196,7 @@
             Ability Checks happen when you want to take an action (search a room
             for a hidden door, pick a lock, etc.), so your DM asks you to roll a
             d20 and add your relevant ability modifier (modifiers are explained
-            further in Step 5: "So What Do I Do With These Numbers?"). If your
+            further in Step 4: "So What Do I Do With These Numbers?"). If your
             roll + the modifier meets or beats the number the DM has in their
             head (Difficulty Class or DC, see below), you succeed the Ability
             Check and the action! If the number is lower than the DC the DM set,
@@ -236,7 +236,7 @@
             As Written (RAW), a Natural 20 only applies to a combat attack roll.
             When you roll a 20 (before "to hit" modifiers) on a d20 attack roll
             during combat, you may roll your damage dice twice and then add your
-            damage modifier (more on attacking and damage in Step 9). This is
+            damage modifier (more on attacking and damage in Step 8). This is
             also referred to as a "Critical Hit".
           </p>
           <p>
@@ -266,15 +266,15 @@
             outside your turn, when its trigger condition is met (like an
             Opportunity Attack). We'll cover this in full on the Survive Combat
             page, but you'll see these terms in your class features starting in
-            Step 3.
+            Step 2.
           </p>
         </div>
 
         <div class="section">
           <h2>Proficiencies</h2>
           <p>
-            You'll pick up proficiencies from your Class (Step 3), Race (Step
-            4), and Background (Step 6).
+            You'll pick up proficiencies from your Class (Step 2), Race (Step
+            3), and Background (Step 5).
           </p>
           <p>
             &#x270E; You'll write them down as you go in the "Other
@@ -284,7 +284,7 @@
           <h3>Skills</h3>
           <p>
             Your Class and Background grant you a list of skills, keep track of
-            which ones are offered as we'll choose those in Step 7.
+            which ones are offered as we'll choose those in Step 6.
           </p>
 
           <h3>Languages</h3>
@@ -312,15 +312,15 @@
             Your class determines which armor categories (light, medium, heavy,
             shields) you're trained to wear without penalty. Your class also
             determines which weapon categories (simple and/or martial) you're
-            trained to use. Step 9 includes the full breakdown of weapon & armor
+            trained to use. Step 8 includes the full breakdown of weapon & armor
             types.
           </p>
         </div>
       </div>
 
-      <!-- Step 2 Character concept -->
-      <div class="step" id="step-2">
-        <span class="step-count">Step 2 of 10</span>
+      <!-- Step 1 Character concept -->
+      <div class="step" id="step-1">
+        <span class="step-count">Step 1 of 10</span>
         <h1>Create Your Character Concept</h1>
 
         <!-- Step Content-->
@@ -376,7 +376,7 @@
           <p>
             A quirk or habit that makes your character feel like a real person
             (Ex: "I tip generously, even when I can't afford it"). If you'd
-            rather borrow suggestions, your Background in Step 6 will have a
+            rather borrow suggestions, your Background in Step 5 will have a
             few, so you can leave this box blank.
           </p>
           <h3>Ideals</h3>
@@ -396,7 +396,7 @@
             trouble (Ex: "I can't resist a bet, even a bad one").
           </p>
           <p>
-            If your background (Step 6) comes with suggested traits, feel free
+            If your background (Step 5) comes with suggested traits, feel free
             to borrow from those, or just write your own to match the character
             you already have in your head.
           </p>
@@ -428,7 +428,7 @@
             Your class is one of the biggest parts of your concept, it shapes
             what your character is capable of and how they solve problems. Below
             is a one-sentence look at each to help spark ideas, but we'll go
-            over classes fully next in Step 3.
+            over classes fully next in Step 2.
           </p>
 
           <h3>Barbarian</h3>
@@ -504,7 +504,7 @@
         <div class="section">
           <h2>A Quick Note on Backgrounds</h2>
           <p>
-            Later on, in Step 6, you'll choose a "background," which is the
+            Later on, in Step 5, you'll choose a "background," which is the
             mechanical side of your character's history in one word (Ex:
             Acolyte, Criminal, Soldier, or Sage).
           </p>
@@ -538,9 +538,9 @@
         </div>
       </div>
 
-      <!-- Step 3 - Class -->
-      <div class="step" id="step-3">
-        <span class="step-count">Step 3 of 10</span>
+      <!-- Step 2 - Class -->
+      <div class="step" id="step-2">
+        <span class="step-count">Step 2 of 10</span>
         <h1>Choose your Class</h1>
 
         <!-- step content -->
@@ -555,7 +555,7 @@
             Your class is the biggest mechanical choice you'll make, it decides
             what your character can actually do, how tough they are, what
             they're good at in a fight, and whether they cast spells. Back in
-            Step 2 you saw a one-sentence flavor blurb for each class. Here
+            Step 1 you saw a one-sentence flavor blurb for each class. Here
             we'll focus on the numbers behind them.
           </p>
         </div>
@@ -568,13 +568,13 @@
           <p>
             The die you roll for hit points (your health). A bigger die means a
             sturdier character. Your class's hit die also sets your starting hit
-            points at level 1. You'll do the actual math in step 10.
+            points at level 1. You'll do the actual math in step 9.
           </p>
 
           <h3>Primary Ability/Abilities</h3>
           <p>
             The ability score that matters most for this class. When you set
-            your scores in Step 5, this is where you'll usually want your
+            your scores in Step 4, this is where you'll usually want your
             highest number. An "&amp;" means both abilities are important,
             whereas an "or" means you should choose one or the other. For now,
             just know that it's the stat your class relies on most and you'll
@@ -586,7 +586,7 @@
           <p>
             Whether the class casts spells, and if so, which ability score
             powers those spells. Not every class casts (more on spells in Step
-            8).
+            7).
           </p>
 
           <h3>Subclass Level</h3>
@@ -636,7 +636,7 @@
           <p>
             Your class offers a short list of skills to choose from and tells
             you how many to pick (usually two). Hold off on selecting them for
-            now, as Step 7 covers skills in full. Just make a note of which
+            now, as Step 6 covers skills in full. Just make a note of which
             skills are on your class's list.
           </p>
 
@@ -646,7 +646,7 @@
             like "option A or option B." Pick one from each choice. If it says
             something like "any martial melee weapon" or "any simple weapon,"
             just write that down for now. We'll go over weapons and gear in Step
-            9.
+            8.
           </p>
 
           <h3>Level 1 Features</h3>
@@ -707,9 +707,9 @@
         </div>
       </div>
 
-      <!-- Step 4 - Race -->
-      <div class="step" id="step-4">
-        <span class="step-count">Step 4 of 10</span>
+      <!-- Step 3 - Race -->
+      <div class="step" id="step-3">
+        <span class="step-count">Step 3 of 10</span>
         <h1>Choose your Race</h1>
 
         <!-- step content -->
@@ -740,7 +740,7 @@
           <h3>Ability Score Increases</h3>
           <p>
             Most races bump one or more of your six ability scores. This is
-            added on top of the scores you'll set in Step 5 (for example, elves
+            added on top of the scores you'll set in Step 4 (for example, elves
             get +2 to Dexterity).
           </p>
           <details>
@@ -792,14 +792,23 @@
 
           <h3>Special Traits</h3>
           <p>
-            Extra perks unique to your race, such as darkvision (seeing in the
-            dark), resistance to certain kinds of damage, or a free skill or
+            Extra features unique to your race, such as darkvision (seeing in
+            the dark), resistance to certain kinds of damage, or a free skill or
             language.
           </p>
           <p>
-            &#x270E; Write these down in either the "Features & Traits" box on
-            the first page, or the "Additional Features & Traits" box on the
-            second page.
+            &#x270E; Write any additional features down in either the "Features
+            & Traits" box on the first page, or the "Additional Features &
+            Traits" box on the second page.
+          </p>
+          <p>
+            &#x270E; If you recieve proficiency in a Skill, fill in the bubble
+            next to that respective skill. We'll go over skills fully later in
+            Step 6.
+          </p>
+          <p>
+            &#x270E; If you gain a new language, write it down with the other
+            languages in the "Other Proficiencies & Languages" box.
           </p>
         </div>
 
@@ -808,33 +817,37 @@
           <p>
             There are a lot of races to choose from, and each one has its own
             set of traits. The full free rules lineup is below, so pick
-            whichever fits the character concept you built back in Step 2. If
+            whichever fits the character concept you built back in Step 1. If
             there isn't any that match here, you can find more online.
           </p>
           <p>
             &#x270E; When you've decided, write it in the "Race" box. You'll
             apply its ability score increases once you set your scores in Step
-            5.
+            4.
           </p>
           <p class="dm-note">
             DM Note: Some races you can find online may be from other sources,
             make sure to confirm with your DM on which sources they use.
           </p>
 
+          <h3>Standard Races</h3>
           <!-- Cards are rendered from the RACES array in js/reference-data.js -->
           <div class="option-cards" id="race-cards"></div>
 
-          <h2>Interested in a flora-based Elf race?</h2>
+          <h3>Exotic Races</h3>
+          <div class="option-cards" id="exotic-cards"></div>
+
+          <!-- Verdarii Race -->
+          <h2></h2>
           <details>
             <summary class="collapse-heading">
               <span class="icon">▼</span>
-              The Verdarii - A Homebrew Race
+              Interested in a Flora-based Elf Race? Check Out the Verdarii.
             </summary>
-
             <p>
-              A nature-bound Elven people from the Xumaria setting, who found
-              refuge among the elven forests of Eryn Lasgalen and spread across
-              the world wherever nature runs deep.
+              A homebrew nature-bound Elven people from the Xumaria setting, who
+              found refuge among the elven forests of Eryn Lasgalen and spread
+              across the world wherever nature runs deep.
             </p>
             <p>
               "Verdarii (Base)" below is the base race and lists the traits
@@ -845,15 +858,16 @@
             </p>
             <p class="dm-note">
               The Verdarii races were built based on the Sea Elf race so they
-              might be slightly stronger than the base races. Make sure to
+              might be slightly stronger than the standard races. Make sure to
               consult your DM before choosing one of these races.
             </p>
             <!-- Cards are rendered from the VERDARII_SUBRACES array in js/reference-data.js -->
             <div class="option-cards" id="verdarii-cards"></div>
           </details>
 
-          <h2>None of These Catching Your Eye?</h2>
           <div class="center-container">
+            <h2>None of These Catching Your Eye?</h2>
+
             <a
               class="btn btn-primary"
               href="https://dnd5e.wikidot.com/#toc2"
@@ -865,9 +879,9 @@
         </div>
       </div>
 
-      <!-- Step 5 - Ability Scores -->
-      <div class="step" id="step-5">
-        <span class="step-count">Step 5 of 10</span>
+      <!-- Step 4 - Ability Scores -->
+      <div class="step" id="step-4">
+        <span class="step-count">Step 4 of 10</span>
         <h1>Determine Your Ability Scores</h1>
 
         <!-- step content -->
@@ -897,7 +911,7 @@
             coordination. Dexterity contributes to how hard you are to hit. The
             more agile you are, the harder it is for enemies to land a blow.
             You'll calculate the exact number (called Armor Class or AC ) in
-            step 9, once you've also chosen your armor.
+            step 8, once you've also chosen your armor.
           </p>
           <p>Important For: Rogue, Ranger, Monk, Fighter (DEX based)</p>
 
@@ -935,7 +949,7 @@
           <p>Important For: Bard, Paladin, Sorcerer, Warlock</p>
         </div>
 
-        <!-- What to grab from Steps 3 & 4 before generating numbers -->
+        <!-- What to grab from Steps 2 & 3 before generating numbers -->
         <div class="section">
           <h2>What You'll Need From Earlier Steps</h2>
           <p>
@@ -945,14 +959,14 @@
 
           <h3>Your Class's Primary Ability</h3>
           <p>
-            From Step 3, your class entry lists a primary ability (or two).
+            From Step 2, your class entry lists a primary ability (or two).
             That's where you'll want your highest score. If you don't remember
-            it, the table earlier in Step 3 has it.
+            it, the details for the class you chose earlier in Step 2 has it.
           </p>
 
           <h3>Your Race's Ability Score Increases</h3>
           <p>
-            From Step 4, your race bumps certain scores after you assign them.
+            From Step 3, your race bumps certain scores after you assign them.
             Keep that in mind as you go: a racial +2 can nudge a 14 up to a 16,
             which is a meaningful difference.
           </p>
@@ -1078,7 +1092,7 @@
           <h2>Add Your Racial Increases</h2>
           <p>
             &#x270E; Now take the ability score increases from your race (Step
-            4) and add them on top of what you just assigned. Update the large
+            3) and add them on top of what you just assigned. Update the large
             score box and recalculate the modifier oval below it. Scores cap at
             20, even with racial bonuses.
           </p>
@@ -1183,9 +1197,9 @@
         </div>
       </div>
 
-      <!-- Step 6 - Background -->
-      <div class="step" id="step-6">
-        <span class="step-count">Step 6 of 10</span>
+      <!-- Step 5 - Background -->
+      <div class="step" id="step-5">
+        <span class="step-count">Step 5 of 10</span>
         <h1>Choose your Background</h1>
 
         <!-- step content -->
@@ -1198,13 +1212,10 @@
           <h2>What Is a Background?</h2>
           <p>
             Your background is what your character did with their life before
-            they became an adventurer. Were they a
-            <a class="text-link" href="#soldier">soldier</a>, a
-            <a class="text-link" href="#criminal">criminal</a>, a
-            <a class="text-link" href="#sage">scholar</a>, or a temple
-            <a class="text-link" href="#acolyte">acolyte</a>? It's a short
-            answer to the question "where did this person come from?" and it
-            helps ground your concept in the world.
+            they became an adventurer. Were they a soldier in a war, a criminal
+            in a gang, a scholar with a school, or a temple acolyte? It's a
+            short answer to the question "where did this person come from?" and
+            it helps ground your concept in the world.
           </p>
         </div>
 
@@ -1218,7 +1229,7 @@
           <h3>Skill Proficiencies</h3>
           <p>
             A couple of skills you're trained in, based on your former line of
-            work (more on skills in Step 7).
+            work (more on skills in Step 6).
           </p>
 
           <h3>Tool Proficiencies and/or Languages</h3>
@@ -1247,7 +1258,7 @@
             ideals, bonds, and flaws.
           </p>
           <p>
-            &#x270E; If you left those boxes blank back in Step 2, now is the
+            &#x270E; If you left those boxes blank back in Step 1, now is the
             time to fill those in. Roll on the tables or pick whichever sounds
             like your character.
           </p>
@@ -1255,7 +1266,7 @@
           <h3>Starting Equipment</h3>
           <p>
             A little bit of themed gear and some coin to get you going. We'll go
-            over equipment more in Step 9.
+            over equipment more in Step 8.
           </p>
         </div>
 
@@ -1263,14 +1274,14 @@
           <h2>Choose your Background</h2>
           <p>
             &#x270E; Pick the background that best matches the concept you
-            sketched out in Step 2, then write it in the "Background" box.
+            sketched out in Step 1, then write it in the "Background" box.
           </p>
           <p>
             Each background entry includes tables of suggested Personality
             Traits, Ideals, Bonds, and Flaws.
           </p>
           <p>
-            &#x270E; If you left those boxes blank back in Step 2, fill them in
+            &#x270E; If you left those boxes blank back in Step 1, fill them in
             now: either roll on the tables or just pick the lines that sound
             most like your character.
           </p>
@@ -1279,9 +1290,9 @@
         </div>
       </div>
 
-      <!-- Step 7 - Skills/Proficiencies -->
-      <div class="step" id="step-7">
-        <span class="step-count">Step 7 of 10</span>
+      <!-- Step 6 - Skills/Proficiencies -->
+      <div class="step" id="step-6">
+        <span class="step-count">Step 6 of 10</span>
         <h1>Choose your Skills</h1>
 
         <!-- step content -->
@@ -1350,8 +1361,8 @@
             Every skill is tied to one of your six ability scores. When you make
             a skill check, you roll a d20 and add that ability's modifier, plus
             your proficiency bonus if you're trained in the skill. Below are the
-            main skills grouped by the ability that governs them, however on
-            your sheet, they're presented alphabetically.
+            main skills grouped by the ability that governs them. On your sheet
+            however, they're presented alphabetically.
           </p>
 
           <h3>Strength</h3>
@@ -1451,14 +1462,14 @@
             the armor), so try to stick to what your class allows. For weapons,
             you just don't add the proficiency bonus to your "To Hit" modifier
             if you're not proficient with that weapon (more on weapons in Step
-            9).
+            8).
           </p>
         </div>
       </div>
 
-      <!-- Step 8 - Spells -->
-      <div class="step" id="step-8">
-        <span class="step-count">Step 8 of 10</span>
+      <!-- Step 7 - Spells -->
+      <div class="step" id="step-7">
+        <span class="step-count">Step 7 of 10</span>
         <h1>Choose your Spells</h1>
 
         <!-- step content -->
@@ -1732,10 +1743,10 @@
             They have access to a wider list but must choose which spells to
             "prepare" after each rest. They can change their lineup day to day,
             but only get to ready a limited number at a time equal to your Class
-            Level + your Spellcasting Ability Modifier (for example, a 3rd level
-            Cleric with a +3 Wisdom, would be able to prepare 6 spells).
-            Paladins & Artificers use half their class level instead, rounded
-            down, with a minimum of 1 prepared spell.
+            Level + your Spellcasting Ability Modifier, with a minimum of 1 (for
+            example, a 3rd level Cleric with a +3 Wisdom, would be able to
+            prepare 6 spells). Paladins & Artificers use half their class level
+            instead (rounded down) with a minimum of 1 prepared spell.
           </p>
         </div>
 
@@ -1747,8 +1758,8 @@
             class). Your "Spellcasting Ability Modifier" is the same as the
             modifier from your main ability score. Write the following numbers
             in the boxes near the top of the "Spells" sheet, once you've got
-            your ability scores and proficiency bonus figured out from Steps 5
-            and 7.
+            your ability scores and proficiency bonus figured out from Steps 4
+            and 6.
           </p>
           <p>
             &#x270E; Write your main spell casting ability (WIS, INT, or CHA) in
@@ -1778,7 +1789,7 @@
           <p>
             &#x270E; Some of your spells also get logged in the "Attacks &
             Spellcasting" section, the same table you'll use for weapons in Step
-            9. For a spell you attack with, list the spell's name, use your
+            8. For a spell you attack with, list the spell's name, use your
             Spell Attack Modifier (above) as the attack bonus, and use the
             spell's damage die plus any modifier the spell calls for. For spells
             that use a saving throw instead, just note the effect and reference
@@ -1803,9 +1814,9 @@
         </div>
       </div>
 
-      <!-- Step 9 - Equipment -->
-      <div class="step" id="step-9">
-        <span class="step-count">Step 9 of 10</span>
+      <!-- Step 8 - Equipment -->
+      <div class="step" id="step-8">
+        <span class="step-count">Step 8 of 10</span>
         <h1>Choose your Equipment</h1>
 
         <!-- step content -->
@@ -1927,7 +1938,7 @@
             Dexterity modifier . Some classes improve on this with their own
             Unarmored Defense feature: a Barbarian uses 10 + Dex + Constitution,
             and a Monk uses 10 + Dex + Wisdom. If your class has Unarmored
-            Defense in its level 1 features (you wrote those down in Step 3),
+            Defense in its level 1 features (you wrote those down in Step 2),
             use that formula instead.
           </p>
 
@@ -1961,7 +1972,7 @@
 
           <p>
             &#x270E; Your starting armor comes from your Class, which we
-            discussed in Step 3. Take the armor you wrote down in Step 3 and
+            discussed in Step 2. Take the armor you wrote down in Step 2 and
             calculate your Armor Class (AC). Now write it down in the "Armor
             Class" box on page one.
           </p>
@@ -2519,7 +2530,7 @@
           <p>
             Your attack bonus is your relevant ability modifier plus your
             proficiency bonus, but only if you're proficient with that weapon
-            (which you confirmed in Step 7). If you're not proficient, leave the
+            (which you confirmed in Step 6). If you're not proficient, leave the
             proficiency bonus out.
           </p>
           <p>
@@ -2547,18 +2558,20 @@
             your damage dice twice, and add your bonus once.
           </p>
         </div>
-
-        <p>
-          &#x270E; Your starting Weapons come from your Class, which we
-          discussed in Step 3. Take the weapons you wrote down in Step 3 and
-          calculate your Attack Bonus and Damage die/type. Now write them down
-          in the "Attacks & Spellcasting" box on page one.
-        </p>
+        <div class="section">
+          <h2>What to Write Down</h2>
+          <p>
+            &#x270E; Your starting Weapons come from your Class, which we
+            discussed in Step 2. Take the weapons you wrote down in Step 2 and
+            calculate your Attack Bonus and Damage die/type. Now write them down
+            in the "Attacks & Spellcasting" box on page one.
+          </p>
+        </div>
       </div>
 
-      <!-- Step 10 - Final Important Stats -->
-      <div class="step" id="step-10">
-        <span class="step-count">Step 10 of 10</span>
+      <!-- Step 9 - Final Important Stats -->
+      <div class="step" id="step-9">
+        <span class="step-count">Step 9 of 10</span>
         <h1>Finish Your Sheet</h1>
 
         <!-- step content -->
@@ -2619,7 +2632,7 @@
             ability scores has its own saving throw, and the math works just
             like a skill check: roll a d20, add that ability's modifier, and add
             your proficiency bonus if your class made you proficient in that
-            save (back in Step 3).
+            save (back in Step 2).
           </p>
           <p>
             &#x270E; Fill in all six saving throw modifiers on your sheet, and
@@ -2648,7 +2661,7 @@
             &#x270E; On the left side of your sheet there's a box labeled
             Passive Wisdom (Perception) . Fill it in now: 10 + your Wisdom
             modifier , plus your proficiency bonus if you're proficient in
-            Perception (marked in Step 7). Your DM uses this number quietly to
+            Perception (marked in Step 6). Your DM uses this number quietly to
             decide whether you notice something hidden, without tipping you off
             by asking for a roll.
           </p>
@@ -2664,7 +2677,7 @@
             traits go in the same box.
           </p>
           <p>
-            You recorded these back in Steps 3 and 4. If the box is still blank,
+            You recorded these back in Steps 2 and 3. If the box is still blank,
             flip back and grab them now. This is one of the most important parts
             of your sheet.
           </p>
@@ -2710,8 +2723,9 @@
         </div>
       </div>
 
-      <!-- Step 11 - Sheet Review (not listed in the tracker) -->
-      <div class="step" id="step-11">
+      <!-- Step 10 - Sheet Review (not listed in the tracker) -->
+      <div class="step" id="step-10">
+        <span class="step-count">Step 10 of 10</span>
         <h1>You're Ready to Play</h1>
 
         <!-- step content -->
@@ -2724,22 +2738,22 @@
           <h2>Top of the Sheet</h2>
 
           <h3>Character Name</h3>
-          <p>The name you landed on in Step 2.</p>
+          <p>The name you landed on in Step 1.</p>
 
           <h3>Class & Level</h3>
-          <p>Your class from Step 3, followed by 1 for your starting level.</p>
+          <p>Your class from Step 2, followed by 1 for your starting level.</p>
 
           <h3>Background</h3>
-          <p>Your background from Step 6.</p>
+          <p>Your background from Step 5.</p>
 
           <h3>Player Name</h3>
           <p>&#x270E; That's you; fill in your name.</p>
 
           <h3>Race</h3>
-          <p>Your race from Step 4.</p>
+          <p>Your race from Step 3.</p>
 
           <h3>Alignment</h3>
-          <p>Your alignment from Step 2, if you chose one.</p>
+          <p>Your alignment from Step 1, if you chose one.</p>
 
           <h3>Experience Points</h3>
           <p>Leave blank unless your DM has told you to track XP.</p>
@@ -2749,7 +2763,7 @@
           <h2>Ability Scores</h2>
           <p>
             All six scores and their modifier ovals were filled in during Step
-            5, including racial increases. Double-check that the ovals match the
+            4, including racial increases. Double-check that the ovals match the
             modifier table; this is the most common place for a small arithmetic
             slip.
           </p>
@@ -2762,24 +2776,24 @@
           <p>Leave blank; your DM will award it during play.</p>
 
           <h3>Proficiency Bonus</h3>
-          <p>+2 at level 1, filled in during Step 7.</p>
+          <p>+2 at level 1, filled in during Step 6.</p>
 
           <h3>Saving Throws</h3>
           <p>
-            Filled in during Step 10: each modifier is your ability modifier,
+            Filled in during Step 9: each modifier is your ability modifier,
             plus your proficiency bonus for the two saves your class is
-            proficient in (Step 3).
+            proficient in (Step 2).
           </p>
 
           <h3>Skills</h3>
           <p>
-            Filled in during Step 7: proficient skills have their bubbles marked
+            Filled in during Step 6: proficient skills have their bubbles marked
             and include your proficiency bonus.
           </p>
 
           <h3>Passive Wisdom (Perception)</h3>
           <p>
-            Filled in Step 7: 10 + Wisdom modifier (+ proficiency bonus if
+            Filled in Step 6: 10 + Wisdom modifier (+ proficiency bonus if
             you're trained in Perception).
           </p>
         </div>
@@ -2789,15 +2803,15 @@
 
           <h3>Armor Class</h3>
           <p>
-            Calculated in Step 9 based on your armor type (or Unarmored Defense
+            Calculated in Step 8 based on your armor type (or Unarmored Defense
             if your class uses it).
           </p>
 
           <h3>Initiative</h3>
-          <p>Your Dexterity modifier, which was filled in Step 5.</p>
+          <p>Your Dexterity modifier, which was filled in Step 4.</p>
 
           <h3>Speed</h3>
-          <p>Your race's base walking speed from Step 4, in feet.</p>
+          <p>Your race's base walking speed from Step 3, in feet.</p>
         </div>
 
         <div class="section">
@@ -2829,7 +2843,7 @@
         <div class="section">
           <h2>Attacks & Spellcasting</h2>
           <p>
-            Filled in during Steps 9 (weapons) and 8 (spells). Each row should
+            Filled in during Steps 8 (weapons) and 7 (spells). Each row should
             have the weapon or spell name, its attack bonus or save DC, and its
             damage or effect. If you're a non-caster, leave the spell rows
             blank.
@@ -2840,15 +2854,15 @@
           <h2>Other Proficiencies & Languages</h2>
           <p>
             This box pulls from several steps: armor and weapon proficiencies
-            (Step 3), tool proficiencies (Steps 3 and 6), and languages (Steps 4
-            and 6). If anything is missing, flip back to those steps.
+            (Step 2), tool proficiencies (Steps 2 and 5), and languages (Steps 3
+            and 5). If anything is missing, flip back to those steps.
           </p>
         </div>
 
         <div class="section">
           <h2>Features & Traits</h2>
           <p>
-            Your level 1 class features (Step 3) and racial traits (Step 4)
+            Your level 1 class features (Step 2) and racial traits (Step 3)
             should both be here. If the box is blank, this is the one to go back
             and fill: these are your character's actual abilities.
           </p>
@@ -2858,11 +2872,11 @@
           <h2>Equipment and Coin</h2>
 
           <h3>Equipment</h3>
-          <p>Your starting gear from Step 9.</p>
+          <p>Your starting gear from Step 8.</p>
 
           <h3>Coin</h3>
           <p>
-            &#x270E; Your starting gold from Step 6; it goes in the GP box in
+            &#x270E; Your starting gold from Step 5; it goes in the GP box in
             the coin section.
           </p>
         </div>
@@ -2870,8 +2884,8 @@
         <div class="section">
           <h2>Personality</h2>
           <p>
-            Personality Traits, Ideals, Bonds, and Flaws from Step 2. If you
-            filled these in using your background's suggestion tables (Step 6),
+            Personality Traits, Ideals, Bonds, and Flaws from Step 1. If you
+            filled these in using your background's suggestion tables (Step 5),
             they should already be here.
           </p>
         </div>
@@ -2906,7 +2920,7 @@
       </div>
 
       <!-- Shell for the class/race/background entry pop-up (opened from the
-           option cards in Steps 3, 4, and 6); contents are filled in by
+           option cards in Steps 2, 3, and 5); contents are filled in by
            js/main.js -->
       <dialog
         class="character-modal options-modal"

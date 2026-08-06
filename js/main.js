@@ -308,13 +308,14 @@
       }
     }
 
-    // Reads "#step-4" from the URL and returns index 3, or null if
-    // missing/invalid. The hash is 1-indexed (step-1..step-10) to match
-    // each step's id/label, but the internal step index stays 0-based.
+    // Reads "#step-4" from the URL and returns index 4, or null if
+    // missing/invalid. The hash matches each step's id/label directly
+    // (step-0 is the Terms pre-step, step-10 is the review step), and the
+    // internal step index is the same number.
     function stepFromHash() {
       const match = window.location.hash.match(/^#step-(\d+)$/);
       if (!match) return null;
-      const index = Number(match[1]) - 1;
+      const index = Number(match[1]);
       return index >= 0 && index < steps.length ? index : null;
     }
 
@@ -323,8 +324,12 @@
     function showStep(index, { updateUrl = true, scroll = true } = {}) {
       currentStep = index;
       saveStep(index);
-      const totalPlaySteps = steps.length - 1; // excludes the review step
+      const totalPlaySteps = steps.length - 1; // excludes the pre-step (Terms); the hidden review step still counts as the last one
+      const isPreStep = index === 0; // Terms: visible before the tracker, not one of its pips
       const isReviewStep = index === steps.length - 1;
+      // Tracker pips only cover the steps between Terms and the review step,
+      // so their array position trails the real step index by 1
+      const trackerIndex = index - 1;
 
       // Show/Hide Steps
       steps.forEach((step) => step.classList.remove("active"));
@@ -334,26 +339,23 @@
       stepIcons.forEach((icon, i) => {
         icon.classList.remove("active", "complete");
 
-        if (i < index) {
+        if (i < trackerIndex) {
           icon.classList.add("complete");
-        } else if (i === index) {
+        } else if (i === trackerIndex) {
           icon.classList.add("active");
         }
       });
 
       // Active label
       stepLabels.forEach((label, i) => {
-        label.classList.toggle("active", i === index);
+        label.classList.toggle("active", i === trackerIndex);
       });
 
       // Change Button Text
-      prevBtn.textContent = index === 0 ? "Home" : "Previous";
+      prevBtn.textContent = isPreStep ? "Home" : "Previous";
       if (isReviewStep) {
         // Review step: Next goes to the combat guide
         nextBtn.textContent = "Next: How to Survive Combat →";
-      } else if (index === steps.length - 2) {
-        // Step 10: Next goes to the review step
-        nextBtn.textContent = "Next: Review Your Sheet →";
       } else {
         nextBtn.textContent = "Next";
       }
@@ -363,14 +365,17 @@
       trackerPrevBtn.disabled = index === 0;
       trackerNextBtn.disabled = index === steps.length - 1;
 
-      // Hide the step pips on the review step: it isn't in the tracker
+      // Hide the step pips on the review step: it isn't in the tracker.
+      // The pre-step keeps the pips visible (per design), just with none active.
       trackerNav.classList.toggle("review-active", isReviewStep);
 
       // Keep the collapsed bar's step count in sync with the current step
       if (isReviewStep) {
         trackerToggleCount.textContent = "Review your sheet";
+      } else if (isPreStep) {
+        trackerToggleCount.textContent = "Before You Begin: Terms";
       } else {
-        trackerToggleCount.textContent = `Step ${index + 1} of ${totalPlaySteps}: ${stepLabels[index].textContent}`;
+        trackerToggleCount.textContent = `Step ${index} of ${totalPlaySteps}: ${stepLabels[trackerIndex].textContent}`;
       }
 
       // Keep the mobile <select> in sync with the current step
@@ -379,7 +384,7 @@
       // Push a history entry so refresh keeps the step and back steps
       // backward through the guide instead of leaving the page
       if (updateUrl) {
-        const hash = `#step-${index + 1}`;
+        const hash = `#step-${index}`;
         if (window.location.hash !== hash) {
           history.pushState(null, "", hash);
         }
@@ -427,10 +432,12 @@
       }
     });
 
-    // Jump directly to a step by clicking its tracker entry
+    // Jump directly to a step by clicking its tracker entry. Tracker entries
+    // start at Concept (step 1), so their array position trails the real
+    // step index by 1 (Terms, at step 0, has no entry).
     trackerEntries.forEach((entry, i) => {
       entry.addEventListener("click", () => {
-        showStep(i);
+        showStep(i + 1);
       });
     });
 
@@ -475,7 +482,7 @@
     const savedStep = hashStep === null ? readSavedStep() : null;
     if (savedStep !== null && savedStep > 0) {
       // Reflect the restored step in the URL without adding a history entry
-      history.replaceState(null, "", `#step-${savedStep + 1}`);
+      history.replaceState(null, "", `#step-${savedStep}`);
     }
     showStep(hashStep ?? savedStep ?? 0, { updateUrl: false, scroll: false });
 
@@ -485,6 +492,16 @@
       {
         gridId: "verdarii-cards",
         entries: VERDARII_SUBRACES,
+        modalHtml: raceModalHtml,
+      },
+    ]);
+
+    if (typeof EXOTIC_RACES === "undefined") return;
+
+    initOptionCards([
+      {
+        gridId: "exotic-cards",
+        entries: EXOTIC_RACES,
         modalHtml: raceModalHtml,
       },
     ]);
@@ -948,12 +965,11 @@
     function classModalHtmlWithLink(entry) {
       return `
         ${classModalHtml(entry)}
-        <p>
-          <a class="btn btn-secondary" href="classes.html#${entry.id}" target="_blank"
->
+        <div class="center-container">
+          <a class="btn btn-secondary" href="classes.html#${entry.id}" target="_blank">
             Full Class Details →
           </a>
-        </p>
+        </div>
       `;
     }
 

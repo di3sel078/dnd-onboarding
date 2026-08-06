@@ -1292,6 +1292,48 @@ const RACES = [
   },
 ];
 
+const EXOTIC_RACES = [
+  {
+    id: "sea_elf",
+    name: "Sea Elf",
+    summary:
+      "While other elves transfixed on certain flora, the Sea Elves claimed the ocean.",
+    asi: "Your Dexterity score increases by 2, and your Constitution score increases by 1.",
+    age: "Sea Elves age around the same rate as Elves, gaining adulthood around 100 years old, and can live up to 750 years.",
+    alignment: null,
+    size: "You are Medium",
+    speed:
+      "Your base walking is 30 feet and you have a swimming speed equal to your walking speed.",
+    darkvision:
+      "Thanks to your oceanic heritage, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.",
+    languages:
+      "You can speak, read, and write Common and one other language you and your DM decide on.",
+    traits: [
+      {
+        name: "Child of the Sea",
+        desc: "You can breathe both air and water, and you have resistance to cold damage.",
+      },
+      {
+        name: "Fey Ancestry",
+        desc: "You have advantage on saving throws you make to avoid or end the charmed condition on yourself.",
+      },
+      {
+        name: "Friend of the Sea",
+        desc: "You can communicate very simple ideas to any Beast that has a swimming speed. While it can understand you, you cannot understand it in return.",
+      },
+      {
+        name: "Keen Senses",
+        desc: "You have proficiency in the Perception skill",
+      },
+      {
+        name: "Trance",
+        desc: "You don't require sleep and you cannot magically be put to sleep. You can finish a long rest in 4 hours, if you spend that time meditating in a trancelike state, during which you still retain conciousness.",
+      },
+    ],
+    subraces: [],
+  },
+];
+
 // Homebrew race from the Xumaria setting (see xumaria.html). "Verdarii
 // (Base)" lists the traits shared by every subrace; each subrace card
 // below it repeats those same base traits alongside its own unique ones,

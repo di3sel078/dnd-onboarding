@@ -923,11 +923,6 @@ hr {
   display: none;
 }
 
-/* Hide the tracker entirely on the sheet review step */
-.step-tracker-nav.review-active {
-  display: none;
-}
-
 .step-tracker-nav.collapsed .tracker-toggle {
   position: static;
   width: 100%;
@@ -1651,5 +1646,9 @@ body.modal-open {
   .step-tracker-select {
     display: block;
     margin: 0 auto;
+  }
+
+  .step-count {
+    padding-top: var(--space-4);
   }
 }
